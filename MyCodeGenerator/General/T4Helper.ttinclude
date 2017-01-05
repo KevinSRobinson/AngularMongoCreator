@@ -1,0 +1,532 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly Name="EnvDTE" #>
+<#@ Import Namespace="EnvDTE" #>
+<#@ Import Namespace="System.IO" #>
+<#@ import namespace="System.Globalization" #>
+<#@ import namespace="EnvDTE" #>
+<#@ include file="Settings.ttinclude" #>
+<#+
+
+    public static class ClientCommon
+    {
+          //SideNavigation
+          public static string   MainLayoutComponentFilePath = "/Features/Navigation/";
+          public static string   MainLayout = "<main-layout></main-layout>";
+
+    }
+
+    public class AngularClient  {
+
+
+        private CodeClassHelper _codeClassHelper;
+
+        public string ServiceName  = "";  
+        public string ServiceFileName   = ""; 
+        public string FeaturePath = "";
+        public string StylesPath = "";
+        public string ViewsPath  = "";
+
+        //Modals
+        public string ModalsFilePath = "";
+        public string ModifyModalController = "";
+
+        public string ModalServiceName ="";
+        public string ModifyModalControllerFileName  = "";
+        public string ModalServiceNameFileName ="";
+        public string ModifyModalTemplateFileName = "";
+
+
+        //Components
+        public string ListComponentFilePath  ="";
+        public string ListComponentName ="";
+        public string ListComponentFileName  = "";
+        public string ListComponentTag = "";
+        public string ListComponentTemplateFileName  = "";
+        public string ListComponentTemplateUrl = "";
+
+        //Index View
+        public string IndexTemplateUrl = "";
+        
+
+        public AngularClient(CodeClassHelper codeClassHelper){
+
+
+            _codeClassHelper =codeClassHelper;
+
+
+            //Main features path
+            FeaturePath = "/Features/" + _codeClassHelper.Plural + "/";
+            ViewsPath = FeaturePath + "/Views/";
+            
+
+            //DataServices
+            ServiceName  = _codeClassHelper.CamelCasePlural + "Service";  
+            ServiceFileName  = ServiceName + ".js"; 
+
+
+            //Modals
+            ModalsFilePath = string.Format("{0}{1}/", FeaturePath , "Modals"); 
+            ModalServiceName    =  string.Format("{0}ModalService", codeClassHelper.CamelCasePlural);
+            ModalServiceNameFileName    =  string.Format("{0}.js", ModalServiceName);
+            ModifyModalController =  string.Format("modify{0}ModalController", codeClassHelper.Name);
+            ModifyModalControllerFileName = string.Format("{0}.js", ModifyModalController);
+            ModifyModalTemplateFileName = string.Format("{0}Template.html", ModifyModalController);
+
+           
+
+            //Components
+            ListComponentFilePath = string.Format("{0}Components/",FeaturePath);
+            ListComponentName = string.Format("{0}List",_codeClassHelper.CamelCasePlural);
+            ListComponentFileName = string.Format("{0}.js",ListComponentName);
+            ListComponentTemplateFileName = string.Format("{0}.html", ListComponentName);
+            ListComponentTemplateUrl = string.Format("src/client/Features/{0}/Components/{1}", codeClassHelper.Plural, ListComponentTemplateFileName);
+            ListComponentTag = GetComponentTag(ListComponentName);
+
+            //main index view
+            IndexTemplateUrl = string.Format("src/client/Features/{0}/Views/index.html", codeClassHelper.Plural);
+            
+
+        }
+
+     private string GetComponentTag(string componentName){
+            
+            var output = "";
+            foreach (char letter in componentName)
+            {
+               if (Char.IsUpper(letter) && output.Length > 0)
+                 output += "-" + letter;
+               else
+                 output += letter;
+            }
+            return string.Format("<{0}></{0}>", output.ToLower());
+        }  
+   
+    }
+
+
+
+
+
+
+    public class CodeClassHelper
+    {
+            private static CodeClass _codeClass;
+            private AngularClient _angularClient;
+
+
+            public CodeClassHelper(CodeClass codeClass){
+                _codeClass = codeClass;
+
+                _angularClient = new AngularClient(this);
+            }
+
+            public CodeClass CodeClass {get{
+                return _codeClass;
+            }}
+     
+            public AngularClient AngularClient {get{
+                return _angularClient;
+            }}
+
+            public string DtoCamelCase {get{
+                return GetDtoCamelcaseClassName(_codeClass);
+            }}
+
+            public string DtoName {get{
+                return GetDtoClassName(_codeClass);
+            }}
+
+
+
+            public string Plural {get{
+                return _codeClass.Name + "s";
+            }}
+
+            public string Name { get{
+                return _codeClass.Name;
+            }}
+            public string CamelCasePlural {
+                get{
+                  return CamelCase + "s";
+             }}
+            public string CamelCase {
+                get{
+                  return GetCamelcaseClassName(_codeClass);
+             }}
+
+
+       
+
+ 
+        #region Private Methods
+            public string GetDtoClassName(CodeClass codeClass)    {
+               return codeClass.Name + "Dto";
+            }
+            private static string GetDtoCamelcaseClassName(CodeClass codeClass)  {
+                return GetCamelcaseClassName(codeClass.Name) + "Dto";
+            }
+            private static string GetCamelcaseClassName(CodeClass codeClass)
+            {
+                return GetCamelcaseClassName(codeClass.Name);
+            }
+            private static string GetCamelcaseClassName(string className)
+            {
+                string returnString = className.ToLower();
+                returnString = Char.ToLowerInvariant(className[0]) + className.Substring(1);
+                return returnString;
+            }
+        #endregion
+        
+    
+    }
+
+
+
+
+    public List<CodeClass> GetClasses(){
+		
+        IServiceProvider serviceProvider = (IServiceProvider)this.Host;
+        DTE dte = serviceProvider.GetService(typeof(DTE)) as DTE; 
+
+        var project = GetActiveProject(dte);
+        return FindClasses(project, dataContextNamespace, "").Where(x=> x.Name != efContext).ToList();       
+    }
+
+
+
+    public string GetDtoClassName(CodeClass codeClass)    {
+       return codeClass.Name + "Dto";
+    }
+
+    public string GetDtoCamelcaseClassName(CodeClass codeClass)  {
+       return GetCamelcaseClassName(codeClass.Name) + "Dto";
+    }
+
+    public void CreateDirectoryFullPath(string outputFilePath){
+        var di = Directory.CreateDirectory(outputFilePath);                          
+    }	
+
+    public void CreateFileFullPath(string fileName)
+    {
+        ProcessContent(fileName, this.GenerationEnvironment.ToString());
+        this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
+    }
+
+
+    public void CreateDirectory(string outputFileName){
+			    string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
+				    string outputFilePath = Path.Combine(templateDirectory, outputFileName);
+				    var di = Directory.CreateDirectory(outputFilePath);                          
+            
+    }
+
+	 //Generating Seperate Files
+public void ProcessContentFullPath(string path, string outputFileName, string content)
+{
+
+		string outputFilePath = Path.Combine(path, outputFileName);
+		string outputDirectoryPath = Path.GetDirectoryName(outputFilePath);    
+
+    try 
+    {	        
+			   
+						
+		// Try to create the directory.    
+		//File.Create(outputFilePath);
+		File.WriteAllText(outputFilePath, content);
+			
+    }
+    catch (Exception ex)
+    {		
+        throw new Exception(outputFilePath, ex);
+    }
+        
+}
+
+public void CreateFile(string fileName)
+{
+    ProcessContent(fileName, this.GenerationEnvironment.ToString());
+    this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
+}
+
+    //Generating Seperate Files
+public void ProcessContent(string outputFileName, string content)
+{
+
+	string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
+		string outputFilePath = Path.Combine(templateDirectory, outputFileName);
+		string outputDirectoryPath = Path.GetDirectoryName(outputFilePath);    
+
+    try 
+    {	        
+			   
+						
+		// Try to create the directory.    
+		//File.Create(outputFilePath);
+		File.WriteAllText(outputFilePath, content);
+			
+    }
+    catch (Exception ex)
+    {		
+        throw new Exception(outputFilePath, ex);
+    }
+        
+}
+
+ 
+
+    //Get Projects
+    public Project GetActiveProject(DTE dte)
+    {
+        Project activeProject = null;
+ 
+        Array activeSolutionProjects = dte.ActiveSolutionProjects as Array;
+        if (activeSolutionProjects != null && activeSolutionProjects.Length > 0)
+        {
+            activeProject = activeSolutionProjects.GetValue(0) as Project;
+        }
+ 
+        return activeProject;
+    }
+
+    //
+    public List<CodeClass> FindClasses(Project project, string ns, string className) 
+    {
+        List<CodeClass> result = new List<CodeClass>();
+        FindClasses(project.CodeModel.CodeElements, className, ns, result, false);
+        return result;
+    }
+
+    private void FindClasses(CodeElements elements, string className, string searchNamespace, List<CodeClass> result, bool isNamespaceOk) 
+    {
+        if (elements == null) return;
+        foreach (CodeElement element in elements) 
+        {
+            if (element is CodeNamespace) 
+            {
+                CodeNamespace ns = element as CodeNamespace;
+                if (ns != null) 
+                {
+                    if (ns.FullName == searchNamespace)
+                        FindClasses(ns.Members, className, searchNamespace, result, true);
+                    else
+                        FindClasses(ns.Members, className, searchNamespace, result, false);
+                }
+            } 
+            else if (element is CodeClass && isNamespaceOk) 
+            {
+                CodeClass c = element as CodeClass;
+                if (c != null) 
+                {
+                    if (c.FullName.Contains(className))
+                        result.Add(c);
+
+                    FindClasses(c.Members, className, searchNamespace, result, true);
+                }
+            }
+        }
+    }
+        
+    //Naming
+    public string GetProperClassName(string className)
+    {
+        string returnString = className.ToLower();
+        returnString = returnString.Replace("_", " ");
+        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;  
+        returnString = ti.ToTitleCase(returnString);
+        returnString = returnString.Replace(" ", "");
+        return returnString;
+    }
+
+ public string GetCamelcaseClassName(CodeClass codeClass)
+    {
+        return GetCamelcaseClassName(codeClass.Name);
+    }
+	 public string GetCamelcaseClassName(string className)
+    {
+        string returnString = className.ToLower();
+        returnString = Char.ToLowerInvariant(className[0]) + className.Substring(1);
+        return returnString;
+    }
+
+     public string GetInterfacePropertyName(string className, string suffix, bool plural){
+        var property = "I" + className + suffix + " " + className;
+        
+        if(plural){
+            property += "s";
+        }
+
+        return property;
+    }
+
+    public string GetPropertyGetterSetters(bool getter, bool setter)
+    {
+        var gettersetter = "{ ";
+
+        if(getter){
+            gettersetter += "get;";
+        }
+        else{
+
+            gettersetter += "set;";
+        }   
+
+        gettersetter += "}";
+
+        return gettersetter;
+
+    }
+
+    private static string CharToUpper(string input, int position)
+    {
+        return input.First().ToString().ToUpper() + input.Substring(position+1);
+    }
+
+
+    public string GetClassName(string className)
+    {
+        string returnString = className.ToLower();
+        returnString = returnString.Replace("_", " ");
+        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;  
+        returnString = ti.ToTitleCase(returnString);
+        returnString = returnString.Replace(" ", "");
+        return returnString;
+    }
+
+
+
+
+
+
+
+
+    //////////////////////////////////////
+    ////JSON
+    string GenerateSampleJsonCollection(string name, CodeClass codeclass, int numberOfItems){
+        
+        var jsonCollection= "[";
+
+        //create 
+        for(int i=1; i<numberOfItems; i++){
+            jsonCollection += GeneratJsonObject(i, codeclass);
+        }
+
+        //remove last commma
+        jsonCollection = jsonCollection.Substring(0, jsonCollection.Length -1);
+
+        //close colleciton
+        jsonCollection += "]";
+
+        return jsonCollection;
+    }
+
+    
+
+    bool IsProperty(string memberType){
+        return memberType == "vsCMElementProperty";
+    }   
+    
+    string GeneratJsonObject(int count, CodeClass codeClass){
+       
+        var jsonObject = "{";
+           
+        //write a property with test value for each
+        foreach (CodeElement meb in codeClass.Members) {
+            if (IsProperty(meb.Kind.ToString())) {			
+                jsonObject += GetJsonProperty(meb, GetTestValue(count, meb));
+            };
+        }
+        
+        jsonObject = jsonObject.Substring(0, jsonObject.Length -1);
+        jsonObject += "},";
+
+        return jsonObject;
+
+    }
+  
+
+    
+    string GetTestValue(int count, CodeElement member){
+        
+        var prop = member as CodeProperty;	
+
+        //Get the property Type
+	    var type = prop.Type.AsString;
+
+        switch(type){
+            case "string":
+                return WrapInDoubleQuotes("Test Value");  
+                break;      
+            case "int":
+                return count.ToString();
+                break;
+            case "System.Guid":
+                return WrapInDoubleQuotes(Guid.NewGuid().ToString());
+                break;
+		    default:
+                    return type;
+                break;
+		    }
+    }
+
+    string WrapInDoubleQuotes(string val){
+        return String.Format("{0}{1}{0}", Convert.ToChar(34), val);
+    }
+
+
+
+
+    string GetJsonProperty(CodeElement member, string val){
+        var prop = member as CodeProperty;		
+        return String.Format("{0}{1}{0}:{2},", Convert.ToChar(34), GetCamelcaseClassName(prop.Name), val);
+    }
+
+    //////////////////////////////////
+    //Mongo DB
+    string GetMongoDbSchema(CodeClassHelper helper){
+        var schema = "";
+        foreach (CodeElement meb in helper.CodeClass.Members) {
+            if (IsProperty(meb.Kind.ToString())) {	
+                schema += GetJsonSchemaProperty(meb);      
+            };           
+        }
+        return schema;
+    }
+    string GetJsonSchemaProperty(CodeElement member){
+        var prop = member as CodeProperty;	
+
+        //Get the property Type
+	    var type = prop.Type.AsString;
+
+        var mongooseSchemaType = "";
+
+        switch(type)
+            {   
+               case "string"  :
+                    mongooseSchemaType = "String";
+                    break;
+               case "int"  :
+                    mongooseSchemaType = "Number";
+                    break;
+               case "System.Guid"  :
+                    mongooseSchemaType = "String";
+                    break;
+               default:
+                    mongooseSchemaType = "String";
+                    break;
+            }
+
+
+        return String.Format("{0} : {1}, ", member.Name, mongooseSchemaType);
+    }
+
+    string GetDateSchemaProperty(string fieldName){
+        var property =  fieldName + ": {" ;
+        property += " type: Date," ;
+        property += " default: Date.now"  ;
+        property += " }} "  ;
+        return property;   
+    }
+
+  
+#>

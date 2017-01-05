@@ -1,0 +1,127 @@
+﻿
+<#+ void GenerateApis(CodeClassHelper helper){ #>     
+
+var _ = require('lodash');
+var <#=helper.Name#> = require('../models/<#=helper.CamelCasePlural#>Model.js');
+
+module.exports = function(app) {
+
+  // Create
+  app.post('/<#=helper.CamelCase#>', function(req, res) {
+    var new<#=helper.Name#> = new <#=helper.Name#>(req.body);
+    new<#=helper.Name#>.save(function(err) {
+      if (err) {
+        res.json({
+          info: 'error during <#=helper.CamelCase#> create',
+          error: err
+        });
+      }
+      res.json({
+        info: '<#=helper.CamelCase#> created successfully'
+      });
+    });
+  });
+
+  // Read
+  app.get('/<#=helper.CamelCase#>', function(req, res) {
+    <#=helper.Name#>.find(function(err, <#=helper.CamelCase#>s) {
+      if (err) {
+        res.json({
+          info: 'error during find <#=helper.CamelCase#>s',
+          error: err
+        });
+      }
+      res.json({
+        info: '<#=helper.CamelCase#>s found successfully',
+        data: <#=helper.CamelCase#>s
+      });
+    });
+  });
+
+  app.get('/<#=helper.CamelCase#>/:id', function(req, res) {
+    <#=helper.Name#>.findById(req.params.id, function(err, <#=helper.CamelCase#>) {
+      if (err) {
+        res.json({
+          info: 'error during find <#=helper.CamelCase#>',
+          error: err
+        });
+      }
+      if (<#=helper.CamelCase#>) {
+        res.json({
+          info: 'found your <#=helper.CamelCase#>',
+          data: <#=helper.CamelCase#>
+        });
+      } else {
+        res.json({
+          info: 'no <#=helper.CamelCase#> found'
+        });
+      }
+    });
+  });
+
+  // Update
+  app.put('/<#=helper.CamelCase#>/:id', function(req, res) {
+    <#=helper.Name#>.findById(req.params.id, function(err, <#=helper.CamelCase#>) {
+      if (err) {
+        res.json({
+          info: 'error during find <#=helper.CamelCase#>',
+          error: err
+        });
+      }
+      if (<#=helper.CamelCase#>) {
+        _.merge(<#=helper.CamelCase#>, req.body);
+        <#=helper.CamelCase#>.save(function(err) {
+          if (err) {
+            res.json({
+              info: 'error during update <#=helper.CamelCase#>',
+              error: err
+            });
+          }
+          res.json({
+            info: '<#=helper.CamelCase#> updated successfully'
+          });
+        });
+      } else {
+        res.json({
+          info: '<#=helper.CamelCase#> not found'
+        });
+      }
+    });
+  });
+
+  // Delete
+  app.delete('/<#=helper.CamelCase#>/:id', function(req, res) {
+    <#=helper.Name#>.findByIdAndRemove(req.params.id, function(err) {
+      if (err) {
+        res.json({
+          info: 'error during remove <#=helper.CamelCase#>'
+        });
+      }
+      res.json({
+        info: '<#=helper.CamelCase#> removed successfully'
+      });
+    });
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<#+
+    CreateDirectoryFullPath(NodeApisPath);
+    CreateFile(NodeApisPath + helper.CamelCasePlural + "Api.js");
+	}	
+#>

@@ -1,0 +1,28 @@
+﻿
+<#+ 
+void GenerateModifyModalTemplate(CodeClass codeClass){			
+        var helper = new CodeClassHelper(codeClass);
+
+		#>
+		
+	<modal-header title="Modify <#=helper.Name#>"></modal-header>
+<#+ 
+	foreach (CodeElement meb in codeClass.Members) {
+	if (meb.Kind == vsCMElement.vsCMElementProperty) {
+		var prop = meb as CodeProperty;
+			var type = prop.Type.AsString;
+			if(type == "string") {
+				WriteLine("<my-text-field field-label='" + meb.Name + "' ng-model='vm." + helper.CamelCase + "." + meb.Name + "'></my-text-field>");
+			};
+		};			
+	};
+#>
+<modal-buttons close="vm.close()" save="vm.save()"></modal-buttons>
+		
+		<#+
+
+
+     	CreateDirectoryFullPath(clientAppPath + helper.AngularClient.ModalsFilePath);
+	    CreateFile(clientAppPath + helper.AngularClient.ModalsFilePath +  helper.AngularClient.ModifyModalTemplateFileName);
+	}	
+#>

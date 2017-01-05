@@ -1,0 +1,75 @@
+<#@ template language="C#" debug="false" hostspecific="true" #>
+<#@ assembly name="System" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.Entity" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="EnvDTE" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Reflection" #>
+<#@ include file="General/T4Helper.ttinclude" #>
+<#@ include file="Client/IndexPage.ttinclude" #>
+<#@ include file="Client/app.ttinclude" #>
+<#@ include file="Client/auth0Service.ttinclude" #>
+<#@ include file="Client/appRun.ttinclude" #>
+<#@ include file="Client/routes.ttinclude" #>
+<#@ include file="Client/PackageManagers/bower.ttinclude" #>
+<#@ include file="Client/Gulp/gulp1.ttinclude" #>
+<#@ include file="Client/Gulp/gulpConfig.ttinclude" #>
+<#@ include file="Client/DataServices/angularServices.ttinclude" #>
+<#@ include file="Client/Styles/lessStyles.ttinclude" #>
+<#@ include file="Client/Features/routes.ttinclude" #>
+<#@ include file="Client/Features/Views/IndexView.ttinclude" #>
+<#@ include file="Client/Features/Components/listComponentTemplate.ttinclude" #>
+<#@ include file="Client/Features/Components/listComponent.ttinclude" #>
+<#@ include file="Client/Features/Modals/modalServices.ttinclude" #>
+<#@ include file="Client/Features/Modals/modifyModal.ttinclude" #>
+<#@ include file="Client/Features/Modals/modifyModalController.ttinclude" #>
+<#@ include file="Client/Features/Navigation/mainLayoutComponentTemplate.ttinclude" #>
+<#@ include file="Client/Features/Navigation/mainLayoutComponent.ttinclude" #>
+<#@ include file="Client/Auth0/auth0Config.ttinclude" #>
+<#@ include file="Client/Auth0/auth0Variables.ttinclude" #>
+<#@ include file="Client/Auth0/auth0Service.ttinclude" #>
+<#  
+    //Get all classes from the model
+    var classes = GetClasses();    
+
+     //Core App
+    this.GenerateAppFile();
+    this.GenerateAppRunFile();
+    this.GenerateAuthServiceFile(); 
+
+    //Styles
+    this.GeneratLessStyles();
+
+    //Bower   
+    this.GenerateBowerFile();
+    
+    //Gulp
+    this.GenerateGulpFile();
+    this.GenerateGulpConfigFile();
+
+    //Main Layout Component
+    this.MainLayoutComponent(classes);
+    this.MainLayoutComponentTemplate();
+   
+    foreach(var codeClass in classes){
+      var helper  = new CodeClassHelper(codeClass);
+   
+      //Angular Client  
+      //--core
+      this.GenerateAngularService(codeClass);
+      this.GeneratRoutes(codeClass);
+      this.GenerateIndexView(codeClass);
+      //--components
+      this.GenerateListComponentTemplate(codeClass);
+      this.GenerateListComponent(codeClass);
+      //--modals
+      this.GeneratModalService(codeClass);
+      this.GeneratModifyModalController(codeClass);
+      this.GenerateModifyModalTemplate(codeClass);
+    }
+  
+#>

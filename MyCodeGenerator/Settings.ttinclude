@@ -1,0 +1,40 @@
+﻿
+<#+ 
+    const string applicationName = "contacts";
+    const string applicationTitle = "Sample Contacts";
+    const string applicationAuthor = "Kevin Robinson";
+
+    const string nodeServerPort = "8989";
+
+    const string basePath= "C:/Repos/NodeMongoAngular/";
+   
+    string efContext = "SampleDbContext"; 
+    string dataContextNamespace = "Data";
+
+
+
+
+    //client
+    const string clienBasePath = basePath + "Client/";
+    const string clientSrcPath = clienBasePath + "/";
+    const string clientAppPath = clientSrcPath + "/";
+    const string dataServicesAppPath = clientAppPath + "DataServices/";
+
+    //node server
+    const string NodeBasePath = basePath + "Server/";
+    const string NodeServerPath = NodeBasePath + "/";
+    const string NodeApiDataControllersPath = NodeServerPath + "/Controllers/";
+    const string NodeApiSchemasPath = NodeServerPath + "/Models/";
+    const string NodeApisPath = NodeServerPath + "/Apis/";
+
+
+    const string StylesPath = clientSrcPath + "styles/";
+
+   
+    
+    
+    
+
+#>
+
+

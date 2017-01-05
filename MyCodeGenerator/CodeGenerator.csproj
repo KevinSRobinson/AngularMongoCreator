@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E9091611-65D7-4DF1-859B-CEA937A3BBC6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CodeGenerator</RootNamespace>
+    <AssemblyName>CodeGenerator</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bogus, Version=8.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bogus.8.0.2\lib\net40\Bogus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Roustabout.Tools.Chance, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Roustabout.Tools.Chance.0.0.3\lib\net46\Roustabout.Tools.Chance.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AngularClient 1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AngularClient .tt</DependentUpon>
+    </Compile>
+    <Compile Include="NodeServer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NodeServer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Aurelia\Build\paths.ttinclude" />
+    <None Include="Aurelia\Build\exports.ttinclude" />
+    <None Include="Aurelia\Build\bundles.ttinclude" />
+    <None Include="Aurelia\Build\babel-options.ttinclude" />
+    <None Include="Aurelia\Build\args.ttinclude" />
+    <None Include="Aurelia\Build\.eslintrc.ttinclude" />
+    <None Include="Aurelia\Build\Tasks\watch.ttinclude" />
+    <None Include="Aurelia\Build\Tasks\test.ttinclude" />
+    <None Include="Aurelia\Build\Tasks\serve.ttinclude" />
+    <None Include="Aurelia\Build\Tasks\prepare-release.ttinclude" />
+    <None Include="Aurelia\Build\Tasks\lint.ttinclude" />
+    <None Include="Aurelia\Build\Tasks\export-release.ttinclude" />
+    <None Include="Aurelia\Build\Tasks\e2e.ttinclude" />
+    <None Include="Aurelia\Build\Tasks\dev.ttinclude" />
+    <None Include="Aurelia\Build\Tasks\clean.ttinclude" />
+    <None Include="Aurelia\Build\Tasks\bundle.ttinclude" />
+    <None Include="Aurelia\Build\Tasks\build.ttinclude" />
+    <None Include="Aurelia\config.ttinclude" />
+    <None Include="Aurelia\.npmignore.ttinclude" />
+    <None Include="Aurelia\.gitIgnore.ttinclude" />
+    <None Include="Aurelia\EsLint\.eslintrc.ttinclude" />
+    <None Include="Aurelia\EsLint\.eslintignore.ttinclude" />
+    <None Include="Aurelia\Gulp\gulp.ttinclude" />
+    <None Include="Aurelia\IndexPage.ttinclude" />
+    <None Include="Aurelia\PackageManagers\jsconfig.ttinclude" />
+    <None Include="Aurelia\PackageManagers\package.ttinclude" />
+    <None Include="Aurelia\Styles\styles.ttinclude" />
+    <None Include="Aurelia\Views\welcome.ttinclude" />
+    <None Include="Aurelia\Views\users.ttinclude" />
+    <None Include="Aurelia\Views\welcomeTemplate.ttinclude" />
+    <None Include="Aurelia\Views\usersTemplate.ttinclude" />
+    <None Include="Aurelia\Views\childRouter.ttinclude" />
+    <None Include="Aurelia\Views\navBar.ttinclude" />
+    <None Include="Aurelia\Views\main.ttinclude" />
+    <None Include="Aurelia\Views\childRouterTemplate.ttinclude" />
+    <None Include="Aurelia\Views\appTemplate.ttinclude" />
+    <None Include="Aurelia\Views\app.ttinclude" />
+    <None Include="Client\auth0Service.ttinclude" />
+    <None Include="Client\routes.ttinclude" />
+    <None Include="Client\appRun.ttinclude" />
+    <None Include="Client\Electron\elecronIndex.ttinclude" />
+    <None Include="Client\Features\Navigation\mainLayoutComponent.ttinclude" />
+    <None Include="Client\Features\Navigation\mainLayoutComponentTemplate.ttinclude" />
+    <None Include="Client\NodeServer\Controllers\DataControllers.ttinclude" />
+    <None Include="Client\NodeServer\Data\MongoDbSchema.ttinclude" />
+    <None Include="Client\Styles\lessStyles.ttinclude" />
+    <None Include="Client\Gulp\gulpConfig.ttinclude" />
+    <None Include="Client\Gulp\gulp1.ttinclude" />
+    <None Include="Client\NodeServer\Apis\ServerApis.ttinclude" />
+    <None Include="Client\NodeServer\Data\TestJsonData.ttinclude" />
+    <None Include="Client\NodeServer\nodeServer.ttinclude" />
+    <None Include="Client\Auth0\auth0Service.ttinclude" />
+    <None Include="Client\Auth0\auth0Variables.ttinclude" />
+    <None Include="Client\Auth0\auth0Config.ttinclude" />
+    <None Include="Client\NodeServer\Routes\Utils\JsonFileService.ttinclude" />
+    <None Include="Client\NodeServer\Routes\Utils\ErrorHandler.ttinclude" />
+    <None Include="DataLayer\Dtos\DtoCommands.ttinclude" />
+    <None Include="General\JsonHelpers.ttinclude" />
+    <None Include="NodeServer\Apis\ServerApis.ttinclude" />
+    <None Include="NodeServer\Controllers\DataControllers.ttinclude" />
+    <None Include="NodeServer\Data\MongoDbSchema.ttinclude" />
+    <None Include="NodeServer\Data\TestJsonData.ttinclude" />
+    <None Include="NodeServer\nodeServer.ttinclude" />
+    <None Include="NodeServer\Routes\Utils\ErrorHandler.ttinclude" />
+    <None Include="NodeServer\Routes\Utils\JsonFileService.ttinclude" />
+    <None Include="NodeServer\package.ttinclude" />
+    <None Include="Settings.ttinclude" />
+    <None Include="Client\app.ttinclude" />
+    <None Include="Client\DataServices\angularServices.ttinclude" />
+    <None Include="Client\PackageManagers\bowerc.ttinclude" />
+    <None Include="Client\PackageManagers\bower.ttinclude" />
+    <None Include="Client\Features\Components\listComponent.ttinclude" />
+    <None Include="Client\Features\Components\listComponentTemplate.ttinclude" />
+    <None Include="Client\Controllers\angularController.ttinclude" />
+    <None Include="Client\Controllers\angularControllerMVC.ttinclude" />
+    <None Include="Client\Controllers\detailsController.ttinclude" />
+    <None Include="Client\e2e\protractorConfig.ttinclude" />
+    <None Include="Client\e2e\protractorHelpers.ttinclude" />
+    <None Include="Client\e2e\protractorIndex.ttinclude" />
+    <None Include="Client\WebPack\entry.ttinclude" />
+    <None Include="Client\Gulp\gulp.ttinclude" />
+    <None Include="Client\IndexPage.ttinclude" />
+    <None Include="Client\Features\Modals\modifyModalController.ttinclude" />
+    <None Include="Client\Features\Modals\modalServices.ttinclude" />
+    <None Include="Client\Features\Modals\modifyModal.ttinclude" />
+    <None Include="Client\Features\Modals\viewModal.ttinclude" />
+    <None Include="Client\PackageManagers\package.ttinclude" />
+    <None Include="Client\Features\routes.ttinclude" />
+    <None Include="Client\Tests\mockService.ttinclude" />
+    <None Include="Client\Tests\tests.ttinclude" />
+    <None Include="Client\Vendor\entry.ttinclude" />
+    <None Include="Client\Vendor\webpack.ttinclude" />
+    <None Include="Client\Features\Views\DetailsView.ttinclude" />
+    <None Include="Client\Features\Views\EditView.ttinclude" />
+    <None Include="Client\Features\Views\IndexView.ttinclude" />
+    <None Include="Client\Features\Views\IndexViewMVC.ttinclude" />
+    <None Include="Client\WebPack\webpackConfig.ttinclude" />
+    <None Include="DataLayer\GenericRepository.ttinclude" />
+    <None Include="DataLayer\Repositories.ttinclude" />
+    <None Include="DataLayer\UnitOfWork.ttinclude" />
+    <None Include="DataLayer\Dtos\DtoManagers.ttinclude" />
+    <None Include="DataLayer\Dtos\Dtos.ttinclude" />
+    <None Include="General\T4Helper.ttinclude" />
+    <None Include="General\VisualStudioHelper.ttinclude" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NodeServer.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NodeServer.cs</LastGenOutput>
+    </Content>
+    <Content Include="AngularClient .tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AngularClient 1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{d147e68b-6468-4298-b4e9-225bf4653083}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pocos\Pocos.csproj">
+      <Project>{068a7280-9129-45b2-860f-7b454be7aafe}</Project>
+      <Name>Pocos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

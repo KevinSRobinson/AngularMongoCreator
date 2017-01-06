@@ -481,7 +481,7 @@ var contactsList = (++cov_3mi5vxgwu.s[0], {
         allowChanges: '@'
     },
     controllerAs: 'vm',
-    templateUrl: 'src/client/Features/Contacts/Components/contactsList.html',
+    templateUrl: 'Features/Contacts/Components/contactsList.html',
     controller: function controller(contactsService, contactsModalService) {
         ++cov_3mi5vxgwu.f[0];
 

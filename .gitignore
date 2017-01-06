@@ -1,2 +1,4 @@
 Server/node_modules/
 packages/
+Client/node_modules/
+Client/bower_components/

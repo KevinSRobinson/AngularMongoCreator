@@ -16,8 +16,8 @@
 <#@ include file="Client/appRun.ttinclude" #>
 <#@ include file="Client/routes.ttinclude" #>
 <#@ include file="Client/PackageManagers/bower.ttinclude" #>
-<#@ include file="Client/Gulp/gulp1.ttinclude" #>
-<#@ include file="Client/Gulp/gulpConfig.ttinclude" #>
+
+
 <#@ include file="Client/DataServices/angularServices.ttinclude" #>
 <#@ include file="Client/Styles/lessStyles.ttinclude" #>
 <#@ include file="Client/Features/routes.ttinclude" #>
@@ -32,11 +32,66 @@
 <#@ include file="Client/Auth0/auth0Config.ttinclude" #>
 <#@ include file="Client/Auth0/auth0Variables.ttinclude" #>
 <#@ include file="Client/Auth0/auth0Service.ttinclude" #>
+<#@ include file="Client/PackageManagers/package.ttinclude" #>
+<#@ include file="Client/nodeServer.ttinclude" #>
+<#@ include file="Client/Gulp/gulp-main.ttinclude" #>
+<#@ include file="Client/Gulp/Tasks/browserSync.ttinclude" #>
+<#@ include file="Client/Gulp/Tasks/build.ttinclude" #>
+<#@ include file="Client/Gulp/Tasks/inject.ttinclude" #>
+<#@ include file="Client/Gulp/Tasks/karma.ttinclude" #>
+<#@ include file="Client/Gulp/Tasks/misc.ttinclude" #>
+<#@ include file="Client/Gulp/Tasks/partials.ttinclude" #>
+<#@ include file="Client/Gulp/Tasks/scripts.ttinclude" #>
+<#@ include file="Client/Gulp/Tasks/styles.ttinclude" #>
+
+<#@ include file="NodeServer/package.ttinclude" #>
+<#@ include file="Client/Gulp/Conf/browserSyncConf.ttinclude" #>
+<#@ include file="Client/Gulp/Conf/browserSyncDistConf.ttinclude" #>
+<#@ include file="Client/Gulp/Conf/gulpConf.ttinclude" #>
+<#@ include file="Client/Gulp/Conf/karmaAutoConf.ttinclude" #>
+<#@ include file="Client/Gulp/Conf/KarmaConf.ttinclude" #>
+<#@ include file="Client/Gulp/Conf/karmaFilesConf.ttinclude" #>
+
+
+
+
 <#  
     //Get all classes from the model
     var classes = GetClasses();    
 
-     //Core App
+    this.Generate_PackageJson();
+
+    //gulp
+    this.Generate_Gulp_File();
+    this.Generate_Gulp_Task_BrowserSync();
+    this.Generate_Gulp_Task_Build();
+    this.Generate_Gulp_Task_Inject();
+    this.Generate_Gulp_Task_Karma();
+    this.Generate_Gulp_Task_Misc();
+    this.Generate_Gulp_Task_Partials();
+    this.Generate_Gulp_Task_Scripts();
+    this.Generate_Gulp_Task_Styles();
+
+
+    this.Generate_Gulp_Conf_BrowserSync();
+    this.Generate_Gulp_Conf_BrowserSync_Dist();
+    this.Generate_Gulp_Conf();
+    this.Generate_Gulp_Conf_Karma_Auto();
+    this.Generate_Gulp_Conf_Karma();
+    this.Generate_Gulp_Conf_KarmaFiles();
+
+
+
+
+
+    //node server
+    this.GeneratePackageJson();
+    this.GenerateNodeJsSeverAppFile(classes);
+        
+    //index           
+    this.GenerateMainIndexPage(classes);
+
+    //Core App
     this.GenerateAppFile();
     this.GenerateAppRunFile();
     this.GenerateAuthServiceFile(); 
@@ -47,9 +102,7 @@
     //Bower   
     this.GenerateBowerFile();
     
-    //Gulp
-    this.GenerateGulpFile();
-    this.GenerateGulpConfigFile();
+   
 
     //Main Layout Component
     this.MainLayoutComponent(classes);

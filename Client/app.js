@@ -1,52 +1,25 @@
+/*jshint node:true*/
+'use strict';
+
+var express = require('express');
+var app = express();
+var logger = require('morgan');
+var bodyParser = require('body-parser');
+var port = process.env.PORT || 7203;
+
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.set('views', __dirname + '/public/src/');
+
+app.use(bodyParser.json());
+app.use(logger('dev'));
+app.use(express.static(__dirname + '/public', { maxAge: oneYear }));
 
 
+app.get('/*', function(req, res) {
+    res.render('index.html');
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(function () {
-
-  'use strict';
-
-   var app = angular.module('contacts', ['ui.router', 'ui.bootstrap', 'my-angular-components', 'auth0.lock', 'angular-jwt']);
-
-  var config = function (lockProvider, jwtOptionsProvider) {
-
-    // Configuration for angular-jwt
-    jwtOptionsProvider.config({
-      tokenGetter: function () {
-        return localStorage.getItem('id_token');
-      }
-    });
-
-    lockProvider.init({
-      clientID: 'UY5BHrujRwp7y1TZQl1Bif88aeeVRkrU',
-      domain: 'volunteernow.auth0.com'
-    });
-
-  };
-
-
-  config.$inject = ['lockProvider', 'jwtOptionsProvider'];
-
-  app.config(config);
-})();
-
-
-
+app.listen(port, function() {
+    console.log('Express server listening on port ' + port);
+});

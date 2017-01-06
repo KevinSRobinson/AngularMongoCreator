@@ -16,8 +16,11 @@
 
     //client
     const string clienBasePath = basePath + "Client/";
+    const string clientGulpTasksFolder = clienBasePath + "gulp_tasks/";
+    const string clientGulpConfFolder = clienBasePath + "conf/";
+    
     const string clientSrcPath = clienBasePath + "/";
-    const string clientAppPath = clientSrcPath + "/";
+    const string clientAppPath = clientSrcPath + "/src/";
     const string dataServicesAppPath = clientAppPath + "DataServices/";
 
     //node server

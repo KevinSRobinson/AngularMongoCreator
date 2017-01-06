@@ -11,10 +11,7 @@ function partials() {
     .pipe(htmlmin(conf.htmlmin))
     .pipe(angularTemplatecache('templateCacheHtml.js', {
       module: conf.ngModule,
-      standalone: false,
-        base: function(file) {
-        return  file.path.replace(/^.*(\\|\/|\:)/, '');   
-    },
+      root: 'app'
     }))
     .pipe(gulp.dest(conf.path.tmp()));
 }

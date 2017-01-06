@@ -1,7 +1,7 @@
 ﻿
 <#+  void GeneratePackageJson(){	#>
 {
-  "name": "contacts",
+  "name": "<#=applicationName#>",
   "version": "0.0.2",
   "author": "Kevin Robinson",
   "scripts": {

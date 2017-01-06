@@ -3,7 +3,7 @@
 
   'use strict';
 
-   var app = angular.module('contacts', ['ui.router', 'ui.bootstrap', 'my-angular-components', 'auth0.lock', 'angular-jwt']);
+   var app = angular.module('app', ['ui.router', 'ui.bootstrap', 'my-angular-components', 'auth0.lock', 'angular-jwt']);
 
   var config = function (lockProvider, jwtOptionsProvider) {
 

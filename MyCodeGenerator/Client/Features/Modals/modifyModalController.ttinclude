@@ -1,9 +1,6 @@
 ﻿<#+   void GeneratModifyModalController(CodeClass codeClass){			
       var helper = new CodeClassHelper(codeClass);
-
 #>
-		
-
 var <#=helper.AngularClient.ModifyModalController#> = function ($uibModalInstance,  <#=helper.AngularClient.ServiceName#>, <#=helper.CamelCase#>) {
   var vm = this;
   vm.<#=helper.CamelCase#>  = {}
@@ -29,7 +26,6 @@ var <#=helper.AngularClient.ModifyModalController#> = function ($uibModalInstanc
 
 };
 angular.module("<#=applicationName#>").controller("<#=helper.AngularClient.ModifyModalController#>", <#=helper.AngularClient.ModifyModalController#>);
-
 <#+
 	    CreateDirectoryFullPath(clientAppPath + helper.AngularClient.ModalsFilePath);
 	    CreateFile(clientAppPath + helper.AngularClient.ModalsFilePath + helper.AngularClient.ModifyModalControllerFileName);

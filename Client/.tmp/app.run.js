@@ -2,7 +2,7 @@
 
 var cov_1efqvhlrp1 = function () {
     var path = 'C:\\Repos\\NodeMongoAngular\\Client\\src\\app.run.js',
-        hash = '590cefac8da4b846c9ae715fb98ced15392fc567',
+        hash = '99225eca0015c9f994a577fcdc6817d1c987e1cb',
         global = new Function('return this')(),
         gcv = '__coverage__',
         coverageData = {
@@ -10,72 +10,72 @@ var cov_1efqvhlrp1 = function () {
         statementMap: {
             '0': {
                 start: {
-                    line: 4,
+                    line: 2,
                     column: 10
                 },
                 end: {
-                    line: 21,
+                    line: 19,
                     column: 1
                 }
             },
             '1': {
                 start: {
-                    line: 7,
+                    line: 5,
                     column: 4
                 },
                 end: {
-                    line: 7,
+                    line: 5,
                     column: 41
                 }
             },
             '2': {
                 start: {
-                    line: 11,
+                    line: 9,
                     column: 4
                 },
                 end: {
-                    line: 11,
+                    line: 9,
                     column: 49
                 }
             },
             '3': {
                 start: {
-                    line: 16,
+                    line: 14,
                     column: 4
                 },
                 end: {
-                    line: 16,
+                    line: 14,
                     column: 37
                 }
             },
             '4': {
                 start: {
-                    line: 20,
+                    line: 18,
                     column: 4
                 },
                 end: {
-                    line: 20,
+                    line: 18,
                     column: 25
                 }
             },
             '5': {
                 start: {
-                    line: 23,
+                    line: 21,
                     column: 0
                 },
                 end: {
-                    line: 23,
+                    line: 21,
                     column: 67
                 }
             },
             '6': {
                 start: {
-                    line: 25,
+                    line: 23,
                     column: 0
                 },
                 end: {
-                    line: 25,
-                    column: 36
+                    line: 23,
+                    column: 31
                 }
             }
         },
@@ -84,21 +84,21 @@ var cov_1efqvhlrp1 = function () {
                 name: '(anonymous_0)',
                 decl: {
                     start: {
-                        line: 4,
+                        line: 2,
                         column: 10
                     },
                     end: {
-                        line: 4,
+                        line: 2,
                         column: 11
                     }
                 },
                 loc: {
                     start: {
-                        line: 4,
+                        line: 2,
                         column: 63
                     },
                     end: {
-                        line: 21,
+                        line: 19,
                         column: 1
                     }
                 }
@@ -132,7 +132,6 @@ var cov_1efqvhlrp1 = function () {
 
 ++cov_1efqvhlrp1.s[0];
 
-
 var run = function run($rootScope, authService, lock, authManager) {
     ++cov_1efqvhlrp1.f[0];
     ++cov_1efqvhlrp1.s[1];
@@ -162,4 +161,4 @@ var run = function run($rootScope, authService, lock, authManager) {
 run.$inject = ['$rootScope', 'authService', 'lock', 'authManager'];
 
 ++cov_1efqvhlrp1.s[6];
-angular.module('contacts').run(run);
+angular.module('app').run(run);

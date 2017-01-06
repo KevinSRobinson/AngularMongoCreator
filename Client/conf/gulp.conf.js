@@ -12,7 +12,7 @@
 const path = require('path');
 const gutil = require('gulp-util');
 
-exports.ngModule = 'contacts';
+exports.ngModule = 'app';
 
 /**
  *  The main paths of your project handle these with care

@@ -1,4 +1,3 @@
-
     
     var authService = function($rootScope, lock, authManager) {
 
@@ -30,7 +29,7 @@
 
     authService.$inject = ['$rootScope','lock', 'authManager'];
 
-    angular.module('contacts').factory('authService', authService);
+    angular.module('app').factory('authService', authService);
 
 
 

@@ -82,29 +82,20 @@
 		
          var helper = new CodeClassHelper(codeClass);
 #>
-		
 <my-panel title="Tags" show-add-button="true" add="vm.create()" style="success" icon="tags" icon-size="2">
  <my-filter-textbox  ng-model="filter"></my-filter-textbox>
 <table class="table table-striped">
-
-    <thead>
+   <thead>
         <tr>
              <#+WriteTableHeaders(codeClass);#>
         </tr>
     </thead>
-
     <tr  ng-repeat='<#= helper.CamelCase #> in vm.<#= helper.CamelCasePlural #> '>
         <#+WriteTableCells(codeClass);#>
         <td><div class="btn btn-success" ng-click='vm.edit(contact)'>Edit</div></td>
     </tr>
 </table>
-
-
-       
-
-
-<#+
-    
+<#+    
    CreateDirectoryFullPath(clientAppPath + helper.AngularClient.ListComponentFilePath);
 CreateFile(clientAppPath + helper.AngularClient.ListComponentFilePath + helper.AngularClient.ListComponentTemplateFileName);
 }	

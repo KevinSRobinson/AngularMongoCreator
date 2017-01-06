@@ -2,7 +2,7 @@
 
 var cov_2lp3kze80b = function () {
   var path = 'C:\\Repos\\NodeMongoAngular\\Client\\src\\app.js',
-      hash = '0a10932fe9604699ddadcab7bd183212ce501059',
+      hash = 'f852938799ed8241e9359047c0c40f9f58d19576',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
@@ -25,7 +25,7 @@ var cov_2lp3kze80b = function () {
         },
         end: {
           line: 6,
-          column: 124
+          column: 119
         }
       },
       '2': {
@@ -196,7 +196,7 @@ var cov_2lp3kze80b = function () {
   'use strict';
 
   ++cov_2lp3kze80b.f[0];
-  var app = (++cov_2lp3kze80b.s[1], angular.module('contacts', ['ui.router', 'ui.bootstrap', 'my-angular-components', 'auth0.lock', 'angular-jwt']));
+  var app = (++cov_2lp3kze80b.s[1], angular.module('app', ['ui.router', 'ui.bootstrap', 'my-angular-components', 'auth0.lock', 'angular-jwt']));
 
   ++cov_2lp3kze80b.s[2];
   var config = function config(lockProvider, jwtOptionsProvider) {

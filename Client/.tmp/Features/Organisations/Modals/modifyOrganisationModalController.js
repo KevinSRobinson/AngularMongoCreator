@@ -2,7 +2,7 @@
 
 var cov_139z9mtdjo = function () {
   var path = "C:\\Repos\\NodeMongoAngular\\Client\\src\\Features\\Organisations\\Modals\\modifyOrganisationModalController.js",
-      hash = "2c17cb4923737ce124698d9888390d77c2805187",
+      hash = "7153cd40cd3c98631b279ab6a07de7817b118587",
       global = new Function('return this')(),
       gcv = "__coverage__",
       coverageData = {
@@ -10,142 +10,142 @@ var cov_139z9mtdjo = function () {
     statementMap: {
       "0": {
         start: {
-          line: 3,
+          line: 1,
           column: 40
         },
         end: {
-          line: 26,
+          line: 24,
           column: 1
         }
       },
       "1": {
         start: {
-          line: 4,
+          line: 2,
           column: 11
         },
         end: {
-          line: 4,
+          line: 2,
           column: 15
         }
       },
       "2": {
         start: {
-          line: 5,
+          line: 3,
           column: 2
         },
         end: {
-          line: 5,
+          line: 3,
           column: 23
         }
       },
       "3": {
         start: {
-          line: 7,
+          line: 5,
           column: 2
         },
         end: {
-          line: 11,
+          line: 9,
           column: 4
         }
       },
       "4": {
         start: {
-          line: 8,
+          line: 6,
           column: 4
         },
         end: {
-          line: 10,
+          line: 8,
           column: 5
         }
       },
       "5": {
         start: {
-          line: 9,
+          line: 7,
           column: 6
         },
         end: {
-          line: 9,
+          line: 7,
           column: 37
         }
       },
       "6": {
         start: {
-          line: 13,
+          line: 11,
           column: 2
         },
         end: {
-          line: 18,
+          line: 16,
           column: 4
         }
       },
       "7": {
         start: {
-          line: 14,
+          line: 12,
           column: 30
         },
         end: {
-          line: 14,
+          line: 12,
           column: 74
         }
       },
       "8": {
         start: {
-          line: 15,
+          line: 13,
           column: 4
         },
         end: {
-          line: 17,
+          line: 15,
           column: 7
         }
       },
       "9": {
         start: {
-          line: 16,
+          line: 14,
           column: 6
         },
         end: {
-          line: 16,
+          line: 14,
           column: 40
         }
       },
       "10": {
         start: {
-          line: 20,
+          line: 18,
           column: 2
         },
         end: {
-          line: 22,
+          line: 20,
           column: 4
         }
       },
       "11": {
         start: {
-          line: 21,
+          line: 19,
           column: 4
         },
         end: {
-          line: 21,
+          line: 19,
           column: 30
         }
       },
       "12": {
         start: {
-          line: 24,
+          line: 22,
           column: 2
         },
         end: {
-          line: 24,
+          line: 22,
           column: 12
         }
       },
       "13": {
         start: {
-          line: 27,
+          line: 25,
           column: 0
         },
         end: {
-          line: 27,
-          column: 110
+          line: 25,
+          column: 105
         }
       }
     },
@@ -154,21 +154,21 @@ var cov_139z9mtdjo = function () {
         name: "(anonymous_0)",
         decl: {
           start: {
-            line: 3,
+            line: 1,
             column: 40
           },
           end: {
-            line: 3,
+            line: 1,
             column: 41
           }
         },
         loc: {
           start: {
-            line: 3,
+            line: 1,
             column: 106
           },
           end: {
-            line: 26,
+            line: 24,
             column: 1
           }
         }
@@ -177,21 +177,21 @@ var cov_139z9mtdjo = function () {
         name: "(anonymous_1)",
         decl: {
           start: {
-            line: 7,
+            line: 5,
             column: 12
           },
           end: {
-            line: 7,
+            line: 5,
             column: 13
           }
         },
         loc: {
           start: {
-            line: 7,
+            line: 5,
             column: 24
           },
           end: {
-            line: 11,
+            line: 9,
             column: 3
           }
         }
@@ -200,21 +200,21 @@ var cov_139z9mtdjo = function () {
         name: "(anonymous_2)",
         decl: {
           start: {
-            line: 13,
+            line: 11,
             column: 12
           },
           end: {
-            line: 13,
+            line: 11,
             column: 13
           }
         },
         loc: {
           start: {
-            line: 13,
+            line: 11,
             column: 24
           },
           end: {
-            line: 18,
+            line: 16,
             column: 3
           }
         }
@@ -223,21 +223,21 @@ var cov_139z9mtdjo = function () {
         name: "(anonymous_3)",
         decl: {
           start: {
-            line: 15,
+            line: 13,
             column: 29
           },
           end: {
-            line: 15,
+            line: 13,
             column: 30
           }
         },
         loc: {
           start: {
-            line: 15,
+            line: 13,
             column: 49
           },
           end: {
-            line: 17,
+            line: 15,
             column: 5
           }
         }
@@ -246,21 +246,21 @@ var cov_139z9mtdjo = function () {
         name: "(anonymous_4)",
         decl: {
           start: {
-            line: 20,
+            line: 18,
             column: 13
           },
           end: {
-            line: 20,
+            line: 18,
             column: 14
           }
         },
         loc: {
           start: {
-            line: 20,
+            line: 18,
             column: 25
           },
           end: {
-            line: 22,
+            line: 20,
             column: 3
           }
         }
@@ -270,31 +270,31 @@ var cov_139z9mtdjo = function () {
       "0": {
         loc: {
           start: {
-            line: 8,
+            line: 6,
             column: 4
           },
           end: {
-            line: 10,
+            line: 8,
             column: 5
           }
         },
         type: "if",
         locations: [{
           start: {
-            line: 8,
+            line: 6,
             column: 4
           },
           end: {
-            line: 10,
+            line: 8,
             column: 5
           }
         }, {
           start: {
-            line: 8,
+            line: 6,
             column: 4
           },
           end: {
-            line: 10,
+            line: 8,
             column: 5
           }
         }]
@@ -339,8 +339,6 @@ var cov_139z9mtdjo = function () {
 }();
 
 ++cov_139z9mtdjo.s[0];
-
-
 var modifyOrganisationModalController = function modifyOrganisationModalController($uibModalInstance, organisationsService, organisation) {
   ++cov_139z9mtdjo.f[0];
 
@@ -389,4 +387,4 @@ var modifyOrganisationModalController = function modifyOrganisationModalControll
   vm.init();
 };
 ++cov_139z9mtdjo.s[13];
-angular.module("contacts").controller("modifyOrganisationModalController", modifyOrganisationModalController);
+angular.module("app").controller("modifyOrganisationModalController", modifyOrganisationModalController);

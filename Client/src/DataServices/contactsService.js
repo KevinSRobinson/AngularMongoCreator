@@ -1,8 +1,7 @@
 		
 var contactsService = function($http) {
 	
-    var apiBase = "/Api/Contacts/";
-
+    var apiBase = '/Api/Contacts/';
 
     var getAll = function(){
 		return $http.get(apiBase);
@@ -14,19 +13,19 @@ var contactsService = function($http) {
 
     var modify = function(contact) {
 
-        var url = "";
+        var url = '';
 
         if(contact.Id !== undefined)
-            url = apiBase + "Update";
+            url = apiBase + 'Update';
         else
-            url = apiBase + "Add";
+            url = apiBase + 'Add';
         
 
         return $http.post(url, contact);
     };    
 
     var del = function( contact) {
-		return $http.post(apiBase + "Delete", contact);
+		return $http.post(apiBase + 'Delete', contact);
 	};
 
     return {
@@ -38,9 +37,4 @@ var contactsService = function($http) {
 };
 	
 
-angular.module("contacts").factory("contactsService", contactsService);
-
-
-	
-		
-			
+angular.module('app').factory('contactsService', contactsService);

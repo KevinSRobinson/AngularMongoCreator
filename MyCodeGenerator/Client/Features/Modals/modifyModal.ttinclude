@@ -2,10 +2,8 @@
 <#+ 
 void GenerateModifyModalTemplate(CodeClass codeClass){			
         var helper = new CodeClassHelper(codeClass);
-
 		#>
-		
-	<modal-header title="Modify <#=helper.Name#>"></modal-header>
+<modal-header title="Modify <#=helper.Name#>"></modal-header>
 <#+ 
 	foreach (CodeElement meb in codeClass.Members) {
 	if (meb.Kind == vsCMElement.vsCMElementProperty) {
@@ -18,10 +16,7 @@ void GenerateModifyModalTemplate(CodeClass codeClass){
 	};
 #>
 <modal-buttons close="vm.close()" save="vm.save()"></modal-buttons>
-		
-		<#+
-
-
+<#+
      	CreateDirectoryFullPath(clientAppPath + helper.AngularClient.ModalsFilePath);
 	    CreateFile(clientAppPath + helper.AngularClient.ModalsFilePath +  helper.AngularClient.ModifyModalTemplateFileName);
 	}	

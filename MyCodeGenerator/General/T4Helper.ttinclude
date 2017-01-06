@@ -12,7 +12,10 @@
           //SideNavigation
           public static string   MainLayoutComponentFilePath = "/Features/Navigation/";
           public static string   MainLayout = "<main-layout></main-layout>";
-
+          
+//login 
+          public static string LoginComponentFilePath = "/Login/";
+          public static string LoginComponentTemplateUrl = "/Login/LoginTemplate.html";
     }
 
     public class AngularClient  {
@@ -43,6 +46,11 @@
         public string ListComponentTag = "";
         public string ListComponentTemplateFileName  = "";
         public string ListComponentTemplateUrl = "";
+
+
+        //login
+        public string LoginComponentFilePath = "";
+        public string LoginComponentTemplateUrl = "";
 
         //Index View
         public string IndexTemplateUrl = "";
@@ -82,6 +90,7 @@
             ListComponentTemplateUrl = string.Format("src/client/Features/{0}/Components/{1}", codeClassHelper.Plural, ListComponentTemplateFileName);
             ListComponentTag = GetComponentTag(ListComponentName);
 
+           
             //main index view
             IndexTemplateUrl = string.Format("src/client/Features/{0}/Views/index.html", codeClassHelper.Plural);
             

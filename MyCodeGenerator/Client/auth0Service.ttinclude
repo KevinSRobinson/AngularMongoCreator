@@ -1,6 +1,5 @@
 ﻿
 <#+ void GenerateAuthServiceFile(){ #>
-
     
     var authService = function($rootScope, lock, authManager) {
 

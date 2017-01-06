@@ -16,8 +16,6 @@
 <#@ include file="Client/appRun.ttinclude" #>
 <#@ include file="Client/routes.ttinclude" #>
 <#@ include file="Client/PackageManagers/bower.ttinclude" #>
-
-
 <#@ include file="Client/DataServices/angularServices.ttinclude" #>
 <#@ include file="Client/Styles/lessStyles.ttinclude" #>
 <#@ include file="Client/Features/routes.ttinclude" #>
@@ -29,11 +27,13 @@
 <#@ include file="Client/Features/Modals/modifyModalController.ttinclude" #>
 <#@ include file="Client/Features/Navigation/mainLayoutComponentTemplate.ttinclude" #>
 <#@ include file="Client/Features/Navigation/mainLayoutComponent.ttinclude" #>
+<#@ include file="Client/Features/User/Components/loginComponentTemplate.ttinclude" #>
+<#@ include file="Client/Features/User/Components/loginComponent.ttinclude" #>
+<#@ include file="Client/Features/User/routes.ttinclude" #>
 <#@ include file="Client/Auth0/auth0Config.ttinclude" #>
 <#@ include file="Client/Auth0/auth0Variables.ttinclude" #>
 <#@ include file="Client/Auth0/auth0Service.ttinclude" #>
 <#@ include file="Client/PackageManagers/package.ttinclude" #>
-<#@ include file="Client/nodeServer.ttinclude" #>
 <#@ include file="Client/Gulp/gulp-main.ttinclude" #>
 <#@ include file="Client/Gulp/Tasks/browserSync.ttinclude" #>
 <#@ include file="Client/Gulp/Tasks/build.ttinclude" #>
@@ -43,24 +43,16 @@
 <#@ include file="Client/Gulp/Tasks/partials.ttinclude" #>
 <#@ include file="Client/Gulp/Tasks/scripts.ttinclude" #>
 <#@ include file="Client/Gulp/Tasks/styles.ttinclude" #>
-
-<#@ include file="NodeServer/package.ttinclude" #>
 <#@ include file="Client/Gulp/Conf/browserSyncConf.ttinclude" #>
 <#@ include file="Client/Gulp/Conf/browserSyncDistConf.ttinclude" #>
 <#@ include file="Client/Gulp/Conf/gulpConf.ttinclude" #>
 <#@ include file="Client/Gulp/Conf/karmaAutoConf.ttinclude" #>
 <#@ include file="Client/Gulp/Conf/KarmaConf.ttinclude" #>
 <#@ include file="Client/Gulp/Conf/karmaFilesConf.ttinclude" #>
-
-
-
-
 <#  
     //Get all classes from the model
     var classes = GetClasses();    
-
     this.Generate_PackageJson();
-
     //gulp
     this.Generate_Gulp_File();
     this.Generate_Gulp_Task_BrowserSync();
@@ -71,58 +63,54 @@
     this.Generate_Gulp_Task_Partials();
     this.Generate_Gulp_Task_Scripts();
     this.Generate_Gulp_Task_Styles();
-
-
     this.Generate_Gulp_Conf_BrowserSync();
     this.Generate_Gulp_Conf_BrowserSync_Dist();
     this.Generate_Gulp_Conf();
     this.Generate_Gulp_Conf_Karma_Auto();
     this.Generate_Gulp_Conf_Karma();
     this.Generate_Gulp_Conf_KarmaFiles();
-
-
-
-
-
     //node server
-    this.GeneratePackageJson();
-    this.GenerateNodeJsSeverAppFile(classes);
+    //this.GeneratePackageJson();
+    //this.GenerateNodeJsSeverAppFile(classes);
         
     //index           
     this.GenerateMainIndexPage(classes);
-
     //Core App
     this.GenerateAppFile();
     this.GenerateAppRunFile();
     this.GenerateAuthServiceFile(); 
-
     //Styles
     this.GeneratLessStyles();
-
     //Bower   
     this.GenerateBowerFile();
-    
-   
-
     //Main Layout Component
     this.MainLayoutComponent(classes);
     this.MainLayoutComponentTemplate();
+
+    //login + user
+    this.Gereratre_Login_Component();
+    this.Generate_Login_ComponentTemplate();
+    this.Generate_User_Routes();
    
     foreach(var codeClass in classes){
       var helper  = new CodeClassHelper(codeClass);
    
-      //Angular Client  
-      //--core
-      this.GenerateAngularService(codeClass);
-      this.GeneratRoutes(codeClass);
-      this.GenerateIndexView(codeClass);
-      //--components
-      this.GenerateListComponentTemplate(codeClass);
-      this.GenerateListComponent(codeClass);
-      //--modals
-      this.GeneratModalService(codeClass);
-      this.GeneratModifyModalController(codeClass);
-      this.GenerateModifyModalTemplate(codeClass);
+//Angular Client  
+//--core
+this.GenerateAngularService(helper);
+this.GeneratRoutes(helper);
+this.GenerateIndexView(codeClass);
+
+//--components
+this.GenerateListComponentTemplate(codeClass);
+this.GenerateListComponent(helper);
+
+
+
+//--modals
+this.GeneratModalService(helper);
+this.GeneratModifyModalController(codeClass);
+this.GenerateModifyModalTemplate(codeClass);
     }
   
 #>

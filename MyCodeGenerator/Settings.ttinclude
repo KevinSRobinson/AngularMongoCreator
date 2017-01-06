@@ -1,6 +1,6 @@
 ﻿
 <#+ 
-    const string applicationName = "contacts";
+    const string applicationName = "app";
     const string applicationTitle = "Sample Contacts";
     const string applicationAuthor = "Kevin Robinson";
 
@@ -20,8 +20,12 @@
     const string clientGulpConfFolder = clienBasePath + "conf/";
     
     const string clientSrcPath = clienBasePath + "/";
-    const string clientAppPath = clientSrcPath + "/src/";
+    const string clientAppPath = clientSrcPath + "src/";
     const string dataServicesAppPath = clientAppPath + "DataServices/";
+
+
+ 
+
 
     //node server
     const string NodeBasePath = basePath + "Server/";

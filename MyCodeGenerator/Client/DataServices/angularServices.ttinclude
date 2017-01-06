@@ -1,18 +1,9 @@
 ﻿
-<#+ 
-
-  void GenerateAngularService(CodeClass codeClass){	
-
-
-  var helper = new CodeClassHelper(codeClass);
-
-
-#>
+<#+ void GenerateAngularService(CodeClassHelper helper){ #>
 		
 var <#=helper.AngularClient.ServiceName#> = function($http) {
 	
-    var apiBase = "/Api/<#=helper.Plural#>/";
-
+    var apiBase = '/Api/<#=helper.Plural#>/';
 
     var getAll = function(){
 		return $http.get(apiBase);
@@ -24,19 +15,19 @@ var <#=helper.AngularClient.ServiceName#> = function($http) {
 
     var modify = function(<#=helper.CamelCase#>) {
 
-        var url = "";
+        var url = '';
 
         if(<#=helper.CamelCase#>.Id !== undefined)
-            url = apiBase + "Update";
+            url = apiBase + 'Update';
         else
-            url = apiBase + "Add";
+            url = apiBase + 'Add';
         
 
         return $http.post(url, <#=helper.CamelCase#>);
     };    
 
     var del = function( <#=helper.CamelCase#>) {
-		return $http.post(apiBase + "Delete", <#=helper.CamelCase#>);
+		return $http.post(apiBase + 'Delete', <#=helper.CamelCase#>);
 	};
 
     return {
@@ -48,16 +39,9 @@ var <#=helper.AngularClient.ServiceName#> = function($http) {
 };
 	
 
-angular.module("<#=applicationName#>").factory("<#=helper.AngularClient.ServiceName#>", <#=helper.AngularClient.ServiceName#>);
-
-
-	
-		
-			<#+
-    
-  
-  
-	CreateDirectoryFullPath(dataServicesAppPath);
+angular.module('<#=applicationName#>').factory('<#=helper.AngularClient.ServiceName#>', <#=helper.AngularClient.ServiceName#>);
+<#+
+    CreateDirectoryFullPath(dataServicesAppPath);
 	CreateFile(dataServicesAppPath + helper.AngularClient.ServiceFileName);
 }	
 #>

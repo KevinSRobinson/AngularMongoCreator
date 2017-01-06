@@ -54,9 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AngularClient 1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>AngularClient .tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="NodeServer.cs">
       <AutoGen>True</AutoGen>
@@ -66,7 +66,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Client\app - Copy.ttinclude" />
     <None Include="Client\auth0Service.ttinclude" />
+    <None Include="Client\Features\User\Components\loginComponent.ttinclude" />
+    <None Include="Client\Features\User\Components\loginComponentTemplate.ttinclude" />
+    <None Include="Client\Features\User\routes.ttinclude" />
     <None Include="Client\Gulp\Conf\karmaFilesConf.ttinclude" />
     <None Include="Client\Gulp\Conf\karmaAutoConf.ttinclude" />
     <None Include="Client\Gulp\Conf\KarmaConf.ttinclude" />
@@ -81,11 +85,9 @@
     <None Include="Client\Gulp\Tasks\inject.ttinclude" />
     <None Include="Client\Gulp\Tasks\build.ttinclude" />
     <None Include="Client\Gulp\Tasks\browserSync.ttinclude" />
-    <None Include="Client\nodeServer.ttinclude" />
     <None Include="Client\package.ttinclude" />
     <None Include="Client\routes.ttinclude" />
     <None Include="Client\appRun.ttinclude" />
-    <None Include="Client\Electron\elecronIndex.ttinclude" />
     <None Include="Client\Features\Navigation\mainLayoutComponent.ttinclude" />
     <None Include="Client\Features\Navigation\mainLayoutComponentTemplate.ttinclude" />
     <None Include="Client\Styles\lessStyles.ttinclude" />
@@ -113,10 +115,9 @@
     <None Include="Client\Controllers\angularController.ttinclude" />
     <None Include="Client\Controllers\angularControllerMVC.ttinclude" />
     <None Include="Client\Controllers\detailsController.ttinclude" />
-    <None Include="Client\e2e\protractorConfig.ttinclude" />
-    <None Include="Client\e2e\protractorHelpers.ttinclude" />
-    <None Include="Client\e2e\protractorIndex.ttinclude" />
-    <None Include="Client\WebPack\entry.ttinclude" />
+    <None Include="Client\Tests\e2e\protractorConfig.ttinclude" />
+    <None Include="Client\Tests\e2e\protractorHelpers.ttinclude" />
+    <None Include="Client\Tests\e2e\protractorIndex.ttinclude" />
     <None Include="Client\Gulp\gulp.ttinclude" />
     <None Include="Client\IndexPage.ttinclude" />
     <None Include="Client\Features\Modals\modifyModalController.ttinclude" />
@@ -127,31 +128,30 @@
     <None Include="Client\Features\routes.ttinclude" />
     <None Include="Client\Tests\mockService.ttinclude" />
     <None Include="Client\Tests\tests.ttinclude" />
-    <None Include="Client\Vendor\entry.ttinclude" />
-    <None Include="Client\Vendor\webpack.ttinclude" />
     <None Include="Client\Features\Views\DetailsView.ttinclude" />
     <None Include="Client\Features\Views\EditView.ttinclude" />
     <None Include="Client\Features\Views\IndexView.ttinclude" />
     <None Include="Client\Features\Views\IndexViewMVC.ttinclude" />
-    <None Include="Client\WebPack\webpackConfig.ttinclude" />
     <None Include="General\T4Helper.ttinclude" />
     <None Include="General\VisualStudioHelper.ttinclude" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NodeServer.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>NodeServer.cs</LastGenOutput>
-    </Content>
     <Content Include="AngularClient .tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AngularClient 1.cs</LastGenOutput>
+    </Content>
+    <Content Include="NodeServer.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NodeServer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Client\Features\User\Views\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{d147e68b-6468-4298-b4e9-225bf4653083}</Project>

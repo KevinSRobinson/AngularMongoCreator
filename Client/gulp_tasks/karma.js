@@ -1,6 +1,7 @@
 process.env.NODE_ENV = 'test';
 
 const path = require('path');
+
 const gulp = require('gulp');
 const karma = require('karma');
 
@@ -24,3 +25,10 @@ function karmaAutoRun(done) {
   const karmaServer = new karma.Server({configFile}, karmaFinishHandler(done));
   karmaServer.start();
 }
+
+
+			
+
+		
+		
+			

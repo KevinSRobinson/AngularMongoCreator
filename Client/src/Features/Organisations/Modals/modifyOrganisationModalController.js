@@ -1,5 +1,3 @@
-		
-
 var modifyOrganisationModalController = function ($uibModalInstance,  organisationsService, organisation) {
   var vm = this;
   vm.organisation  = {}
@@ -24,5 +22,4 @@ var modifyOrganisationModalController = function ($uibModalInstance,  organisati
   vm.init();
 
 };
-angular.module("contacts").controller("modifyOrganisationModalController", modifyOrganisationModalController);
-
+angular.module("app").controller("modifyOrganisationModalController", modifyOrganisationModalController);

@@ -14,7 +14,7 @@ const conf = require('../conf/gulp.conf');
 gulp.task('styles', styles);
 
 function styles() {
-  return gulp.src(conf.path.src('index.less'))
+  return gulp.src(conf.path.src('./styles/styles.less'))
     .pipe(sourcemaps.init())
     .pipe(less({compress: false})).on('error', conf.errorHandler('Less'))
     .pipe(postcss([autoprefixer()])).on('error', conf.errorHandler('Autoprefixer'))

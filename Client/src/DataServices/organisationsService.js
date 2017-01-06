@@ -1,8 +1,7 @@
 		
 var organisationsService = function($http) {
 	
-    var apiBase = "/Api/Organisations/";
-
+    var apiBase = '/Api/Organisations/';
 
     var getAll = function(){
 		return $http.get(apiBase);
@@ -14,19 +13,19 @@ var organisationsService = function($http) {
 
     var modify = function(organisation) {
 
-        var url = "";
+        var url = '';
 
         if(organisation.Id !== undefined)
-            url = apiBase + "Update";
+            url = apiBase + 'Update';
         else
-            url = apiBase + "Add";
+            url = apiBase + 'Add';
         
 
         return $http.post(url, organisation);
     };    
 
     var del = function( organisation) {
-		return $http.post(apiBase + "Delete", organisation);
+		return $http.post(apiBase + 'Delete', organisation);
 	};
 
     return {
@@ -38,9 +37,4 @@ var organisationsService = function($http) {
 };
 	
 
-angular.module("contacts").factory("organisationsService", organisationsService);
-
-
-	
-		
-			
+angular.module('app').factory('organisationsService', organisationsService);

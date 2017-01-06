@@ -1,31 +1,10 @@
-﻿
-<#+ 
-
-  void GenerateListComponent(CodeClass codeClass){			
-
-        var helper = new CodeClassHelper(codeClass);
-
-      
-
- #>
-		
-
-/**
-* @memberof app
-* @ngdoc service
-* @name <#=helper.CamelCasePlural#>
-* @param {$http} Test
-* @property {object} obj property of this service
-* @ngInject
-* @desc The siteLanguageServices provides information about available languges
-* of a site.  
-*/
+﻿<#+ void GenerateListComponent(CodeClassHelper helper){	 #>
 var <#=helper.CamelCasePlural#>List = {
 bindings: {
-	allowChanges: "@"
+	allowChanges: '@'
 },
-controllerAs: "vm",
-templateUrl: "<#=helper.AngularClient.ListComponentTemplateUrl#>",
+controllerAs: 'vm',
+templateUrl: '<#=helper.AngularClient.ListComponentTemplateUrl#>',
 controller: function (<#=helper.AngularClient.ServiceName#>, <#=helper.AngularClient.ModalServiceName#>) {
     var vm = this;
     vm.error = {};
@@ -35,18 +14,15 @@ controller: function (<#=helper.AngularClient.ServiceName#>, <#=helper.AngularCl
         vm.load<#=helper.CamelCasePlural#>s();
     };
 
-
     vm.load<#=helper.CamelCasePlural#>s = function(){
         var <#=helper.CamelCasePlural#>Promise= <#=helper.AngularClient.ServiceName#>.GetAll();
         <#=helper.CamelCasePlural#>Promise.then(function(response){
-	    vm.<#=helper.CamelCasePlural#> = response.data;
-console.log(response.data);
+	     vm.<#=helper.CamelCasePlural#> = response.data;
         }).catch(function(error){
 	        vm.error = error;
         })
     };
 	
-
 
     //////////////////////
     //Modals
@@ -68,19 +44,9 @@ console.log(response.data);
     vm.init();
 
     }
-}
-
-
-angular.module("<#=applicationName#>").component("<#=helper.CamelCasePlural#>List", <#=helper.CamelCasePlural#>List);
-
-
-
-		
-		
-		<#+
-    
-  
-  
+};
+angular.module('<#=applicationName#>').component('<#=helper.CamelCasePlural#>List', <#=helper.CamelCasePlural#>List);
+<#+
 	CreateDirectoryFullPath(clientAppPath + helper.AngularClient.ListComponentFilePath);
 	CreateFile(clientAppPath + helper.AngularClient.ListComponentFilePath + helper.AngularClient.ListComponentFileName);
 }	

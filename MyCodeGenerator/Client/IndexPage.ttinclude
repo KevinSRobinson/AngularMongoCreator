@@ -7,7 +7,6 @@ void WriteSideMenuItems(List<CodeClass> codeClasses){
         WriteSideMenuItem(codeClass);
     }
 }
-
 /////////////////////////////////////////////////////
 //Write out Side Menu Item
 void WriteSideMenuItem(CodeClass codeClass){
@@ -16,10 +15,7 @@ void WriteSideMenuItem(CodeClass codeClass){
 }
 
 void GenerateMainIndexPage(List<CodeClass> codeClasses){			
-#>		
-
-
-<!doctype html>
+#><!doctype html>
 <html lang="en" ng-app="<#=applicationName#>">
 
 <head>
@@ -50,16 +46,7 @@ void GenerateMainIndexPage(List<CodeClass> codeClasses){
 
 
 </body>
-
 </html>
-
-
-
-	
-
-
-
-
 
 <#+
     CreateDirectoryFullPath(clientAppPath);

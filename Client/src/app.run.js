@@ -1,6 +1,4 @@
 
-
-
 var run = function($rootScope, authService, lock, authManager) {
     // Put the authService on $rootScope so its methods
     // can be accessed from the nav bar
@@ -22,10 +20,7 @@ var run = function($rootScope, authService, lock, authManager) {
 
 run.$inject = ['$rootScope', 'authService', 'lock', 'authManager'];
 
-angular.module('contacts').run(run);
-
-
-
+angular.module('app').run(run);
 
 
 

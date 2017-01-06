@@ -1,14 +1,14 @@
-'use strict';
+"use strict";
 
-var cov_2o6fla4orw = function () {
-    var path = 'C:\\Repos\\NodeMongoAngular\\Client\\src\\Features\\Organisations\\routes.js',
-        hash = '1f2122e7d83dc7478a7b117672fe17bb783945f1',
+var cov_nyh6jrxxs = function () {
+    var path = "C:\\Repos\\NodeMongoAngular\\Client\\src\\Login\\routes.js",
+        hash = "c689c47c5498e6ab8edd40f8e82978694174e9f7",
         global = new Function('return this')(),
-        gcv = '__coverage__',
+        gcv = "__coverage__",
         coverageData = {
-        path: 'C:\\Repos\\NodeMongoAngular\\Client\\src\\Features\\Organisations\\routes.js',
+        path: "C:\\Repos\\NodeMongoAngular\\Client\\src\\Login\\routes.js",
         statementMap: {
-            '0': {
+            "0": {
                 start: {
                     line: 1,
                     column: 13
@@ -18,7 +18,7 @@ var cov_2o6fla4orw = function () {
                     column: 1
                 }
             },
-            '1': {
+            "1": {
                 start: {
                     line: 3,
                     column: 0
@@ -28,7 +28,7 @@ var cov_2o6fla4orw = function () {
                     column: 6
                 }
             },
-            '2': {
+            "2": {
                 start: {
                     line: 10,
                     column: 0
@@ -40,8 +40,8 @@ var cov_2o6fla4orw = function () {
             }
         },
         fnMap: {
-            '0': {
-                name: '(anonymous_0)',
+            "0": {
+                name: "(anonymous_0)",
                 decl: {
                     start: {
                         line: 1,
@@ -66,15 +66,15 @@ var cov_2o6fla4orw = function () {
         },
         branchMap: {},
         s: {
-            '0': 0,
-            '1': 0,
-            '2': 0
+            "0": 0,
+            "1": 0,
+            "2": 0
         },
         f: {
-            '0': 0
+            "0": 0
         },
         b: {},
-        _coverageSchema: '332fd63041d2c1bcb487cc26dd0d5f7d97098a6c'
+        _coverageSchema: "332fd63041d2c1bcb487cc26dd0d5f7d97098a6c"
     },
         coverage = global[gcv] || (global[gcv] = {});
 
@@ -86,17 +86,17 @@ var cov_2o6fla4orw = function () {
     return coverage[path] = coverageData;
 }();
 
-++cov_2o6fla4orw.s[0];
+++cov_nyh6jrxxs.s[0];
 var config = function config($stateProvider) {
-    ++cov_2o6fla4orw.f[0];
-    ++cov_2o6fla4orw.s[1];
+    ++cov_nyh6jrxxs.f[0];
+    ++cov_nyh6jrxxs.s[1];
 
 
-    $stateProvider.state('organisations', {
-        url: '/organisations',
-        templateUrl: 'src/client/Features/Organisations/Views/index.html'
+    $stateProvider.state("login", {
+        url: "/login",
+        template: "<login></login>"
     });
 };
 
-++cov_2o6fla4orw.s[2];
-angular.module('app').config(config);
+++cov_nyh6jrxxs.s[2];
+angular.module("app").config(config);

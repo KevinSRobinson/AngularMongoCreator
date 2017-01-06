@@ -1,13 +1,10 @@
 var config = function ($stateProvider) {
-
-    $stateProvider
-        .state("contacts", {
-            url: "/contacts",
-            templateUrl: "src/client/Features/Contacts/Views/index.html"
-        })
+    
+$stateProvider
+    .state('contacts', {
+        url: '/contacts',
+        templateUrl: 'src/client/Features/Contacts/Views/index.html'
+    }) 
 };
 
-angular.module("contacts").config(config);
-
-
-		
+angular.module('app').config(config);

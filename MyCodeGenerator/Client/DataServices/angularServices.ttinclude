@@ -3,7 +3,7 @@
 		
 var <#=helper.AngularClient.ServiceName#> = function($http) {
 	
-    var apiBase = '/Api/<#=helper.Plural#>/';
+    var apiBase = 'http://localhost:7203/<#=helper.CamelCasePlural#>/';
 
     var getAll = function(){
 		return $http.get(apiBase);
@@ -14,20 +14,11 @@ var <#=helper.AngularClient.ServiceName#> = function($http) {
 	};
 
     var modify = function(<#=helper.CamelCase#>) {
-
-        var url = '';
-
-        if(<#=helper.CamelCase#>.Id !== undefined)
-            url = apiBase + 'Update';
-        else
-            url = apiBase + 'Add';
-        
-
-        return $http.post(url, <#=helper.CamelCase#>);
+        return $http.post(apiBase, <#=helper.CamelCase#>);
     };    
 
     var del = function( <#=helper.CamelCase#>) {
-		return $http.post(apiBase + 'Delete', <#=helper.CamelCase#>);
+		return $http.delete(apiBase, <#=helper.CamelCase#>);
 	};
 
     return {

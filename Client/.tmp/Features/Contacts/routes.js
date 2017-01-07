@@ -2,7 +2,7 @@
 
 var cov_9d95gngof = function () {
     var path = 'C:\\Repos\\NodeMongoAngular\\Client\\src\\Features\\Contacts\\routes.js',
-        hash = '4aaa1cdc018d10a60d62e98ee5b7979bbe2980dd',
+        hash = 'a32bd54ce40356144bd10c244319262bcecb5b25',
         global = new Function('return this')(),
         gcv = '__coverage__',
         coverageData = {
@@ -25,7 +25,7 @@ var cov_9d95gngof = function () {
                 },
                 end: {
                     line: 7,
-                    column: 7
+                    column: 6
                 }
             },
             '2': {

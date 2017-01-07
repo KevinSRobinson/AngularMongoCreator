@@ -63,7 +63,7 @@
 
 
             //Main features path
-            FeaturePath = "/Features/" + _codeClassHelper.Plural + "/";
+            FeaturePath = "Features/" + _codeClassHelper.Plural + "/";
             ViewsPath = FeaturePath + "/Views/";
             
 
@@ -87,12 +87,12 @@
             ListComponentName = string.Format("{0}List",_codeClassHelper.CamelCasePlural);
             ListComponentFileName = string.Format("{0}.js",ListComponentName);
             ListComponentTemplateFileName = string.Format("{0}.html", ListComponentName);
-            ListComponentTemplateUrl = string.Format("src/client/Features/{0}/Components/{1}", codeClassHelper.Plural, ListComponentTemplateFileName);
+            ListComponentTemplateUrl = string.Format("Features/{0}/Components/{1}", codeClassHelper.Plural, ListComponentTemplateFileName);
             ListComponentTag = GetComponentTag(ListComponentName);
 
            
             //main index view
-            IndexTemplateUrl = string.Format("src/client/Features/{0}/Views/index.html", codeClassHelper.Plural);
+            IndexTemplateUrl = string.Format("Features/{0}/Views/index.html", codeClassHelper.Plural);
             
 
         }

@@ -7,7 +7,7 @@ var <#=helper.Name#> = require('../models/<#=helper.CamelCasePlural#>Model.js');
 module.exports = function(app) {
 
   // Create
-  app.post('/<#=helper.CamelCase#>', function(req, res) {
+  app.post('/<#=helper.CamelCasePlural#>', function(req, res) {
     var new<#=helper.Name#> = new <#=helper.Name#>(req.body);
     new<#=helper.Name#>.save(function(err) {
       if (err) {
@@ -23,7 +23,7 @@ module.exports = function(app) {
   });
 
   // Read
-  app.get('/<#=helper.CamelCase#>', function(req, res) {
+  app.get('/<#=helper.CamelCasePlural#>', function(req, res) {
     <#=helper.Name#>.find(function(err, <#=helper.CamelCase#>s) {
       if (err) {
         res.json({
@@ -38,7 +38,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get('/<#=helper.CamelCase#>/:id', function(req, res) {
+  app.get('/<#=helper.CamelCasePlural#>/:id', function(req, res) {
     <#=helper.Name#>.findById(req.params.id, function(err, <#=helper.CamelCase#>) {
       if (err) {
         res.json({
@@ -60,7 +60,7 @@ module.exports = function(app) {
   });
 
   // Update
-  app.put('/<#=helper.CamelCase#>/:id', function(req, res) {
+  app.put('/<#=helper.CamelCasePlural#>/:id', function(req, res) {
     <#=helper.Name#>.findById(req.params.id, function(err, <#=helper.CamelCase#>) {
       if (err) {
         res.json({
@@ -90,7 +90,7 @@ module.exports = function(app) {
   });
 
   // Delete
-  app.delete('/<#=helper.CamelCase#>/:id', function(req, res) {
+  app.delete('/<#=helper.CamelCasePlural#>/:id', function(req, res) {
     <#=helper.Name#>.findByIdAndRemove(req.params.id, function(err) {
       if (err) {
         res.json({

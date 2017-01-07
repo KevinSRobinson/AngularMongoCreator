@@ -1,7 +1,7 @@
 		
 var organisationsService = function($http) {
 	
-    var apiBase = '/Api/Organisations/';
+    var apiBase = 'http://localhost:7203/organisations/';
 
     var getAll = function(){
 		return $http.get(apiBase);
@@ -12,20 +12,11 @@ var organisationsService = function($http) {
 	};
 
     var modify = function(organisation) {
-
-        var url = '';
-
-        if(organisation.Id !== undefined)
-            url = apiBase + 'Update';
-        else
-            url = apiBase + 'Add';
-        
-
-        return $http.post(url, organisation);
+        return $http.post(apiBase, organisation);
     };    
 
     var del = function( organisation) {
-		return $http.post(apiBase + 'Delete', organisation);
+		return $http.delete(apiBase, organisation);
 	};
 
     return {

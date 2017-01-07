@@ -260,9 +260,9 @@ var contactsModalService = function contactsModalService($uibModal) {
 		++cov_2351gp6cyx.s[2];
 
 		return $uibModal.open({
-			templateUrl: 'modifyContactModalControllerTemplate.html',
+			templateUrl: 'Features/Contacts/Modals/modifyContactModalControllerTemplate.html',
 			controller: 'modifyContactModalController',
-			controllerAs: "vm",
+			controllerAs: 'vm',
 			resolve: {
 				contact: function contact() {
 					++cov_2351gp6cyx.f[2];
@@ -280,7 +280,7 @@ var contactsModalService = function contactsModalService($uibModal) {
 		++cov_2351gp6cyx.s[5];
 
 		return $uibModal.open({
-			templateUrl: 'modifyContactModalControllerTemplate.html',
+			templateUrl: 'Features/Contacts/Modals/modifyContactModalControllerTemplate.html',
 			controller: 'modifyContactModalController',
 			controllerAs: 'vm',
 			resolve: {
@@ -300,4 +300,4 @@ var contactsModalService = function contactsModalService($uibModal) {
 	};
 };
 ++cov_2351gp6cyx.s[8];
-angular.module("app").factory("contactsModalService", contactsModalService);
+angular.module('app').factory('contactsModalService', contactsModalService);

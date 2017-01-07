@@ -94,7 +94,7 @@ var config = function config($stateProvider) {
 
     $stateProvider.state('organisations', {
         url: '/organisations',
-        templateUrl: 'src/client/Features/Organisations/Views/index.html'
+        templateUrl: 'Features/Organisations/Views/index.html'
     });
 };
 

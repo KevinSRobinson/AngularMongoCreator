@@ -1,20 +1,5 @@
 ﻿
-<#+ void GenerateNodeJsSeverAppFile(List<CodeClass> codeClasses){ 
-
-
-#>
-
-
-
-
-
-
-
-
-
- 
-
-
+<#+ void GenerateNodeJsSeverAppFile(List<CodeClass> codeClasses){ #>
 
 /*jshint node:true*/
 'use strict';
@@ -37,7 +22,7 @@ app.use(errorHandler.init);
 
 //Mongoose 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://user1:Eastwood44@ds013206.mlab.com:13206/contacts');
+mongoose.connect('<#=mongoLocalServer#>');
 
 
 <#+        

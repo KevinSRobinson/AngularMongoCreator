@@ -260,9 +260,9 @@ var organisationsModalService = function organisationsModalService($uibModal) {
 		++cov_1e3xnypfhh.s[2];
 
 		return $uibModal.open({
-			templateUrl: 'modifyOrganisationModalControllerTemplate.html',
+			templateUrl: 'Features/Organisations/Modals/modifyOrganisationModalControllerTemplate.html',
 			controller: 'modifyOrganisationModalController',
-			controllerAs: "vm",
+			controllerAs: 'vm',
 			resolve: {
 				organisation: function organisation() {
 					++cov_1e3xnypfhh.f[2];
@@ -280,7 +280,7 @@ var organisationsModalService = function organisationsModalService($uibModal) {
 		++cov_1e3xnypfhh.s[5];
 
 		return $uibModal.open({
-			templateUrl: 'modifyOrganisationModalControllerTemplate.html',
+			templateUrl: 'Features/Organisations/Modals/modifyOrganisationModalControllerTemplate.html',
 			controller: 'modifyOrganisationModalController',
 			controllerAs: 'vm',
 			resolve: {
@@ -300,4 +300,4 @@ var organisationsModalService = function organisationsModalService($uibModal) {
 	};
 };
 ++cov_1e3xnypfhh.s[8];
-angular.module("app").factory("organisationsModalService", organisationsModalService);
+angular.module('app').factory('organisationsModalService', organisationsModalService);

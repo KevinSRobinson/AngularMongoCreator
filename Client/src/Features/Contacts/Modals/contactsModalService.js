@@ -3,9 +3,9 @@ var contactsModalService  = function($uibModal){
 	 
 var add = function() {
 return $uibModal.open({
-	templateUrl: 'modifyContactModalControllerTemplate.html',
+	templateUrl: 'Features/Contacts/Modals/modifyContactModalControllerTemplate.html',
 	controller: 'modifyContactModalController',
-	controllerAs: "vm",
+	controllerAs: 'vm',
 	resolve: {
 	contact: function () {
 		return null;
@@ -17,7 +17,7 @@ return $uibModal.open({
 
 var modify = function(contact) {
 return  $uibModal.open({
-	templateUrl: 'modifyContactModalControllerTemplate.html',
+	templateUrl: 'Features/Contacts/Modals/modifyContactModalControllerTemplate.html',
 	controller: 'modifyContactModalController',
 	controllerAs: 'vm',
 	resolve: {
@@ -32,5 +32,5 @@ Add: add,
 Modify: modify
 };
 }
-angular.module("app").factory("contactsModalService", contactsModalService);
+angular.module('app').factory('contactsModalService', contactsModalService);
 

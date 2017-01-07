@@ -481,7 +481,7 @@ var organisationsList = (++cov_1civnqzqe9.s[0], {
         allowChanges: '@'
     },
     controllerAs: 'vm',
-    templateUrl: 'src/client/Features/Organisations/Components/organisationsList.html',
+    templateUrl: 'Features/Organisations/Components/organisationsList.html',
     controller: function controller(organisationsService, organisationsModalService) {
         ++cov_1civnqzqe9.f[0];
 

@@ -66,7 +66,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Client\app - Copy.ttinclude" />
     <None Include="Client\auth0Service.ttinclude" />
     <None Include="Client\Features\User\Components\loginComponent.ttinclude" />
     <None Include="Client\Features\User\Components\loginComponentTemplate.ttinclude" />

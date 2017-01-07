@@ -3,9 +3,9 @@ var organisationsModalService  = function($uibModal){
 	 
 var add = function() {
 return $uibModal.open({
-	templateUrl: 'modifyOrganisationModalControllerTemplate.html',
+	templateUrl: 'Features/Organisations/Modals/modifyOrganisationModalControllerTemplate.html',
 	controller: 'modifyOrganisationModalController',
-	controllerAs: "vm",
+	controllerAs: 'vm',
 	resolve: {
 	organisation: function () {
 		return null;
@@ -17,7 +17,7 @@ return $uibModal.open({
 
 var modify = function(organisation) {
 return  $uibModal.open({
-	templateUrl: 'modifyOrganisationModalControllerTemplate.html',
+	templateUrl: 'Features/Organisations/Modals/modifyOrganisationModalControllerTemplate.html',
 	controller: 'modifyOrganisationModalController',
 	controllerAs: 'vm',
 	resolve: {
@@ -32,5 +32,5 @@ Add: add,
 Modify: modify
 };
 }
-angular.module("app").factory("organisationsModalService", organisationsModalService);
+angular.module('app').factory('organisationsModalService', organisationsModalService);
 

@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Client\auth0Service.ttinclude" />
+    <None Include="Client\Features\Components\_listHelpers.ttinclude" />
     <None Include="Client\Features\User\Components\loginComponent.ttinclude" />
     <None Include="Client\Features\User\Components\loginComponentTemplate.ttinclude" />
     <None Include="Client\Features\User\routes.ttinclude" />

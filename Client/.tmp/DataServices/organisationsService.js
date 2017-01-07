@@ -2,7 +2,7 @@
 
 var cov_vjibou8db = function () {
 	var path = 'C:\\Repos\\NodeMongoAngular\\Client\\src\\DataServices\\organisationsService.js',
-	    hash = '5a0b0c0513e907a83746592cf77dc21337486886',
+	    hash = 'f5d4f3e20e9f36635a2ea610f71619112f939c13',
 	    global = new Function('return this')(),
 	    gcv = '__coverage__',
 	    coverageData = {
@@ -85,7 +85,7 @@ var cov_vjibou8db = function () {
 				},
 				end: {
 					line: 15,
-					column: 49
+					column: 67
 				}
 			},
 			'8': {
@@ -310,7 +310,7 @@ var organisationsService = function organisationsService($http) {
 		++cov_vjibou8db.f[3];
 		++cov_vjibou8db.s[7];
 
-		return $http.post(apiBase, organisation);
+		return $http.put(apiBase + organisation._id, organisation);
 	};
 
 	++cov_vjibou8db.s[8];

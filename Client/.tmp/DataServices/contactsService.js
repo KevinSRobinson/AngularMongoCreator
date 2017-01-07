@@ -2,7 +2,7 @@
 
 var cov_zqheblbp7 = function () {
 	var path = 'C:\\Repos\\NodeMongoAngular\\Client\\src\\DataServices\\contactsService.js',
-	    hash = 'e29fd98f09f1f3a95175167ab49f722cb7892ca4',
+	    hash = 'a35542dd6771494a49037e982dd0a05f36b1d0f3',
 	    global = new Function('return this')(),
 	    gcv = '__coverage__',
 	    coverageData = {
@@ -81,11 +81,11 @@ var cov_zqheblbp7 = function () {
 			'7': {
 				start: {
 					line: 15,
-					column: 10
+					column: 8
 				},
 				end: {
 					line: 15,
-					column: 46
+					column: 57
 				}
 			},
 			'8': {
@@ -310,7 +310,7 @@ var contactsService = function contactsService($http) {
 		++cov_zqheblbp7.f[3];
 		++cov_zqheblbp7.s[7];
 
-		return $http.post(apiBase, contact);
+		return $http.put(apiBase + contact._id, contact);
 	};
 
 	++cov_zqheblbp7.s[8];

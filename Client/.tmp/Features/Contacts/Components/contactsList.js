@@ -2,7 +2,7 @@
 
 var cov_3mi5vxgwu = function () {
     var path = 'C:\\Repos\\NodeMongoAngular\\Client\\src\\Features\\Contacts\\Components\\contactsList.js',
-        hash = 'a54346561e7d701288d6438701e2259a2cc0606f',
+        hash = 'b27eb0779c97a98f67ea29ce5633f33bd124c8e6',
         global = new Function('return this')(),
         gcv = '__coverage__',
         coverageData = {
@@ -105,7 +105,7 @@ var cov_3mi5vxgwu = function () {
                 },
                 end: {
                     line: 19,
-                    column: 34
+                    column: 39
                 }
             },
             '10': {
@@ -509,7 +509,7 @@ var contactsList = (++cov_3mi5vxgwu.s[0], {
                 ++cov_3mi5vxgwu.f[3];
                 ++cov_3mi5vxgwu.s[9];
 
-                vm.contacts = response.data;
+                vm.contacts = response.data.data;
             }).catch(function (error) {
                 ++cov_3mi5vxgwu.f[4];
                 ++cov_3mi5vxgwu.s[10];

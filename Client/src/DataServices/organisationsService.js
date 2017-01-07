@@ -12,7 +12,7 @@ var organisationsService = function($http) {
 	};
 
     var modify = function(organisation) {
-        return $http.post(apiBase, organisation);
+        return $http.put(apiBase + organisation._id, organisation);
     };    
 
     var del = function( organisation) {

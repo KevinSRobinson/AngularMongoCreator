@@ -1,122 +1,94 @@
-     
+     var _ = require('lodash');
+     var Contact = require('../models/contactsModel.js');
+     var mongoose = require('mongoose');
 
-var _ = require('lodash');
-var Contact = require('../models/contactsModel.js');
+     module.exports = function (app) {
 
-module.exports = function(app) {
+       var create = function (req, res) {
 
-  // Create
-  app.post('/contacts', function(req, res) {
-    var newContact = new Contact(req.body);
-    console.log(req.body);
-    newContact.save(function(err) {
-      if (err) {
-        res.json({
-          info: 'error during contact create',
-          error: err
-        });
-      }
-      res.json({
-        info: 'contact created successfully'
-      });
-    });
-  });
+         var save = function (err) {
+           if (err) {
+             res.json({
+               info: 'error during contact create',
+               error: err
+             });
+           }
+           res.json({
+             info: 'contact created successfully',
+             data: newContact
+           });
+         };
 
-  // Read
-  app.get('/contacts', function(req, res) {
-    Contact.find(function(err, contacts) {
-      if (err) {
-        res.json({
-          info: 'error during find contacts',
-          error: err
-        });
-      }
-      res.json({
-        info: 'contacts found successfully',
-        data: contacts
-      });
-    });
-  });
+         var newContact = new Contact(req.body);
+         newContact.save(save);
+       };
 
-  app.get('/contacts/:id', function(req, res) {
-    Contact.findById(req.params.id, function(err, contact) {
-      if (err) {
-        res.json({
-          info: 'error during find contact',
-          error: err
-        });
-      }
-      if (contact) {
-        res.json({
-          info: 'found your contact',
-          data: contact
-        });
-      } else {
-        res.json({
-          info: 'no contact found'
-        });
-      }
-    });
-  });
+       var read = function (req, res) {
 
-  // Update
-  app.put('/contacts/:id', function(req, res) {
-    Contact.findById(req.params.id, function(err, contact) {
-      if (err) {
-        res.json({
-          info: 'error during find contact',
-          error: err
-        });
-      }
-      if (contact) {
-        _.merge(contact, req.body);
-        contact.save(function(err) {
-          if (err) {
-            res.json({
-              info: 'error during update contact',
-              error: err
-            });
-          }
-          res.json({
-            info: 'contact updated successfully'
-          });
-        });
-      } else {
-        res.json({
-          info: 'contact not found'
-        });
-      }
-    });
-  });
+         function get(err, contacts) {
+           if (err) {
+             res.json({
+               info: 'error during find contacts',
+               error: err
+             });
+           }
+           res.json({
+             info: 'contacts found successfully',
+             data: contacts
+           });
+         };
 
-  // Delete
-  app.delete('/contacts/:id', function(req, res) {
-    Contact.findByIdAndRemove(req.params.id, function(err) {
-      if (err) {
-        res.json({
-          info: 'error during remove contact'
-        });
-      }
-      res.json({
-        info: 'contact removed successfully'
-      });
-    });
-  });
-}
+         Contact.find(get);
+       };
 
+       var update = function (req, res) {
 
+         function find(err, contact) {
+           if (err) {
+             res.json({
+               info: 'error during find contact',
+               error: err
+             });
+           }
+           if (contact) {
+             _.merge(contact, req.body);
+             contact.save(function (err) {
+               if (err) {
+                 res.json({
+                   info: 'error during update contact',
+                   error: err
+                 });
+               }
+               res.json({
+                 info: 'contact updated successfully'
+               });
+             });
+           } else {
+             res.json({
+               info: 'contact not found'
+             });
+           }
+         };
 
+         Contact.findById(req.params.id, find);
+       };
 
+       var del = function (req, res) {
+         Contact.findByIdAndRemove(req.params.id, function (err) {
+           if (err) {
+             res.json({
+               info: 'error during remove contact'
+             });
+           }
+           res.json({
+             info: 'contact removed successfully'
+           });
+         });
+       };
 
+       app.post('/contacts', create);
+       app.get('/contacts', read);
+       app.put('/contacts/:id', update);
+       app.delete('/contacts/:id', del);
 
-
-
-
-
-
-
-
-
-
-
-
+     };

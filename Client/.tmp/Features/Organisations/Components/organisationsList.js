@@ -2,7 +2,7 @@
 
 var cov_1civnqzqe9 = function () {
     var path = 'C:\\Repos\\NodeMongoAngular\\Client\\src\\Features\\Organisations\\Components\\organisationsList.js',
-        hash = 'ac954848d07e7fc1a657d248ffd6a98a703712c7',
+        hash = '0af969c4ae1eca71318ef987d1e7b9730aff57e8',
         global = new Function('return this')(),
         gcv = '__coverage__',
         coverageData = {
@@ -105,7 +105,7 @@ var cov_1civnqzqe9 = function () {
                 },
                 end: {
                     line: 19,
-                    column: 39
+                    column: 44
                 }
             },
             '10': {
@@ -509,7 +509,7 @@ var organisationsList = (++cov_1civnqzqe9.s[0], {
                 ++cov_1civnqzqe9.f[3];
                 ++cov_1civnqzqe9.s[9];
 
-                vm.organisations = response.data;
+                vm.organisations = response.data.data;
             }).catch(function (error) {
                 ++cov_1civnqzqe9.f[4];
                 ++cov_1civnqzqe9.s[10];

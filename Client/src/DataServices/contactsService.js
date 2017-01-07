@@ -12,7 +12,7 @@ var contactsService = function($http) {
 	};
 
     var modify = function(contact) {
-		        return $http.post(apiBase, contact);
+        return $http.put(apiBase + contact._id, contact);
     };    
 
     var del = function( contact) {

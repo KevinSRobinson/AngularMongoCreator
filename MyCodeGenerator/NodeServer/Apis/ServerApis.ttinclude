@@ -1,109 +1,100 @@
 ﻿
 <#+ void GenerateApis(CodeClassHelper helper){ #>     
 
-var _ = require('lodash');
-var <#=helper.Name#> = require('../models/<#=helper.CamelCasePlural#>Model.js');
+     var _ = require('lodash');
+     var <#=helper.Name#>= require('../models/<#=helper.CamelCasePlural#>Model.js');
+     var mongoose = require('mongoose');
 
-module.exports = function(app) {
+     module.exports = function (app) {
 
-  // Create
-  app.post('/<#=helper.CamelCasePlural#>', function(req, res) {
-    var new<#=helper.Name#> = new <#=helper.Name#>(req.body);
-    new<#=helper.Name#>.save(function(err) {
-      if (err) {
-        res.json({
-          info: 'error during <#=helper.CamelCase#> create',
-          error: err
-        });
-      }
-      res.json({
-        info: '<#=helper.CamelCase#> created successfully'
-      });
-    });
-  });
+       var create = function (req, res) {
 
-  // Read
-  app.get('/<#=helper.CamelCasePlural#>', function(req, res) {
-    <#=helper.Name#>.find(function(err, <#=helper.CamelCase#>s) {
-      if (err) {
-        res.json({
-          info: 'error during find <#=helper.CamelCase#>s',
-          error: err
-        });
-      }
-      res.json({
-        info: '<#=helper.CamelCase#>s found successfully',
-        data: <#=helper.CamelCase#>s
-      });
-    });
-  });
+         function save(err) {
+           if (err) {
+             res.json({
+               info: 'error during <#=helper.CamelCase#> create',
+               error: err
+             });
+           }
+           res.json({
+             info: '<#=helper.CamelCase#> created successfully',
+             data: new<#=helper.CamelCase#>
+           });
+         };
 
-  app.get('/<#=helper.CamelCasePlural#>/:id', function(req, res) {
-    <#=helper.Name#>.findById(req.params.id, function(err, <#=helper.CamelCase#>) {
-      if (err) {
-        res.json({
-          info: 'error during find <#=helper.CamelCase#>',
-          error: err
-        });
-      }
-      if (<#=helper.CamelCase#>) {
-        res.json({
-          info: 'found your <#=helper.CamelCase#>',
-          data: <#=helper.CamelCase#>
-        });
-      } else {
-        res.json({
-          info: 'no <#=helper.CamelCase#> found'
-        });
-      }
-    });
-  });
+         var new<#=helper.CamelCase#> = new <#=helper.CamelCase#>(req.body);
+         new<#=helper.CamelCase#>.save(save);
+       };
 
-  // Update
-  app.put('/<#=helper.CamelCasePlural#>/:id', function(req, res) {
-    <#=helper.Name#>.findById(req.params.id, function(err, <#=helper.CamelCase#>) {
-      if (err) {
-        res.json({
-          info: 'error during find <#=helper.CamelCase#>',
-          error: err
-        });
-      }
-      if (<#=helper.CamelCase#>) {
-        _.merge(<#=helper.CamelCase#>, req.body);
-        <#=helper.CamelCase#>.save(function(err) {
-          if (err) {
-            res.json({
-              info: 'error during update <#=helper.CamelCase#>',
-              error: err
-            });
-          }
-          res.json({
-            info: '<#=helper.CamelCase#> updated successfully'
-          });
-        });
-      } else {
-        res.json({
-          info: '<#=helper.CamelCase#> not found'
-        });
-      }
-    });
-  });
+       var read = function (req, res) {
 
-  // Delete
-  app.delete('/<#=helper.CamelCasePlural#>/:id', function(req, res) {
-    <#=helper.Name#>.findByIdAndRemove(req.params.id, function(err) {
-      if (err) {
-        res.json({
-          info: 'error during remove <#=helper.CamelCase#>'
-        });
-      }
-      res.json({
-        info: '<#=helper.CamelCase#> removed successfully'
-      });
-    });
-  });
-}
+         function get(err, <#=helper.CamelCase#>s) {
+           if (err) {
+             res.json({
+               info: 'error during find <#=helper.CamelCase#>s',
+               error: err
+             });
+           }
+           res.json({
+             info: '<#=helper.CamelCase#>s found successfully',
+             data: <#=helper.CamelCase#>s
+           });
+         };
 
+         <#=helper.CamelCase#>.find(get);
+       };
+
+       var update = function (req, res) {
+
+         function find(err, <#=helper.CamelCase#>) {
+           if (err) {
+             res.json({
+               info: 'error during find <#=helper.CamelCase#>',
+               error: err
+             });
+           }
+           if (<#=helper.CamelCase#>) {
+             _.merge(<#=helper.CamelCase#>, req.body);
+             <#=helper.CamelCase#>.save(function (err) {
+               if (err) {
+                 res.json({
+                   info: 'error during update <#=helper.CamelCase#>',
+                   error: err
+                 });
+               }
+               res.json({
+                 info: '<#=helper.CamelCase#> updated successfully'
+               });
+             });
+           } else {
+             res.json({
+               info: '<#=helper.CamelCase#> not found'
+             });
+           }
+         };
+
+         <#=helper.CamelCase#>.findById(req.params.id, find);
+       };
+
+       var del = function (req, res) {
+         <#=helper.CamelCase#>.findByIdAndRemove(req.params.id, function (err) {
+           if (err) {
+             res.json({
+               info: 'error during remove <#=helper.CamelCase#>'
+             });
+           }
+           res.json({
+             info: '<#=helper.CamelCase#> removed successfully'
+           });
+         });
+       };
+
+       app.post('/<#=helper.CamelCase#>s', create);
+       app.get('/<#=helper.CamelCase#>s', read);
+       app.put('/<#=helper.CamelCase#>s/:id', update);
+       app.delete('/<#=helper.CamelCase#>s/:id', del);
+
+     };
 
 
 

@@ -14,7 +14,7 @@ var <#=helper.AngularClient.ServiceName#> = function($http) {
 	};
 
     var modify = function(<#=helper.CamelCase#>) {
-        return $http.post(apiBase, <#=helper.CamelCase#>);
+        return $http.put(apiBase + <#=helper.CamelCase#>._id, <#=helper.CamelCase#>);
     };    
 
     var del = function( <#=helper.CamelCase#>) {

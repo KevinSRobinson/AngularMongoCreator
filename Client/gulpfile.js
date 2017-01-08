@@ -19,6 +19,36 @@ gulp.task('serve:dist', gulp.series('default', 'browsersync:dist'));
 gulp.task('default', gulp.series('clean', 'build'));
 gulp.task('watch', watch);
 
+
+
+
+function startTests(singleRun, done){
+    var karma = require('karma').server;
+    var excludeFiles = [];
+    var serverSpecs = config.serverInegrationSpecs;
+
+    excludeFiles = serverSpecs;
+
+    karma.start({
+        configFile: __dirname + '/karma.conf.js',
+        exclude: excludeFiles,
+        singleRun: singleRun
+    }, function(){  done();});
+    
+    function karmaCompleted(karmaResult){
+        log('Karma Completed');
+        if(karmaResult === 1){
+            done('karma: tests failed with code: ' + karmaResult);
+        }
+        else{
+            done();
+        }
+    }
+}
+
+
+
+
 function reloadBrowserSync(cb) {
   browserSync.reload();
   cb();

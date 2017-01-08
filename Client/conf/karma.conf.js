@@ -11,6 +11,7 @@ module.exports = function (config) {
     junitReporter: {
       outputDir: 'test-reports'
     },
+    reporters: ['junit'],
     browsers: [
       'PhantomJS'
     ],
@@ -35,6 +36,7 @@ module.exports = function (config) {
       ]
     },
     plugins: [
+       require('karma-spec-reporter'),
       require('karma-jasmine'),
       require('karma-junit-reporter'),
       require('karma-coverage'),

@@ -32,7 +32,7 @@
 
 
 <#+
-    CreateDirectoryFullPath(clientAppPath);
-    CreateFile(clientAppPath + "app.js");
+    CreateDirectoryFullPath(clientSrcBasePath);
+    CreateFile(clientSrcBasePath + "app.js");
 	}	
 #>

@@ -36,6 +36,8 @@
 <#@ include file="Client/Auth0/auth0Service.ttinclude" #>
 <#@ include file="Client/PackageManagers/package.ttinclude" #>
 <#@ include file="Client/Gulp/gulp-main.ttinclude" #>
+<#@ include file="Client/Gulp/gulp.ttinclude" #>
+<#@ include file="Client/Gulp/gulpConfig.ttinclude" #>
 <#@ include file="Client/Gulp/Tasks/browserSync.ttinclude" #>
 <#@ include file="Client/Gulp/Tasks/build.ttinclude" #>
 <#@ include file="Client/Gulp/Tasks/inject.ttinclude" #>
@@ -54,22 +56,25 @@
     //Get all classes from the model
     var classes = GetClasses();    
     this.Generate_PackageJson();
-    //gulp
-    this.Generate_Gulp_File();
-    this.Generate_Gulp_Task_BrowserSync();
-    this.Generate_Gulp_Task_Build();
-    this.Generate_Gulp_Task_Inject();
-    this.Generate_Gulp_Task_Karma();
-    this.Generate_Gulp_Task_Misc();
-    this.Generate_Gulp_Task_Partials();
-    this.Generate_Gulp_Task_Scripts();
-    this.Generate_Gulp_Task_Styles();
-    this.Generate_Gulp_Conf_BrowserSync();
-    this.Generate_Gulp_Conf_BrowserSync_Dist();
-    this.Generate_Gulp_Conf();
-    this.Generate_Gulp_Conf_Karma_Auto();
-    this.Generate_Gulp_Conf_Karma();
-    this.Generate_Gulp_Conf_KarmaFiles();
+    this.GenerateGulpFile();
+    this.GenerateGulpConfigFile();
+
+    ////gulp
+    //this.Generate_Gulp_File();
+    //this.Generate_Gulp_Task_BrowserSync();
+    //this.Generate_Gulp_Task_Build();
+    //this.Generate_Gulp_Task_Inject();
+    //this.Generate_Gulp_Task_Karma();
+    //this.Generate_Gulp_Task_Misc();
+    //this.Generate_Gulp_Task_Partials();
+    //this.Generate_Gulp_Task_Scripts();
+    //this.Generate_Gulp_Task_Styles();
+    //this.Generate_Gulp_Conf_BrowserSync();
+    //this.Generate_Gulp_Conf_BrowserSync_Dist();
+    //this.Generate_Gulp_Conf();
+    //this.Generate_Gulp_Conf_Karma_Auto();
+    //this.Generate_Gulp_Conf_Karma();
+    //this.Generate_Gulp_Conf_KarmaFiles();
     //node server
     //this.GeneratePackageJson();
     //this.GenerateNodeJsSeverAppFile(classes);

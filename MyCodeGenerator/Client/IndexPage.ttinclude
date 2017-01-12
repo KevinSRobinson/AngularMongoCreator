@@ -49,7 +49,7 @@ void GenerateMainIndexPage(List<CodeClass> codeClasses){
 </html>
 
 <#+
-    CreateDirectoryFullPath(clientAppPath);
-    CreateFile(clientAppPath + "Index.html");
+    CreateDirectoryFullPath(clientSrcBasePath);
+    CreateFile(clientSrcBasePath + "Index.html");
 	}	
 #>

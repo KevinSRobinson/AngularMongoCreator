@@ -1,0 +1,116 @@
+﻿<#+
+
+    public class AngularClient  {
+
+
+        private CodeClassHelper _codeClassHelper;
+
+        public string ServiceName  = "";  
+        public string ServiceFileName   = ""; 
+        public string FeaturePath = "";
+        public string StylesPath = "";
+        public string ViewsPath  = "";
+
+        //Modals
+        public string ModalsFilePath = "";
+        public string ModifyModalController = "";
+
+        public string ModalServiceName ="";
+        public string ModifyModalControllerFileName  = "";
+        public string ModalServiceNameFileName ="";
+        public string ModifyModalTemplateFileName = "";
+
+
+        //Components
+        public string ListComponentFilePath  ="";
+        public string ListComponentName ="";
+        public string ListComponentFileName  = "";
+        public string ListComponentTag = "";
+        public string ListComponentTemplateFileName  = "";
+        public string ListComponentTemplateUrl = "";
+
+
+        //login
+        public string LoginComponentFilePath = "";
+        public string LoginComponentTemplateUrl = "";
+
+        //Index View
+        public string IndexTemplateUrl = "";
+        
+
+        public AngularClient(CodeClassHelper codeClassHelper){
+
+
+            _codeClassHelper =codeClassHelper;
+
+
+            //Main features path
+            FeaturePath = "Features/" + _codeClassHelper.Plural + "/";
+            ViewsPath = FeaturePath + "/Views/";
+            
+
+            //DataServices
+            ServiceName  = _codeClassHelper.CamelCasePlural + "Service";  
+            ServiceFileName  = ServiceName + ".js"; 
+
+
+            //Modals
+            ModalsFilePath = string.Format("{0}{1}/", FeaturePath , "Modals"); 
+            ModalServiceName    =  string.Format("{0}ModalService", codeClassHelper.CamelCasePlural);
+            ModalServiceNameFileName    =  string.Format("{0}.js", ModalServiceName);
+            ModifyModalController =  string.Format("modify{0}ModalController", codeClassHelper.Name);
+            ModifyModalControllerFileName = string.Format("{0}.js", ModifyModalController);
+            ModifyModalTemplateFileName = string.Format("{0}Template.html", ModifyModalController);
+
+           
+
+            //Components
+            ListComponentFilePath = string.Format("{0}Components/",FeaturePath);
+            ListComponentName = string.Format("{0}List",_codeClassHelper.CamelCasePlural);
+            ListComponentFileName = string.Format("{0}.js",ListComponentName);
+            ListComponentTemplateFileName = string.Format("{0}.html", ListComponentName);
+            ListComponentTemplateUrl = string.Format("Features/{0}/Components/{1}", codeClassHelper.Plural, ListComponentTemplateFileName);
+            ListComponentTag = GetComponentTag(ListComponentName);
+
+           
+            //main index view
+            IndexTemplateUrl = string.Format("Features/{0}/Views/index.html", codeClassHelper.Plural);
+            
+
+        }
+
+
+         private string GetComponentTag(string componentName){
+            
+            var output = "";
+            foreach (char letter in componentName)
+            {
+               if (Char.IsUpper(letter) && output.Length > 0)
+                 output += "-" + letter;
+               else
+                 output += letter;
+            }
+            return string.Format("<{0}></{0}>", output.ToLower());
+        }  
+   
+    }
+
+    
+
+
+
+    public static class ClientCommon
+    {
+          //SideNavigation
+          public static string   MainLayoutComponentFilePath = "/Features/Navigation/";
+          public static string   MainLayout = "<main-layout></main-layout>";
+          
+            //login 
+          public static string LoginComponentFilePath = "/Login/";
+          public static string LoginComponentTemplateUrl = "/Login/LoginTemplate.html";
+    }
+
+  
+    
+
+ #>

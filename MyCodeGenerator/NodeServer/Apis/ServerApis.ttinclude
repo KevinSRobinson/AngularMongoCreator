@@ -22,7 +22,7 @@
            });
          };
 
-         var new<#=helper.CamelCase#> = new <#=helper.CamelCase#>(req.body);
+         var new<#=helper.CamelCase#> = new <#=helper.Name#>(req.body);
          new<#=helper.CamelCase#>.save(save);
        };
 
@@ -41,7 +41,7 @@
            });
          };
 
-         <#=helper.CamelCase#>.find(get);
+         <#=helper.Name#>.find(get);
        };
 
        var update = function (req, res) {
@@ -73,11 +73,11 @@
            }
          };
 
-         <#=helper.CamelCase#>.findById(req.params.id, find);
+         <#=helper.Name#>.findById(req.params.id, find);
        };
 
        var del = function (req, res) {
-         <#=helper.CamelCase#>.findByIdAndRemove(req.params.id, function (err) {
+         <#=helper.Name#>.findByIdAndRemove(req.params.id, function (err) {
            if (err) {
              res.json({
                info: 'error during remove <#=helper.CamelCase#>'

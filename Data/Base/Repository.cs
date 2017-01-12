@@ -33,7 +33,8 @@ namespace Data.Repositories
             return _entities.Find(id);
         }
 
-        public void Add(TEntity entity)
+        public void
+            Add(TEntity entity)
         {
             _entities.Add(entity);
         }

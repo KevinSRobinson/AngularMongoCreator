@@ -13,7 +13,7 @@
 		
 		<#+
 
-	  CreateFile(clienBasePath + ".bowercc.json");
+	  CreateFile(basePath + ".bowercc.json");
 	}	
 #>
 

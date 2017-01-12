@@ -39,6 +39,7 @@
 
 		
 <#+
+          CreateDirectoryFullPath(clienBasePath);
 	  CreateFile(clienBasePath + "package.json");
 	}	
 #>

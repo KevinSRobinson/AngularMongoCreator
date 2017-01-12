@@ -1,0 +1,37 @@
+<my-panel title="Tags" show-add-button="true" add="vm.create()" style="success" icon="tags" icon-size="2">
+ <my-filter-textbox  ng-model="filter"></my-filter-textbox>
+<table class="table table-striped">
+   <thead>
+        <tr>
+             <td>Award50Hours</td>
+<td>Award100Hours</td>
+<td>Award200Hours</td>
+<td>Award50HoursApproved</td>
+<td>Award100HoursApproved</td>
+<td>Award200HoursApproved</td>
+<td>Award50HoursApprovedBy</td>
+<td>Award100HoursApprovedBy</td>
+<td>Award200HoursApprovedBy</td>
+<td>Award50HoursApprovedOn</td>
+<td>Award100HoursApprovedOn</td>
+<td>Award200HoursApprovedOn</td>
+<td>UserId</td>
+        </tr>
+    </thead>
+    <tr  ng-repeat='awards in vm.awardss | filter:filter '>
+        <td>float</td>
+<td>float</td>
+<td>float</td>
+<td>bool</td>
+<td>bool</td>
+<td>bool</td>
+<td>{{ awards.Award50HoursApprovedBy }}</td>
+<td>{{ awards.Award100HoursApprovedBy }}</td>
+<td>{{ awards.Award200HoursApprovedBy }}</td>
+<td>{{ awards.Award50HoursApprovedOn  |  date:'medium' }}</td>
+<td>{{ awards.Award100HoursApprovedOn  |  date:'medium' }}</td>
+<td>{{ awards.Award200HoursApprovedOn  |  date:'medium' }}</td>
+<td>{{ awards.UserId }}</td>
+        <td><div class="btn btn-success" ng-click='vm.edit(awards)'>Edit</div></td>
+    </tr>
+</table>

@@ -41,6 +41,6 @@
 		
 		<#+
 
-	  CreateFile(clienBasePath + "bower.json");
+	  CreateFile(basePath + "bower.json");
 	}	
 #>

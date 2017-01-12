@@ -6,7 +6,7 @@
 
     const string nodeServerPort = "8989";
 
-    const string basePath= "C:/Repos/NodeMongoAngular/";
+    const string basePath= "C:/Repos/NodeMongoAngular/Web/";
    
     string efContext = "SampleDbContext"; 
     string dataContextNamespace = "Data";
@@ -15,27 +15,30 @@
 
 
     //client
-    const string clienBasePath = basePath + "Client/";
-    const string clientGulpTasksFolder = clienBasePath + "gulp_tasks/";
-    const string clientGulpConfFolder = clienBasePath + "conf/";
+    const string clientGulpTasksFolder = basePath + "gulp_tasks/";
+    const string clientGulpConfFolder = basePath + "conf/";
+  
+    const string srcBasePath = basePath + "src/";
+    const string clientSrcBasePath = basePath + "src/Client/";
+    const string clientAppPath = basePath + "src/Client/";
+    const string clienBasePath = basePath + "src/Client/";
+    const string serverSrcBasePath = basePath + "src/Server/";
     
-    const string clientSrcPath = clienBasePath + "/";
-    const string clientAppPath = clientSrcPath + "src/";
-    const string dataServicesAppPath = clientAppPath + "DataServices/";
 
+    const string dataServicesAppPath = clientSrcBasePath + "DataServices/";
+    const string StylesPath = clientSrcBasePath + "styles/";
 
  
 
 
     //node server
-    const string NodeBasePath = clienBasePath + "Server/";
-    const string NodeServerPath = NodeBasePath + "/";
+    const string NodeServerPath = serverSrcBasePath;
     const string NodeApiDataControllersPath = NodeServerPath + "/Controllers/";
     const string NodeApiSchemasPath = NodeServerPath + "/Models/";
     const string NodeApisPath = NodeServerPath + "/Apis/";
 
 
-    const string StylesPath = clientSrcPath + "styles/";
+   
 
    
         //mongo

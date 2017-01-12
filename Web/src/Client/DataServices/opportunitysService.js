@@ -1,7 +1,7 @@
 		
-var opportunitysService = function($http) {
+var opportunitysService = function($http, apiBase) {
 	
-    var apiBase = 'http://localhost:7203/opportunitys/';
+    apiBase += "/opportunitys/";
 
     var getAll = function(){
 		return $http.get(apiBase);
@@ -15,6 +15,14 @@ var opportunitysService = function($http) {
         return $http.put(apiBase + opportunity._id, opportunity);
     };    
 
+    var modify = function(opportunity) {
+		if(hourRecord._id){
+			return $http.put(apiBase + opportunity._id, opportunity);
+		}
+		return $http.post(apiBase, opportunity);        
+    };
+
+  
     var del = function( opportunity) {
 		return $http.delete(apiBase, opportunity);
 	};

@@ -1,5 +1,8 @@
+
 <my-panel title="Tags" show-add-button="true" add="vm.create()" style="success" icon="tags" icon-size="2">
- <my-filter-textbox  ng-model="filter"></my-filter-textbox>
+
+<my-filter-textbox  ng-model="filter"></my-filter-textbox>
+
 <table class="table table-striped">
    <thead>
         <tr>
@@ -10,7 +13,7 @@
 <td>Town</td>
         </tr>
     </thead>
-    <tr  ng-repeat='organisationAddress in vm.organisationAddresss | filter:filter '>
+    <tr ng-repeat='organisationaddress in vm.organisationAddresss | filter:filter '>
         <td>{{ organisationaddress._id }}</td>
 <td>{{ organisationaddress.Address1 }}</td>
 <td>{{ organisationaddress.Address2 }}</td>
@@ -19,3 +22,5 @@
         <td><div class="btn btn-success" ng-click='vm.edit(organisationAddress)'>Edit</div></td>
     </tr>
 </table>
+
+

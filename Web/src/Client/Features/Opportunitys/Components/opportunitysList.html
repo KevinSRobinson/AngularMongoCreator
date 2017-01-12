@@ -1,5 +1,8 @@
+
 <my-panel title="Tags" show-add-button="true" add="vm.create()" style="success" icon="tags" icon-size="2">
- <my-filter-textbox  ng-model="filter"></my-filter-textbox>
+
+<my-filter-textbox  ng-model="filter"></my-filter-textbox>
+
 <table class="table table-striped">
    <thead>
         <tr>
@@ -11,7 +14,7 @@
 <td>UserId</td>
         </tr>
     </thead>
-    <tr  ng-repeat='opportunity in vm.opportunitys | filter:filter '>
+    <tr ng-repeat='opportunity in vm.opportunitys | filter:filter '>
         <td>{{ opportunity.OldId }}</td>
 <td>{{ opportunity.CourseTitle }}</td>
 <td>{{ opportunity.SkillsLearned }}</td>
@@ -21,3 +24,5 @@
         <td><div class="btn btn-success" ng-click='vm.edit(opportunity)'>Edit</div></td>
     </tr>
 </table>
+
+

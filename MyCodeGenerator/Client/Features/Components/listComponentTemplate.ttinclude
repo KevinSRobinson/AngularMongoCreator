@@ -1,24 +1,23 @@
 ﻿
-<#+ 
- 
+<#+  void GenerateListComponentTemplate(CodeClassHelper helper){	#>
 
- void GenerateListComponentTemplate(CodeClass codeClass){	
-		
-         var helper = new CodeClassHelper(codeClass);
-#>
 <my-panel title="Tags" show-add-button="true" add="vm.create()" style="success" icon="tags" icon-size="2">
- <my-filter-textbox  ng-model="filter"></my-filter-textbox>
+
+<my-filter-textbox  ng-model="filter"></my-filter-textbox>
+
 <table class="table table-striped">
    <thead>
         <tr>
-             <#+WriteTableHeaders(codeClass);#>
+             <#+WriteTableHeaders(helper.CodeClass);#>
         </tr>
     </thead>
-    <tr  ng-repeat='<#= helper.CamelCase #> in vm.<#= helper.CamelCasePlural #> | filter:filter '>
-        <#+WriteTableCells(codeClass);#>
+    <tr ng-repeat='<#= helper.CamelCase.ToLower() #> in vm.<#= helper.CamelCasePlural #> | filter:filter '>
+        <#+WriteTableCells(helper.CodeClass);#>
         <td><div class="btn btn-success" ng-click='vm.edit(<#= helper.CamelCase #>)'>Edit</div></td>
     </tr>
 </table>
+
+
 <#+    
    CreateDirectoryFullPath(clientAppPath + helper.AngularClient.ListComponentFilePath);
 CreateFile(clientAppPath + helper.AngularClient.ListComponentFilePath + helper.AngularClient.ListComponentTemplateFileName);

@@ -1,7 +1,7 @@
 		
-var awardssService = function($http) {
+var awardssService = function($http, apiBase) {
 	
-    var apiBase = 'http://localhost:7203/awardss/';
+    apiBase += "/awardss/";
 
     var getAll = function(){
 		return $http.get(apiBase);
@@ -15,6 +15,14 @@ var awardssService = function($http) {
         return $http.put(apiBase + awards._id, awards);
     };    
 
+    var modify = function(awards) {
+		if(hourRecord._id){
+			return $http.put(apiBase + awards._id, awards);
+		}
+		return $http.post(apiBase, awards);        
+    };
+
+  
     var del = function( awards) {
 		return $http.delete(apiBase, awards);
 	};

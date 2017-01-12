@@ -1,7 +1,7 @@
 		
-var organisationAddresssService = function($http) {
+var organisationAddresssService = function($http, apiBase) {
 	
-    var apiBase = 'http://localhost:7203/organisationAddresss/';
+    apiBase += "/organisationAddresss/";
 
     var getAll = function(){
 		return $http.get(apiBase);
@@ -15,6 +15,14 @@ var organisationAddresssService = function($http) {
         return $http.put(apiBase + organisationAddress._id, organisationAddress);
     };    
 
+    var modify = function(organisationAddress) {
+		if(hourRecord._id){
+			return $http.put(apiBase + organisationAddress._id, organisationAddress);
+		}
+		return $http.post(apiBase, organisationAddress);        
+    };
+
+  
     var del = function( organisationAddress) {
 		return $http.delete(apiBase, organisationAddress);
 	};

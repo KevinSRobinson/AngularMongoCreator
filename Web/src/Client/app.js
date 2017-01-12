@@ -4,6 +4,8 @@
   'use strict';
 
    var app = angular.module('app', ['ui.router', 'ui.bootstrap', 'my-angular-components', 'auth0.lock', 'angular-jwt']);
+   
+    app.constant("apiBase", "http://localhost:7000/")
 
   var config = function (lockProvider, jwtOptionsProvider) {
 

@@ -13,7 +13,7 @@ var angularTemplateCache = require('gulp-angular-templatecache');
 var embedTemplates = require('gulp-angular-embed-templates');
 
 
-var port = 7208;
+var port = 7204;
 
 gulp.task('default', ['test']);
 

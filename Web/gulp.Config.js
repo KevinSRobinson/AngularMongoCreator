@@ -50,7 +50,7 @@ module.exports = function () {
             directory: './bower_components/',
             ignorePath: '../..'
         },
-        defaultPort: 7204,
+        defaultPort: 7303,
         nodeServer: server + 'app.js',
 
         //optimized files

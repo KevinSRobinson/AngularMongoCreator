@@ -1,9 +1,9 @@
 ﻿
 <#+ void GenerateAngularService(CodeClassHelper helper){ #>
 		
-var <#=helper.AngularClient.ServiceName#> = function($http) {
+var <#=helper.AngularClient.ServiceName#> = function($http, apiBase) {
 	
-    var apiBase = 'http://localhost:7208/<#=helper.CamelCasePlural#>/';
+    apiBase += "/<#=helper.CamelCasePlural#>/";
 
     var getAll = function(){
 		return $http.get(apiBase);
@@ -17,6 +17,14 @@ var <#=helper.AngularClient.ServiceName#> = function($http) {
         return $http.put(apiBase + <#=helper.CamelCase#>._id, <#=helper.CamelCase#>);
     };    
 
+    var modify = function(<#=helper.CamelCase#>) {
+		if(hourRecord._id){
+			return $http.put(apiBase + <#=helper.CamelCase#>._id, <#=helper.CamelCase#>);
+		}
+		return $http.post(apiBase, <#=helper.CamelCase#>);        
+    };
+
+  
     var del = function( <#=helper.CamelCase#>) {
 		return $http.delete(apiBase, <#=helper.CamelCase#>);
 	};

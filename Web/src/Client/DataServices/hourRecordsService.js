@@ -1,7 +1,7 @@
 		
-var hourRecordsService = function($http) {
+var hourRecordsService = function($http, apiBase) {
 	
-    var apiBase = 'http://localhost:7203/hourRecords/';
+    apiBase += "hourrecords/";
 
     var getAll = function(){
 		return $http.get(apiBase);
@@ -15,6 +15,14 @@ var hourRecordsService = function($http) {
         return $http.put(apiBase + hourRecord._id, hourRecord);
     };    
 
+    var modify = function(hourRecord) {
+		if(hourRecord._id){
+			return $http.put(apiBase + hourRecord._id, hourRecord);
+		}
+		return $http.post(apiBase, hourRecord);        
+    };
+
+  
     var del = function( hourRecord) {
 		return $http.delete(apiBase, hourRecord);
 	};

@@ -17,6 +17,6 @@
     "commit": "cd915e5b37e853faf324b07a822d6b8a6cdf3f3d"
   },
   "_source": "https://github.com/auth0/angular-lock.git",
-  "_target": "^1.0.5",
+  "_target": "~1.0.2",
   "_originalSource": "angular-lock"
 }

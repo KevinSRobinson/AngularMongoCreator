@@ -1,7 +1,7 @@
 		
-var contactsService = function($http) {
+var contactsService = function($http, apiBase) {
 	
-    var apiBase = 'http://localhost:7208/contacts/';
+    apiBase += "/contacts";
 
     var getAll = function(){
 		return $http.get(apiBase);
@@ -15,6 +15,14 @@ var contactsService = function($http) {
         return $http.put(apiBase + contact._id, contact);
     };    
 
+    var modify = function(contact) {
+		if(hourRecord._id){
+			return $http.put(apiBase + contact._id, contact);
+		}
+		return $http.post(apiBase, contact);        
+    };
+
+  
     var del = function( contact) {
 		return $http.delete(apiBase, contact);
 	};

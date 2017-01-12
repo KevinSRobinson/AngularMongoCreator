@@ -14,7 +14,7 @@ From CDN
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="http://cdn.auth0.com/js/lock/10.9.1/lock.min.js"></script>
+<script src="http://cdn.auth0.com/js/lock/10.9.2/lock.min.js"></script>
 ```
 
 From [bower](http://bower.io)
@@ -65,7 +65,7 @@ lock.on("authenticated", function(authResult) {
       return;
     }
 
-    localStorage.setItem("idToken", authResult.idToken);
+    localStorage.setItem("accessToken", authResult.accessToken);
     localStorage.setItem("profile", JSON.stringify(profile));
 
     // Update DOM
@@ -77,14 +77,14 @@ lock.on("authenticated", function(authResult) {
 
 > *Note:* this method is soon to be deprecated, use `getUserInfo` instead.
 
-Once the user has logged in and you are in possesion of and id token, you can obtain the profile with `getProfile`.
+Once the user has logged in and you are in possesion of an id token, you can obtain the profile with `getProfile`.
 
 - **idToken {String}**: User id token.
 - **callback {Function}**: Will be invoked after the user profile been retrieved.
 
 ### getUserInfo(accessToken, callback)
 
-Once the user has logged in and you are in possesion of and access token, you can obtain the profile with `getUserInfo`.
+Once the user has logged in and you are in possesion of an access token, you can obtain the profile with `getUserInfo`.
 
 - **accessToken {String}**: User access token.
 - **callback {Function}**: Will be invoked after the user profile been retrieved.

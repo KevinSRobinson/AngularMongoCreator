@@ -23,6 +23,7 @@
 <#@ include file="Client/Features/Components/_listHelpers.ttinclude" #>
 <#@ include file="Client/Features/Components/listComponentTemplate.ttinclude" #>
 <#@ include file="Client/Features/Components/listComponent.ttinclude" #>
+<#@ include file="Client/Features/Modals/_modalHelpers.ttinclude" #>
 <#@ include file="Client/Features/Modals/modalServices.ttinclude" #>
 <#@ include file="Client/Features/Modals/modifyModal.ttinclude" #>
 <#@ include file="Client/Features/Modals/modifyModalController.ttinclude" #>
@@ -108,7 +109,7 @@ this.GeneratRoutes(helper);
 this.GenerateIndexView(codeClass);
 
 //--components
-this.GenerateListComponentTemplate(codeClass);
+this.GenerateListComponentTemplate(helper);
 this.GenerateListComponent(helper);
 
 
@@ -116,7 +117,7 @@ this.GenerateListComponent(helper);
 //--modals
 this.GeneratModalService(helper);
 this.GeneratModifyModalController(codeClass);
-this.GenerateModifyModalTemplate(codeClass);
+this.GenerateModifyModalTemplate(helper);
     }
   
 #>

@@ -84,7 +84,7 @@ function serve(isDev){
    
     var nodeOptions = {
         script: config.nodeServer,
-        delayTime: 3,
+        delayTime: 1,
         env: {
             'PORT': port,
             'NODE_ENV': isDev ? 'dev' : 'build'

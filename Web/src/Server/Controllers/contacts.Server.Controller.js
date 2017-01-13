@@ -18,11 +18,9 @@ exports.create = function (req, res, id) {
 
 
 exports.list = function (req, res) {
-    var query = Contact.find({}).then(function (results) {
+    var query = Contact.find({'userId': 'auth0|55734889294523276ea098de'}).then(function (results) {
         res.json(results);
     });
-
-
 };
 
 

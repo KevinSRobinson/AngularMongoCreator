@@ -1,38 +1,40 @@
-     
-
      var _ = require('lodash');
-     var Contact= require('../models/contactsModel.js');
+     var Contact = require('../models/contactsModel.js');
      var mongoose = require('mongoose');
-   var tokenHelper = require('./apiHelpers');
+     var tokenHelper = require('./apiHelpers');
+
+  
+
+     var completeSave = function (res, data,  infoMessage,errorMessage, err) {
+       if (err) {
+         res.json({
+           info: infoMessage,
+           error: err
+         });
+       }
+       res.json({
+         info: errorMessage,
+         data: data
+       });
+     };
+
+     var CreateSuccess = 'contact created Successfully';
+     var CreateError  = 'contact created Successfully';
+
+     var modifyuccess = 'contact created Successfully';
 
      module.exports = function (app) {
 
        var create = function (req, res) {
-
-         function save(err) {
-           if (err) {
-             res.json({
-               info: 'error during contact create',
-               error: err
-             });
-           }
-           res.json({
-             info: 'contact created successfully',
-             data: newcontact
-           });
-         };
-
-       
-         var id = tokenHelper.getUserIdFromToken(req);
-         console.log(id);
-
+         //Create a new Contact
          var newcontact = new Contact(req.body);
-         newcontact.UserId = id;
-         newcontact.save(save);
+         //Set the userId of the current user
+         newcontact.UserId = tokenHelper.getUserIdFromToken(req);
+         newcontact.save(completeSave(res, newcontact, CreateSuccess, CreateError));
        };
 
        var read = function (req, res) {
-         
+
 
          function get(err, contacts) {
            if (err) {
@@ -46,8 +48,8 @@
              data: contacts
            });
          };
-
-         Contact.find(get);
+         var id = tokenHelper.getUserIdFromToken(req);
+         Contact.find({UserId: id}, get);
        };
 
        var update = function (req, res) {
@@ -103,19 +105,3 @@
        app.delete(base + 'contacts/:id', del);
 
      };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

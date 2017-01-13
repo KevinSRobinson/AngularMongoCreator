@@ -19,6 +19,10 @@
     const string clientGulpConfFolder = basePath + "conf/";
   
     const string srcBasePath = basePath + "src/";
+
+    const string TestBasePath = basePath + "tests/";
+    const string e2eTestBasePath = basePath + "tests/e2e/";
+
     const string clientSrcBasePath = basePath + "src/Client/";
     const string clientAppPath = basePath + "src/Client/";
     const string clienBasePath = basePath + "src/Client/";

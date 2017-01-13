@@ -1,7 +1,7 @@
 		
 var awardssService = function($http, apiBase) {
 	
-    apiBase += "/awardss/";
+    apiBase += "/awardss";
 
     var getAll = function(){
 		return $http.get(apiBase);

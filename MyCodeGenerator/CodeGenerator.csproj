@@ -53,6 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AngularClient XML.cs">
+      <DependentUpon>AngularClient XML.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="AngularClient 1.cs">
       <DependentUpon>AngularClient .tt</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -69,6 +74,7 @@
     <None Include="Client\auth0Service.ttinclude" />
     <None Include="Client\Features\Components\_listHelpers.ttinclude" />
     <None Include="Client\Features\Modals\_modalHelpers.ttinclude" />
+    <None Include="Client\Features\Tests\tests.ttinclude" />
     <None Include="Client\Features\User\Components\loginComponent.ttinclude" />
     <None Include="Client\Features\User\Components\loginComponentTemplate.ttinclude" />
     <None Include="Client\Features\User\routes.ttinclude" />
@@ -138,10 +144,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AngularClient XML.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AngularClient XML.cs</LastGenOutput>
+    </Content>
     <Content Include="AngularClient .tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AngularClient 1.cs</LastGenOutput>
     </Content>
+    <Content Include="dataModel.xml" />
     <Content Include="NodeServer.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NodeServer.cs</LastGenOutput>

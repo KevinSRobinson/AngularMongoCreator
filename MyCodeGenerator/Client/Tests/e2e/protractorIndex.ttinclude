@@ -1,49 +1,39 @@
-﻿
-<#+ 
+﻿<#+ void GenerateProtractorTestIndex(CodeClassHelper helper) {#>
 
-  void GenerateProtractorTestIndex(string appPath,string className, string cClassname){			
-		#>
-		require("protractor");
+require("protractor");
 var ph = require("../protractorHelpers.js");
 
 
-describe('<#=className#>s', function () {
+describe('<#=helper.Name#>s', function () {
 
-    var pageTitle = '<#=className#> Details';
-    var <#=cClassname#>Repeater = '<#=cClassname#> in vm.<#=cClassname#>';
-    browser.get('http://localhost:3001/#/<#=cClassname#>s');
+    var pageTitle = '<#=helper.Name#> Details';
+    var <#=helper.CamelCase#>Repeater = '<#=helper.CamelCase#> in vm.<#=helper.CamelCasePlural#>';
+
+    browser.get('http://localhost:3001/#/<#=helper.CamelCase#>s');
         
-    it('should load the <#=cClassname#>s', function () {
-        browser.get('http://localhost:3001/#/<#=cClassname#>s').then(function () {
-            ph.expectRepeaterToHaveValues(<#=cClassname#>Repeater);
+    it('should load the <#=helper.CamelCasePlural#>s', function () {
+        browser.get('http://localhost:3001/#/<#=helper.CamelCasePlural#>s').then(function () {
+            ph.expectRepeaterToHaveValues(<#=helper.CamelCasePlural#>Repeater);
         });
-       
-      
     });
 
     
 
-    describe('<#=className#> Details', function () {
+    describe('<#=helper.Name#> Details', function () {
 
         it('Should display the details page', function () {
-            ph.clickOnFirstDetailsLink(<#=cClassname#>Repeater);
+            ph.clickOnFirstDetailsLink(<#=helper.CamelCasePlural#>Repeater);
         });
 
         it('Should have a Page Title', function () {
             ph.expectPageTitle(pageTitle);
         });
-
     });
 
-
 });
-
-		
-		
-		<#+
-
-CreateFile(appPath + "Output/app/e2e/test" + className + "s.js");
-	
+<#+
+    CreateDirectoryFullPath(e2eTestBasePath);
+    CreateFile(e2eTestBasePath + helper.Plural + ".test.js");
 	}	
 #>
 

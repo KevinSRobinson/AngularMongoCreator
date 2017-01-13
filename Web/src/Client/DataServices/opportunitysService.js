@@ -1,7 +1,7 @@
 		
 var opportunitysService = function($http, apiBase) {
 	
-    apiBase += "/opportunitys/";
+    apiBase += "/opportunitys";
 
     var getAll = function(){
 		return $http.get(apiBase);

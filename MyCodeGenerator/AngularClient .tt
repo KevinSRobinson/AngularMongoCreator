@@ -15,6 +15,9 @@
 <#@ include file="Client/auth0Service.ttinclude" #>
 <#@ include file="Client/appRun.ttinclude" #>
 <#@ include file="Client/routes.ttinclude" #>
+<#@ include file="Client/Tests/e2e/protractorConfig.ttinclude" #>
+<#@ include file="Client/Tests/e2e/protractorHelpers.ttinclude" #>
+<#@ include file="Client/Tests/e2e/protractorIndex.ttinclude" #>
 <#@ include file="Client/PackageManagers/bower.ttinclude" #>
 <#@ include file="Client/DataServices/angularServices.ttinclude" #>
 <#@ include file="Client/Styles/lessStyles.ttinclude" #>
@@ -23,6 +26,7 @@
 <#@ include file="Client/Features/Components/_listHelpers.ttinclude" #>
 <#@ include file="Client/Features/Components/listComponentTemplate.ttinclude" #>
 <#@ include file="Client/Features/Components/listComponent.ttinclude" #>
+<#@ include file="Client/Features/Tests/tests.ttinclude" #>
 <#@ include file="Client/Features/Modals/_modalHelpers.ttinclude" #>
 <#@ include file="Client/Features/Modals/modalServices.ttinclude" #>
 <#@ include file="Client/Features/Modals/modifyModal.ttinclude" #>
@@ -98,26 +102,36 @@
     this.Gereratre_Login_Component();
     this.Generate_Login_ComponentTemplate();
     this.Generate_User_Routes();
-   
+
+    //e2e Tests
+    this.GenerateProtractorConfig();
+    this.GenerateProtractorHelpers();
+    
+
     foreach(var codeClass in classes){
       var helper  = new CodeClassHelper(codeClass);
    
-//Angular Client  
-//--core
-this.GenerateAngularService(helper);
-this.GeneratRoutes(helper);
-this.GenerateIndexView(codeClass);
 
-//--components
-this.GenerateListComponentTemplate(helper);
-this.GenerateListComponent(helper);
+    //Angular Client  
+    //--core
+    this.GenerateAngularService(helper);
+    this.GeneratRoutes(helper);
+    this.GenerateIndexView(codeClass);
+
+    //--components
+    this.GenerateListComponentTemplate(helper);
+    this.GenerateListComponent(helper);
 
 
+    //--modals
+    this.GeneratModalService(helper);
+    this.GeneratModifyModalController(codeClass);
+    this.GenerateModifyModalTemplate(helper);
 
-//--modals
-this.GeneratModalService(helper);
-this.GeneratModifyModalController(codeClass);
-this.GenerateModifyModalTemplate(helper);
+    //tests
+    this.GenerateComponentTests(helper);
+    this.GenerateProtractorTestIndex(helper);
+
     }
   
 #>

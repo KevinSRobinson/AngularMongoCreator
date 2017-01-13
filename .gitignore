@@ -2,3 +2,5 @@ Server/node_modules/
 packages/
 Client/node_modules/
 Client/bower_components/
+Web/bower_components/
+Web/node_modules/

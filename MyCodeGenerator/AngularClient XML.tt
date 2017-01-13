@@ -1,0 +1,81 @@
+<#@ template debug="false" hostspecific="true" language="C#" #>  
+<#@ output extension=".cs" #>  
+<#@ assembly name="System" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.Entity" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="EnvDTE" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Reflection" #>
+<#@ assembly name="System.Xml"#>  
+<#@ import namespace="System.Xml" #>  
+<#@ include file="General/T4Helper.ttinclude" #>
+<#@ include file="Client/IndexPage.ttinclude" #>
+<#@ include file="Client/app.ttinclude" #>
+<#@ include file="Client/auth0Service.ttinclude" #>
+<#@ include file="Client/appRun.ttinclude" #>
+<#@ include file="Client/routes.ttinclude" #>
+<#@ include file="Client/PackageManagers/bower.ttinclude" #>
+<#@ include file="Client/DataServices/angularServices.ttinclude" #>
+<#@ include file="Client/Styles/lessStyles.ttinclude" #>
+<#@ include file="Client/Features/routes.ttinclude" #>
+<#@ include file="Client/Features/Views/IndexView.ttinclude" #>
+<#@ include file="Client/Features/Components/_listHelpers.ttinclude" #>
+<#@ include file="Client/Features/Components/listComponentTemplate.ttinclude" #>
+<#@ include file="Client/Features/Components/listComponent.ttinclude" #>
+<#@ include file="Client/Features/Modals/_modalHelpers.ttinclude" #>
+<#@ include file="Client/Features/Modals/modalServices.ttinclude" #>
+<#@ include file="Client/Features/Modals/modifyModal.ttinclude" #>
+<#@ include file="Client/Features/Modals/modifyModalController.ttinclude" #>
+<#@ include file="Client/Features/Navigation/mainLayoutComponentTemplate.ttinclude" #>
+<#@ include file="Client/Features/Navigation/mainLayoutComponent.ttinclude" #>
+<#@ include file="Client/Features/User/Components/loginComponentTemplate.ttinclude" #>
+<#@ include file="Client/Features/User/Components/loginComponent.ttinclude" #>
+<#@ include file="Client/Features/User/routes.ttinclude" #>
+<#@ include file="Client/Auth0/auth0Config.ttinclude" #>
+<#@ include file="Client/Auth0/auth0Variables.ttinclude" #>
+<#@ include file="Client/Auth0/auth0Service.ttinclude" #>
+<#@ include file="Client/PackageManagers/package.ttinclude" #>
+<#@ include file="Client/Gulp/gulp-main.ttinclude" #>
+<#@ include file="Client/Gulp/gulp.ttinclude" #>
+<#@ include file="Client/Gulp/gulpConfig.ttinclude" #>
+<#@ include file="Client/Gulp/Tasks/browserSync.ttinclude" #>
+<#@ include file="Client/Gulp/Tasks/build.ttinclude" #>
+<#@ include file="Client/Gulp/Tasks/inject.ttinclude" #>
+<#@ include file="Client/Gulp/Tasks/karma.ttinclude" #>
+<#@ include file="Client/Gulp/Tasks/misc.ttinclude" #>
+<#@ include file="Client/Gulp/Tasks/partials.ttinclude" #>
+<#@ include file="Client/Gulp/Tasks/scripts.ttinclude" #>
+<#@ include file="Client/Gulp/Tasks/styles.ttinclude" #>
+<#@ include file="Client/Gulp/Conf/browserSyncConf.ttinclude" #>
+<#@ include file="Client/Gulp/Conf/browserSyncDistConf.ttinclude" #>
+<#@ include file="Client/Gulp/Conf/gulpConf.ttinclude" #>
+<#@ include file="Client/Gulp/Conf/karmaAutoConf.ttinclude" #>
+<#@ include file="Client/Gulp/Conf/KarmaConf.ttinclude" #>
+<#@ include file="Client/Gulp/Conf/karmaFilesConf.ttinclude" #>
+<#@ import namespace="System.Collections.Generic" #>  
+<#  
+ // Read the model file  
+ XmlDocument doc = new XmlDocument();  
+ doc.Load(@"C:\Repos\NodeMongoAngular\MyCodeGenerator\dataModel.xml");  
+ Dictionary <string, string> nodeTypes =   
+        new Dictionary<string, string>();  
+ foreach (XmlNode node in doc.SelectNodes("//*"))  
+ {  
+   nodeTypes[node.Name] = "";  
+ }  
+ // Generate the code  
+ foreach (string nodeName in nodeTypes.Keys)  
+ {  
+#>  
+  public partial class <#= nodeName #> {}  
+<#  
+
+        CreateDirectoryFullPath(clientSrcBasePath);
+    CreateFile(clientSrcBasePath + "testxml.cs");
+ }  
+
+#>  

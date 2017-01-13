@@ -6,13 +6,20 @@ var adminLayoutExample = {
         vm.userName = "Test Username";
 
         vm.sideMenuItems = [{
-            state: "hello",
-            linkText: "hello",
-            icon: "check"
+            state: "home",
+            linkText: "home",
+            icon: "check",
+            requiresLogin: false
+        },{
+            state: "firebase",
+            linkText: "firebase",
+            icon: "check",
+            requiresLogin: false
         }, {
             state: "about",
             linkText: "about",
-            icon: "users"
+            icon: "users",
+            requiresLogin: false
         }];
 
         vm.userMenuItems = [{

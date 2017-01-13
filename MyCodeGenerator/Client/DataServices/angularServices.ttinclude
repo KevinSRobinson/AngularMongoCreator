@@ -3,7 +3,7 @@
 		
 var <#=helper.AngularClient.ServiceName#> = function($http, apiBase) {
 	
-    apiBase += "/<#=helper.CamelCasePlural#>/";
+    apiBase += "/<#=helper.CamelCasePlural#>";
 
     var getAll = function(){
 		return $http.get(apiBase);

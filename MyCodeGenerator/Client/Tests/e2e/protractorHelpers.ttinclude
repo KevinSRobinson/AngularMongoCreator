@@ -1,10 +1,5 @@
 ﻿
-<#+ 
-
-  void GenerateProtractorHelpers(string appPath){			
-		#>
-
-
+<#+ void GenerateProtractorHelpers(){	#>
 
 		var ptor = browser.driver;
 
@@ -231,16 +226,8 @@ var helpers = function helpers() {
 //     browser.driver.sleep(4000);
 // };
 module.exports = new helpers();
-
-
-
-		
-		
-		<#+
-
-			CreateDirectoryFullPath(appPath + "Output/app/e2e");
-CreateFile(appPath + "Output/app/e2e/protractorHelpers.js");
-	
+<#+
+    CreateDirectoryFullPath(e2eTestBasePath);
+    CreateFile(e2eTestBasePath + "protractorHelpers.js");
 	}	
 #>
-

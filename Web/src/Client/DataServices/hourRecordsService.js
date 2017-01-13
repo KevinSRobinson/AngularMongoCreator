@@ -1,7 +1,7 @@
 		
 var hourRecordsService = function($http, apiBase) {
 	
-    apiBase += "hourrecords/";
+    apiBase += "/hourRecords";
 
     var getAll = function(){
 		return $http.get(apiBase);

@@ -1,7 +1,7 @@
 		
 var organisationAddresssService = function($http, apiBase) {
 	
-    apiBase += "/organisationAddresss/";
+    apiBase += "/organisationAddresss";
 
     var getAll = function(){
 		return $http.get(apiBase);

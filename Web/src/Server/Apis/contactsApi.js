@@ -3,6 +3,7 @@
      var _ = require('lodash');
      var Contact= require('../models/contactsModel.js');
      var mongoose = require('mongoose');
+   var tokenHelper = require('./apiHelpers');
 
      module.exports = function (app) {
 
@@ -21,11 +22,17 @@
            });
          };
 
+       
+         var id = tokenHelper.getUserIdFromToken(req);
+         console.log(id);
+
          var newcontact = new Contact(req.body);
+         newcontact.UserId = id;
          newcontact.save(save);
        };
 
        var read = function (req, res) {
+         
 
          function get(err, contacts) {
            if (err) {
@@ -88,10 +95,12 @@
          });
        };
 
-       app.post('/contacts', create);
-       app.get('/contacts', read);
-       app.put('/contacts/:id', update);
-       app.delete('/contacts/:id', del);
+
+       var base = '/api/'
+       app.post(base + 'contacts', create);
+       app.get(base + 'contacts', read);
+       app.put(base + 'contacts/:id', update);
+       app.delete(base + 'contacts/:id', del);
 
      };
 

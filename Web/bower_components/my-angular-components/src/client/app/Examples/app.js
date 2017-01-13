@@ -20,12 +20,29 @@ app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvi
         url: '/about',
         template: '<div sp-login-form></div>'
     };
+    
+    var inputsState = {
+        name: 'inputs',
+        url: '/inputs',
+        template: '<input-examples></input-examples>'
+    };
+    var formsState = {
+        name: 'forms',
+        url: '/forms',
+        template: '<example-form></example-form>'
+    };
+var panelExamplesState = {
+        name: 'panelexamples',
+        url: '/panelexamples',
+        template: '<panel-examples></panel-examples>'
+    };
+
+
 
     var userProfileState = {
         name: 'userprofile',
         url: '/userprofile',
-        controller: 'userProfileController',
-        templateUrl: 'src/client/app/Examples/UserProfile/userProfileTemplate.html'
+        template: '<user-profile-example></user-profile-example>'
     };
 
     var firebaseState = {
@@ -105,12 +122,15 @@ app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvi
     // so that JWTs are attached as Authorization headers
     $httpProvider.interceptors.push('jwtInterceptor');
 
+    $stateProvider.state(panelExamplesState);
+    $stateProvider.state(inputsState);
     $stateProvider.state(homeState);
     $stateProvider.state(firebaseState);
     $stateProvider.state(aboutState);
     $stateProvider.state(login);
     $stateProvider.state(logout);
     $stateProvider.state(userProfileState);
+    $stateProvider.state(formsState);
 
     $urlRouterProvider.otherwise('/');
 });

@@ -1,6 +1,6 @@
 {
   "name": "my-angular-components",
-  "version": "0.7.3",
+  "version": "0.7.6",
   "description": "Angular components for business applicaitons",
   "authors": [
     "Kevin Robinson"
@@ -37,14 +37,14 @@
     "firebase": "^3.6.5"
   },
   "homepage": "https://github.com/seamusjunior/my-angular-components",
-  "_release": "0.7.3",
+  "_release": "0.7.6",
   "_resolution": {
     "type": "version",
-    "tag": "0.7.3",
-    "commit": "84982f111436e90c7ffea22878830dbecd5c94d7"
+    "tag": "0.7.6",
+    "commit": "b68dfa820776d8277974a0b42707cc89b3c78c83"
   },
   "_source": "https://github.com/seamusjunior/my-angular-components.git",
-  "_target": "^0.7.3",
+  "_target": "^0.7.6",
   "_originalSource": "my-angular-components",
   "_direct": true
 }

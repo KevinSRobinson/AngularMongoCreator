@@ -4,6 +4,7 @@
      var Awards= require('../models/awardssModel.js');
      var mongoose = require('mongoose');
 
+
      module.exports = function (app) {
 
        var create = function (req, res) {
@@ -88,7 +89,8 @@
          });
        };
 
-       app.post('/awardss', create);
+       var base = '/api/'
+       app.post(base + 'awardss', create);
        app.get('/awardss', read);
        app.put('/awardss/:id', update);
        app.delete('/awardss/:id', del);

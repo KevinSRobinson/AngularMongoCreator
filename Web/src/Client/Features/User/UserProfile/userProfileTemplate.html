@@ -1,0 +1,8 @@
+<h1>User Profile</h1>
+<div ng-if="vm.isAuthenticated">
+    <h3>Email : {{vm.profile.email}}</h3>
+    <h3>Id : {{vm.profile.user_id}}</h3>    
+</div>
+<div ng-if="!vm.isAuthenticated">
+    <h1>You are not logged in</h1>
+</div>

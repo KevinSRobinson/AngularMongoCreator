@@ -1,37 +1,34 @@
+var Contact = require('../Models/contactsModel.js');
+var tokenHelper = require('./apiHelpers');
 
-    
-    var Contact = require('../Models/contactsModel.js');
+exports.create = function (req, res, id) {
+    var entry = new Contact({
+        Id: req.body.Id,
+        FirstName: req.body.FirstName,
+        LastName: req.body.LastName,
+        Telephone: req.body.Telephone,
+        Email: req.body.Email,
+        UserId: 'testgjgh'
+    });
 
-    exports.create = function (req, res) {
-        var entry = new Contact({
-            
-            Id: req.body.Id,FirstName: req.body.FirstName,LastName: req.body.LastName,Telephone: req.body.Telephone,Email: req.body.Email,UserId: req.body.UserId
-          
+    entry.save();
 
-            
-        });
-
-        entry.save();
-
-        res.redirect(301, '/');
-    };
+    res.redirect(301, '/');
+};
 
 
-    exports.list = function (req, res) { 
-         var query = Contact.find({}).then(function (results) {
-         res.json(results);
+exports.list = function (req, res) {
+    var query = Contact.find({}).then(function (results) {
+        res.json(results);
     });
 
 
-    };
+};
 
 
 
-   exports.findById = function (req, res) {
+exports.findById = function (req, res) {
     var query = Contact.findById(req.params.id).then(function (results) {
         res.json(results);
     });
 };
-
- 
-

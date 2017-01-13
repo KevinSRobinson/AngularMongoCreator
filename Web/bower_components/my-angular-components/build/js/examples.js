@@ -20,12 +20,29 @@ app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvi
         url: '/about',
         template: '<div sp-login-form></div>'
     };
+    
+    var inputsState = {
+        name: 'inputs',
+        url: '/inputs',
+        template: '<input-examples></input-examples>'
+    };
+    var formsState = {
+        name: 'forms',
+        url: '/forms',
+        template: '<example-form></example-form>'
+    };
+var panelExamplesState = {
+        name: 'panelexamples',
+        url: '/panelexamples',
+        template: '<panel-examples></panel-examples>'
+    };
+
+
 
     var userProfileState = {
         name: 'userprofile',
         url: '/userprofile',
-        controller: 'userProfileController',
-        templateUrl: 'src/client/app/Examples/UserProfile/userProfileTemplate.html'
+        template: '<user-profile-example></user-profile-example>'
     };
 
     var firebaseState = {
@@ -105,12 +122,15 @@ app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvi
     // so that JWTs are attached as Authorization headers
     $httpProvider.interceptors.push('jwtInterceptor');
 
+    $stateProvider.state(panelExamplesState);
+    $stateProvider.state(inputsState);
     $stateProvider.state(homeState);
     $stateProvider.state(firebaseState);
     $stateProvider.state(aboutState);
     $stateProvider.state(login);
     $stateProvider.state(logout);
     $stateProvider.state(userProfileState);
+    $stateProvider.state(formsState);
 
     $urlRouterProvider.otherwise('/');
 });
@@ -244,6 +264,8 @@ var exampleForm = {
         var vm = this;
         vm.simulateError = false;
         vm.customerForm = {};
+        vm.age = 99;
+        
         vm.status = {
             message: "",
             isError: false,
@@ -359,8 +381,18 @@ var adminLayoutExample = {
             icon: "check",
             requiresLogin: false
         }, {
-            state: "about",
-            linkText: "about",
+            state: "panelexamples",
+            linkText: "Panels",
+            icon: "users",
+            requiresLogin: false
+        },{
+            state: "inputs",
+            linkText: "Inputs",
+            icon: "users",
+            requiresLogin: false
+        },{
+            state: "forms",
+            linkText: "Example Form",
             icon: "users",
             requiresLogin: false
         }];
@@ -411,24 +443,6 @@ var adminLayoutExample = {
 
 angular.module("examples").component("adminLayoutExample", adminLayoutExample)
 
-var mapExample = {
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.mapOptions = {
-                center: {
-                    latitude: 45,
-                    longitude: -73
-                },
-                zoom: 8
-            };
-    },
-    templateUrl: "src/client/app/Examples/Map/mapExampleTemplate.html"
-};
-
-angular.module('examples').component('mapExample', mapExample);
-
 var modals = {
     controllerAs: 'vm',
     controller: function ($uibModal) {
@@ -451,6 +465,24 @@ var modals = {
 };
 
 angular.module('examples').component('modalExamples', modals);
+
+var mapExample = {
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.mapOptions = {
+                center: {
+                    latitude: 45,
+                    longitude: -73
+                },
+                zoom: 8
+            };
+    },
+    templateUrl: "src/client/app/Examples/Map/mapExampleTemplate.html"
+};
+
+angular.module('examples').component('mapExample', mapExample);
 
 var panels = {
     controllerAs: 'vm',
@@ -491,40 +523,6 @@ var statusAlerts = {
 angular.module('examples').component('statusAlerts', statusAlerts);
 
 
-var textEditorExample = {
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.sampleText = "+ item      - subitem" +
-            "The HTML has a superfluous newline before this" +
-            "paragraph." +
-            "- subitem";
-    },
-    templateUrl: "src/client/app/Examples/TextEditor/textEditorExampleTemplate.html"
-};
-
-angular.module('examples').component('textEditorExample', textEditorExample);
-
-var userProfileController = function (authService) {
-    var vm = this;
-    vm.profile = {
-        email : ''
-    };
-
-    vm.authService = authService;
-
-    authService.getProfileDeferred().then(function (profile) {
-        console.log(angular.fromJson(profile));
-        console.log(angular.isString(profile.email));
-        vm.profile = angular.fromJson(profile);
-    });
-
-
-};
-
-angular.module('app').controller('userProfileController', userProfileController);
-
 var tags = {
     controllerAs: 'vm',
     controller: function () {
@@ -553,6 +551,45 @@ var tags = {
 };
 
 angular.module('examples').component('tags', tags);
+
+var textEditorExample = {
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.sampleText = "+ item      - subitem" +
+            "The HTML has a superfluous newline before this" +
+            "paragraph." +
+            "- subitem";
+    },
+    templateUrl: "src/client/app/Examples/TextEditor/textEditorExampleTemplate.html"
+};
+
+angular.module('examples').component('textEditorExample', textEditorExample);
+
+var userProfileExample = {
+    controllerAs: 'vm',
+    controller: function (authService) {
+        var vm = this;
+
+        vm.profile = {
+            email: ''
+        };
+
+        vm.authService = authService;
+
+        authService.getProfileDeferred().then(function (profile) {
+            console.log(angular.fromJson(profile));
+            console.log(angular.isString(profile.email));
+            vm.profile = angular.fromJson(profile);
+        });
+    },
+    templateUrl: 'src/client/app/Examples/UserProfile/userProfileTemplate.html'
+
+};
+
+
+angular.module('examples').controller('userProfileExample', userProfileExample);
 
 var myCreateButton = {
     bindings: {

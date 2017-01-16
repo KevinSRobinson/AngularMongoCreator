@@ -10,9 +10,9 @@ var organisationsService = function($http, apiBase) {
     var getById = function(id) {
 		return $http.get(apiBase + id);
 	};
-
-    var modify = function(organisation) {
-        return $http.put(apiBase + organisation._id, organisation);
+    
+    var getAllForCurrentUser = function() {
+        return $http.put(apiBase + reallAllForCurrentUser);
     };    
 
     var modify = function(organisation) {
@@ -31,7 +31,8 @@ var organisationsService = function($http, apiBase) {
 	    GetAll : getAll,
 	    GetById : getById,
 	    Modify : modify,
-	    Delete : del
+	    Delete : del,
+        GetAllForCurrentUser: getAllForCurrentUser
     };
 };
 	

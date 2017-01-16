@@ -15,9 +15,9 @@ controller: function (<#=helper.AngularClient.ServiceName#>, <#=helper.AngularCl
     };
 
     vm.load<#=helper.CamelCasePlural#>s = function(){
-        var <#=helper.CamelCasePlural#>Promise= <#=helper.AngularClient.ServiceName#>.GetAll();
+        var <#=helper.CamelCasePlural#>Promise= <#=helper.AngularClient.ServiceName#>.GetAllForCurrentUser();
         <#=helper.CamelCasePlural#>Promise.then(function(response){
-	     vm.<#=helper.CamelCasePlural#> = response.data.data;
+	        vm.<#=helper.CamelCasePlural#> = response.data.data;
         }).catch(function(error){
 	        vm.error = error;
         })

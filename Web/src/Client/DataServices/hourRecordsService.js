@@ -10,9 +10,9 @@ var hourRecordsService = function($http, apiBase) {
     var getById = function(id) {
 		return $http.get(apiBase + id);
 	};
-
-    var modify = function(hourRecord) {
-        return $http.put(apiBase + hourRecord._id, hourRecord);
+    
+    var getAllForCurrentUser = function() {
+        return $http.put(apiBase + reallAllForCurrentUser);
     };    
 
     var modify = function(hourRecord) {
@@ -31,7 +31,8 @@ var hourRecordsService = function($http, apiBase) {
 	    GetAll : getAll,
 	    GetById : getById,
 	    Modify : modify,
-	    Delete : del
+	    Delete : del,
+        GetAllForCurrentUser: getAllForCurrentUser
     };
 };
 	

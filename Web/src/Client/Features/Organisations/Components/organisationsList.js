@@ -14,9 +14,9 @@ controller: function (organisationsService, organisationsModalService) {
     };
 
     vm.loadorganisationss = function(){
-        var organisationsPromise= organisationsService.GetAll();
+        var organisationsPromise= organisationsService.GetAllForCurrentUser();
         organisationsPromise.then(function(response){
-	     vm.organisations = response.data.data;
+	        vm.organisations = response.data.data;
         }).catch(function(error){
 	        vm.error = error;
         })

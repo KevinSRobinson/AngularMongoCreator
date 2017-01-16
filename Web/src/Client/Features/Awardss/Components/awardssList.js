@@ -14,9 +14,9 @@ controller: function (awardssService, awardssModalService) {
     };
 
     vm.loadawardsss = function(){
-        var awardssPromise= awardssService.GetAll();
+        var awardssPromise= awardssService.GetAllForCurrentUser();
         awardssPromise.then(function(response){
-	     vm.awardss = response.data.data;
+	        vm.awardss = response.data.data;
         }).catch(function(error){
 	        vm.error = error;
         })

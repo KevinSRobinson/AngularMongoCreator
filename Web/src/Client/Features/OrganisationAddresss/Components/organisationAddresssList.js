@@ -14,9 +14,9 @@ controller: function (organisationAddresssService, organisationAddresssModalServ
     };
 
     vm.loadorganisationAddressss = function(){
-        var organisationAddresssPromise= organisationAddresssService.GetAll();
+        var organisationAddresssPromise= organisationAddresssService.GetAllForCurrentUser();
         organisationAddresssPromise.then(function(response){
-	     vm.organisationAddresss = response.data.data;
+	        vm.organisationAddresss = response.data.data;
         }).catch(function(error){
 	        vm.error = error;
         })

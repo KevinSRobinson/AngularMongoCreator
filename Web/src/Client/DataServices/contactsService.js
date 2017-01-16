@@ -10,9 +10,9 @@ var contactsService = function($http, apiBase) {
     var getById = function(id) {
 		return $http.get(apiBase + id);
 	};
-
-    var modify = function(contact) {
-        return $http.put(apiBase + contact._id, contact);
+    
+    var getAllForCurrentUser = function() {
+        return $http.put(apiBase + reallAllForCurrentUser);
     };    
 
     var modify = function(contact) {
@@ -31,7 +31,8 @@ var contactsService = function($http, apiBase) {
 	    GetAll : getAll,
 	    GetById : getById,
 	    Modify : modify,
-	    Delete : del
+	    Delete : del,
+        GetAllForCurrentUser: getAllForCurrentUser
     };
 };
 	

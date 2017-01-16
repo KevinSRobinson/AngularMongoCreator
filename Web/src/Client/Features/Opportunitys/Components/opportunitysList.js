@@ -14,9 +14,9 @@ controller: function (opportunitysService, opportunitysModalService) {
     };
 
     vm.loadopportunityss = function(){
-        var opportunitysPromise= opportunitysService.GetAll();
+        var opportunitysPromise= opportunitysService.GetAllForCurrentUser();
         opportunitysPromise.then(function(response){
-	     vm.opportunitys = response.data.data;
+	        vm.opportunitys = response.data.data;
         }).catch(function(error){
 	        vm.error = error;
         })

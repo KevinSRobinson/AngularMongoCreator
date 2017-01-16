@@ -14,9 +14,9 @@ controller: function (hourRecordsService, hourRecordsModalService) {
     };
 
     vm.loadhourRecordss = function(){
-        var hourRecordsPromise= hourRecordsService.GetAll();
+        var hourRecordsPromise= hourRecordsService.GetAllForCurrentUser();
         hourRecordsPromise.then(function(response){
-	     vm.hourRecords = response.data.data;
+	        vm.hourRecords = response.data.data;
         }).catch(function(error){
 	        vm.error = error;
         })

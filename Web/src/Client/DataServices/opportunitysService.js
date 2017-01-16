@@ -10,9 +10,9 @@ var opportunitysService = function($http, apiBase) {
     var getById = function(id) {
 		return $http.get(apiBase + id);
 	};
-
-    var modify = function(opportunity) {
-        return $http.put(apiBase + opportunity._id, opportunity);
+    
+    var getAllForCurrentUser = function() {
+        return $http.put(apiBase + reallAllForCurrentUser);
     };    
 
     var modify = function(opportunity) {
@@ -31,7 +31,8 @@ var opportunitysService = function($http, apiBase) {
 	    GetAll : getAll,
 	    GetById : getById,
 	    Modify : modify,
-	    Delete : del
+	    Delete : del,
+        GetAllForCurrentUser: getAllForCurrentUser
     };
 };
 	

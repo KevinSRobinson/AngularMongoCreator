@@ -31,7 +31,7 @@
 
 
 
-       var reallAllForCurrentUser = function (req, res) {
+       var readAllForCurrentUser = function (req, res) {
          function get(err, <#=helper.CamelCasePlural#>) {
            if (err) {
              res.json({
@@ -113,6 +113,7 @@
 
        app.post('/<#=helper.CamelCase#>s', create);
        app.get('/<#=helper.CamelCase#>s', read);
+       app.get('/readAllForCurrentUser', readAllForCurrentUser);
        app.put('/<#=helper.CamelCase#>s/:id', update);
        app.delete('/<#=helper.CamelCase#>s/:id', del);
 

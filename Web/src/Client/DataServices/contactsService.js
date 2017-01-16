@@ -12,7 +12,7 @@ var contactsService = function($http, apiBase) {
 	};
     
     var getAllForCurrentUser = function() {
-        return $http.put(apiBase + reallAllForCurrentUser);
+        return $http.put(apiBase + '/readAllForCurrentUser');
     };    
 
     var modify = function(contact) {

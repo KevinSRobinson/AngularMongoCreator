@@ -30,7 +30,7 @@
 
 
 
-       var reallAllForCurrentUser = function (req, res) {
+       var readAllForCurrentUser = function (req, res) {
          function get(err, opportunitys) {
            if (err) {
              res.json({
@@ -112,6 +112,7 @@
 
        app.post('/opportunitys', create);
        app.get('/opportunitys', read);
+       app.get('/readAllForCurrentUser', readAllForCurrentUser);
        app.put('/opportunitys/:id', update);
        app.delete('/opportunitys/:id', del);
 

@@ -1,8 +1,7 @@
-
 		
 var contactsService = function($http, apiBase) {
 	
-    apiBase += "contacts";
+    apiBase += "/contacts";
 
     var getAll = function(){
 		return $http.get(apiBase);
@@ -17,7 +16,7 @@ var contactsService = function($http, apiBase) {
     };    
 
     var modify = function(contact) {
-		if(contact._id){
+		if(hourRecord._id){
 			return $http.put(apiBase + contact._id, contact);
 		}
 		return $http.post(apiBase, contact);        

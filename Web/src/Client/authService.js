@@ -1,16 +1,5 @@
     
-    var authService = function($rootScope, lock, authManager, $q) {
-
- var userProfile = JSON.parse(localStorage.getItem('profile')) || null;
-        var deferredProfile = $q.defer();
-
-        if (userProfile) {
-            deferredProfile.resolve(userProfile);
-        }
-
-        function getProfileDeferred() {
-            return deferredProfile.promise;
-        }
+    var authService = function($rootScope, lock, authManager) {
 
         function login() {
             lock.show();
@@ -21,36 +10,12 @@
             authManager.unauthenticate();
         }
 
-//  function getProfileDeferred() {            
-//             var userProfile = JSON.parse(localStorage.getItem('profile')) || null;
-//             var deferredProfile = $q.defer();
-//             if (userProfile) {
-//                 deferredProfile.resolve(userProfile);
-//             }
-//             return deferredProfile.promise;
-//         }
-
         // Set up the logic for when a user authenticates
         // This method is called from app.run.js
         function registerAuthenticationListener() {
             lock.on('authenticated', function (authResult) {
-                console.log('----------------------');
-                console.log('-----------authenticated-----------');
                 localStorage.setItem('id_token', authResult.idToken);
                 authManager.authenticate();
-            });
-
-            lock.on('authenticated', function (authResult) {
-
-                lock.getProfile(authResult.idToken, function (error, profile) {
-                    if (error) {
-                        return console.log(error);
-                    }
-
-                    localStorage.setItem('profile', JSON.stringify(profile));
-                    deferredProfile.resolve(profile);
-                });
-
             });
         }
 
@@ -58,12 +23,11 @@
             login: login,
             logout: logout,
             isAuthenticated: $rootScope.isAuthenticated,
-            registerAuthenticationListener: registerAuthenticationListener,
-            getProfileDeferred: getProfileDeferred
+            registerAuthenticationListener: registerAuthenticationListener
         };
     };
 
-    authService.$inject = ['$rootScope','lock', 'authManager', '$q'];
+    authService.$inject = ['$rootScope','lock', 'authManager'];
 
     angular.module('app').factory('authService', authService);
 

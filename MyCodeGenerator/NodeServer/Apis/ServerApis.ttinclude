@@ -23,26 +23,48 @@
          };
 
          var new<#=helper.CamelCase#> = new <#=helper.Name#>(req.body);
+         newcontact.UserId = tokenHelper.getUserIdFromToken(req);
          new<#=helper.CamelCase#>.save(save);
        };
 
-       var read = function (req, res) {
 
-         function get(err, <#=helper.CamelCase#>s) {
+
+
+
+       var reallAllForCurrentUser = function (req, res) {
+         function get(err, <#=helper.CamelCasePlural#>) {
            if (err) {
              res.json({
-               info: 'error during find <#=helper.CamelCase#>s',
+               info: 'error during find contacts by user',
                error: err
              });
            }
            res.json({
-             info: '<#=helper.CamelCase#>s found successfully',
-             data: <#=helper.CamelCase#>s
+             info: '<#=helper.CamelCasePlural#> For User found successfully',
+             data: <#=helper.CamelCasePlural#>
            });
          };
-
-         <#=helper.Name#>.find(get);
+         var id = tokenHelper.getUserIdFromToken(req);
+         <#=helper.Name#>.find({UserId: id}, get);
        };
+
+       var read = function (req, res) {
+         function get(err, <#=helper.CamelCasePlural#>) {
+           if (err) {
+             res.json({
+               info: 'error during find <#=helper.CamelCasePlural#>',
+               error: err
+             });
+           }
+           res.json({
+             info: '<#=helper.CamelCasePlural#> found successfully',
+             data: <#=helper.CamelCasePlural#>
+           });
+         };
+         <#=helper.Name#>.find({}, get);
+       };
+
+
 
        var update = function (req, res) {
 

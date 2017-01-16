@@ -1,3 +1,42 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
   "devDependencies": {
     "@types/angular": "^1.5.16",
@@ -83,8 +122,9 @@
     ]
   },
   "dependencies": {
-    "express-jwt": "^5.1.0",
-    "gulp-load-plugins": "^1.4.0",
-    "jwt-decode": "^2.1.0"
+    "gulp-load-plugins": "^1.4.0"
   }
 }
+
+
+		

@@ -1,4 +1,4 @@
-     
+﻿<#+ void GenerateApiHelpers(){ #>     
 
 
 var jwtDecode = require('jwt-decode');
@@ -17,3 +17,8 @@ module.exports.getUserIdFromToken = getUserIdFromToken
 
 
 
+<#+
+    CreateDirectoryFullPath(NodeApisPath);
+    CreateFile(NodeApisPath + "apiHelpers.js");
+	}	
+#>

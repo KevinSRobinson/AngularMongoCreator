@@ -12,11 +12,6 @@ controller: function () {
 
 	vm.sideMenuItems = [                
         { state: 'contacts', linkText:'Contacts', icon: 'cogs'},
-		{
-		state: 'userprofile',
-		linkText: 'User Profile',
-		icon: 'user'
-	},
 { state: 'awardss', linkText:'Awardss', icon: 'cogs'},
 { state: 'hourRecords', linkText:'HourRecords', icon: 'cogs'},
 { state: 'opportunitys', linkText:'Opportunitys', icon: 'cogs'},

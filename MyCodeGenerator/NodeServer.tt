@@ -18,6 +18,7 @@
 <#@ include file="NodeServer/Data/MongoDbSchema.ttinclude" #>
 <#@ include file="NodeServer/Controllers/DataControllers.ttinclude" #>
 <#@ include file="NodeServer/package.ttinclude" #> 
+<#@ include file="NodeServer/Apis/ApiHelpers.ttinclude" #> 
 
 <#  
     //Get all classes from the model
@@ -26,6 +27,7 @@
     //Node Server
     this.GenerateNodeJsSeverAppFile(classes);
     this.GenerateNodeServerErrorHandler();
+    this.GenerateApiHelpers();
     
     //Packages
     this.GenerateJsonFileService();   

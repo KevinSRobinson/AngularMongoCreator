@@ -22,11 +22,32 @@
          };
 
          var newopportunity = new Opportunity(req.body);
+         newcontact.UserId = tokenHelper.getUserIdFromToken(req);
          newopportunity.save(save);
        };
 
-       var read = function (req, res) {
 
+
+
+
+       var reallAllForCurrentUser = function (req, res) {
+         function get(err, opportunitys) {
+           if (err) {
+             res.json({
+               info: 'error during find contacts by user',
+               error: err
+             });
+           }
+           res.json({
+             info: 'opportunitys For User found successfully',
+             data: opportunitys
+           });
+         };
+         var id = tokenHelper.getUserIdFromToken(req);
+         Opportunity.find({UserId: id}, get);
+       };
+
+       var read = function (req, res) {
          function get(err, opportunitys) {
            if (err) {
              res.json({
@@ -39,9 +60,10 @@
              data: opportunitys
            });
          };
-
-         Opportunity.find(get);
+         Opportunity.find({}, get);
        };
+
+
 
        var update = function (req, res) {
 

@@ -16,8 +16,6 @@ var run = function($rootScope, authService, lock, authManager) {
     // Register the synchronous hash parser
     // when using UI Router
     lock.interceptHash();
-
-    
 }
 
 run.$inject = ['$rootScope', 'authService', 'lock', 'authManager'];

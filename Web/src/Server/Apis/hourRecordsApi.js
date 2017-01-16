@@ -22,11 +22,32 @@
          };
 
          var newhourRecord = new HourRecord(req.body);
+         newcontact.UserId = tokenHelper.getUserIdFromToken(req);
          newhourRecord.save(save);
        };
 
-       var read = function (req, res) {
 
+
+
+
+       var reallAllForCurrentUser = function (req, res) {
+         function get(err, hourRecords) {
+           if (err) {
+             res.json({
+               info: 'error during find contacts by user',
+               error: err
+             });
+           }
+           res.json({
+             info: 'hourRecords For User found successfully',
+             data: hourRecords
+           });
+         };
+         var id = tokenHelper.getUserIdFromToken(req);
+         HourRecord.find({UserId: id}, get);
+       };
+
+       var read = function (req, res) {
          function get(err, hourRecords) {
            if (err) {
              res.json({
@@ -39,9 +60,10 @@
              data: hourRecords
            });
          };
-
-         HourRecord.find(get);
+         HourRecord.find({}, get);
        };
+
+
 
        var update = function (req, res) {
 

@@ -104,6 +104,7 @@
     <None Include="Client\Auth0\auth0Variables.ttinclude" />
     <None Include="Client\Auth0\auth0Config.ttinclude" />
     <None Include="General\JsonHelpers.ttinclude" />
+    <None Include="NodeServer\Apis\ApiHelpers.ttinclude" />
     <None Include="NodeServer\Apis\ServerApis.ttinclude" />
     <None Include="NodeServer\Controllers\DataControllers.ttinclude" />
     <None Include="NodeServer\Data\MongoDbSchema.ttinclude" />

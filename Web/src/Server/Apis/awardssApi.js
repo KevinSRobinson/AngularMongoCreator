@@ -4,7 +4,6 @@
      var Awards= require('../models/awardssModel.js');
      var mongoose = require('mongoose');
 
-
      module.exports = function (app) {
 
        var create = function (req, res) {
@@ -23,11 +22,32 @@
          };
 
          var newawards = new Awards(req.body);
+         newcontact.UserId = tokenHelper.getUserIdFromToken(req);
          newawards.save(save);
        };
 
-       var read = function (req, res) {
 
+
+
+
+       var reallAllForCurrentUser = function (req, res) {
+         function get(err, awardss) {
+           if (err) {
+             res.json({
+               info: 'error during find contacts by user',
+               error: err
+             });
+           }
+           res.json({
+             info: 'awardss For User found successfully',
+             data: awardss
+           });
+         };
+         var id = tokenHelper.getUserIdFromToken(req);
+         Awards.find({UserId: id}, get);
+       };
+
+       var read = function (req, res) {
          function get(err, awardss) {
            if (err) {
              res.json({
@@ -40,9 +60,10 @@
              data: awardss
            });
          };
-
-         Awards.find(get);
+         Awards.find({}, get);
        };
+
+
 
        var update = function (req, res) {
 
@@ -89,8 +110,7 @@
          });
        };
 
-       var base = '/api/'
-       app.post(base + 'awardss', create);
+       app.post('/awardss', create);
        app.get('/awardss', read);
        app.put('/awardss/:id', update);
        app.delete('/awardss/:id', del);

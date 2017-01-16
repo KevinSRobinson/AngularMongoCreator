@@ -22,11 +22,32 @@
          };
 
          var neworganisationAddress = new OrganisationAddress(req.body);
+         newcontact.UserId = tokenHelper.getUserIdFromToken(req);
          neworganisationAddress.save(save);
        };
 
-       var read = function (req, res) {
 
+
+
+
+       var reallAllForCurrentUser = function (req, res) {
+         function get(err, organisationAddresss) {
+           if (err) {
+             res.json({
+               info: 'error during find contacts by user',
+               error: err
+             });
+           }
+           res.json({
+             info: 'organisationAddresss For User found successfully',
+             data: organisationAddresss
+           });
+         };
+         var id = tokenHelper.getUserIdFromToken(req);
+         OrganisationAddress.find({UserId: id}, get);
+       };
+
+       var read = function (req, res) {
          function get(err, organisationAddresss) {
            if (err) {
              res.json({
@@ -39,9 +60,10 @@
              data: organisationAddresss
            });
          };
-
-         OrganisationAddress.find(get);
+         OrganisationAddress.find({}, get);
        };
+
+
 
        var update = function (req, res) {
 

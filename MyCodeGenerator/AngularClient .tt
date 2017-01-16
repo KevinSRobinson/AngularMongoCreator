@@ -86,10 +86,12 @@
         
     //index           
     this.GenerateMainIndexPage(classes);
+
     //Core App
     this.GenerateAppFile();
     this.GenerateAppRunFile();
     this.GenerateAuthServiceFile(); 
+
     //Styles
     this.GeneratLessStyles();
     //Bower   

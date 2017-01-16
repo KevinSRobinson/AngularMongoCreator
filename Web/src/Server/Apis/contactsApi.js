@@ -1,41 +1,53 @@
+     
+
      var _ = require('lodash');
-     var Contact = require('../models/contactsModel.js');
+     var Contact= require('../models/contactsModel.js');
      var mongoose = require('mongoose');
-     var tokenHelper = require('./apiHelpers');
-
-  
-
-     var completeSave = function (res, data,  infoMessage,errorMessage, err) {
-       if (err) {
-         res.json({
-           info: infoMessage,
-           error: err
-         });
-       }
-       res.json({
-         info: errorMessage,
-         data: data
-       });
-     };
-
-     var CreateSuccess = 'contact created Successfully';
-     var CreateError  = 'contact created Successfully';
-
-     var modifyuccess = 'contact created Successfully';
 
      module.exports = function (app) {
 
        var create = function (req, res) {
-         //Create a new Contact
+
+         function save(err) {
+           if (err) {
+             res.json({
+               info: 'error during contact create',
+               error: err
+             });
+           }
+           res.json({
+             info: 'contact created successfully',
+             data: newcontact
+           });
+         };
+
          var newcontact = new Contact(req.body);
-         //Set the userId of the current user
          newcontact.UserId = tokenHelper.getUserIdFromToken(req);
-         newcontact.save(completeSave(res, newcontact, CreateSuccess, CreateError));
+         newcontact.save(save);
+       };
+
+
+
+
+
+       var reallAllForCurrentUser = function (req, res) {
+         function get(err, contacts) {
+           if (err) {
+             res.json({
+               info: 'error during find contacts by user',
+               error: err
+             });
+           }
+           res.json({
+             info: 'contacts For User found successfully',
+             data: contacts
+           });
+         };
+         var id = tokenHelper.getUserIdFromToken(req);
+         Contact.find({UserId: id}, get);
        };
 
        var read = function (req, res) {
-
-
          function get(err, contacts) {
            if (err) {
              res.json({
@@ -48,9 +60,10 @@
              data: contacts
            });
          };
-         var id = tokenHelper.getUserIdFromToken(req);
-         Contact.find({UserId: id}, get);
+         Contact.find({}, get);
        };
+
+
 
        var update = function (req, res) {
 
@@ -97,11 +110,25 @@
          });
        };
 
-
-       var base = '/api/'
-       app.post(base + 'contacts', create);
-       app.get(base + 'contacts', read);
-       app.put(base + 'contacts/:id', update);
-       app.delete(base + 'contacts/:id', del);
+       app.post('/contacts', create);
+       app.get('/contacts', read);
+       app.put('/contacts/:id', update);
+       app.delete('/contacts/:id', del);
 
      };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

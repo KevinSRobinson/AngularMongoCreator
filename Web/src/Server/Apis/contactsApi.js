@@ -42,6 +42,7 @@ var tokenHelper= require('./apiHelpers');
       });
     };
     var id = tokenHelper.getUserIdFromToken(req);
+    console.log('id = ' + id);
     Contact.find({UserId: id}, get);
   };
 

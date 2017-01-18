@@ -1,5 +1,5 @@
 		
-var awardssService = function($http, apiBase) {
+var awardssService = function($resource, $http, apiBase) {
 	
     apiBase += "/awardss";
 
@@ -12,7 +12,7 @@ var awardssService = function($http, apiBase) {
 	};
     
     var getAllForCurrentUser = function() {
-        return $http.put(apiBase + '/readAllForCurrentUser');
+        return $http.get(apiBase + '/readAllForCurrentUser');
     };    
 
     var modify = function(awards) {
@@ -35,6 +35,7 @@ var awardssService = function($http, apiBase) {
         GetAllForCurrentUser: getAllForCurrentUser
     };
 };
-	
+
+awardssService.$inject = ['$resource', '$http', 'apiBase'];	
 
 angular.module('app').factory('awardssService', awardssService);

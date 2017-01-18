@@ -1,22 +1,12 @@
 var adminSideMenuItems = {
     bindings: {
-        menuItems: '='
+        menuItems:'='
     },
     controllerAs: 'vm',
-    controller: function ($rootScope) {
+    controller: function($rootScope){
         var vm = this;
-
+        
         vm.isAuthenticated = $rootScope.isAuthenticated;
-
-        vm.showItem = function (item) {
-            if (item.requiresLogin) {
-                if (vm.isAuthenticated) {
-                    return true;
-                }
-            } else
-                return true;
-
-        };
     },
     templateUrl: 'sideMenuItemsTemplate.html'
 };

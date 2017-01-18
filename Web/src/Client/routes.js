@@ -1,5 +1,3 @@
-﻿
-<#+ void Generate_Base_Routes(){ #>
 
 var config = function ($stateProvider,  $urlRouterProvider) {
 
@@ -28,10 +26,5 @@ var config = function ($stateProvider,  $urlRouterProvider) {
 
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-angular.module("<#=applicationName#>").config(config);
+angular.module("app").config(config);
 
-<#+
-    CreateDirectoryFullPath(clientAppPath);
-    CreateFile(clientAppPath + "routes.js");
-}
-#>

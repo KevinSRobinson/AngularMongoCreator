@@ -45,8 +45,8 @@
            });
          };
          var id = tokenHelper.getUserIdFromToken(req);
-          console.log(newcontact.UserId);
-         Contact.find({UserId: id}, get);
+          console.log('newcontact = ' + newcontact.UserId);
+         Contact.find({}, get);
        };
 
        var read = function (req, res) {

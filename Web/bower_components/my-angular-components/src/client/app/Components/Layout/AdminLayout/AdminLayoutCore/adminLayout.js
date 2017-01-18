@@ -56,14 +56,7 @@ var adminLayout = {
                 return "";
         };
 
-        vm.getViewCssClass= function(){
-            console.log(vm.colapsed);
 
-            if (vm.colapsed)
-                return "uiView.colapsed";
-            else
-                return "uiView";
-        };
     },
     templateUrl: 'adminLayoutTemplate.html'
 };

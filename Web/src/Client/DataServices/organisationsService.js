@@ -1,5 +1,5 @@
 		
-var organisationsService = function($http, apiBase) {
+var organisationsService = function($resource, $http, apiBase) {
 	
     apiBase += "/organisations";
 
@@ -12,7 +12,7 @@ var organisationsService = function($http, apiBase) {
 	};
     
     var getAllForCurrentUser = function() {
-        return $http.put(apiBase + '/readAllForCurrentUser');
+        return $http.get(apiBase + '/readAllForCurrentUser');
     };    
 
     var modify = function(organisation) {
@@ -35,6 +35,7 @@ var organisationsService = function($http, apiBase) {
         GetAllForCurrentUser: getAllForCurrentUser
     };
 };
-	
+
+organisationsService.$inject = ['$resource', '$http', 'apiBase'];	
 
 angular.module('app').factory('organisationsService', organisationsService);

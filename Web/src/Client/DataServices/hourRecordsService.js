@@ -1,5 +1,5 @@
 		
-var hourRecordsService = function($http, apiBase) {
+var hourRecordsService = function($resource, $http, apiBase) {
 	
     apiBase += "/hourRecords";
 
@@ -12,7 +12,7 @@ var hourRecordsService = function($http, apiBase) {
 	};
     
     var getAllForCurrentUser = function() {
-        return $http.put(apiBase + '/readAllForCurrentUser');
+        return $http.get(apiBase + '/readAllForCurrentUser');
     };    
 
     var modify = function(hourRecord) {
@@ -35,6 +35,7 @@ var hourRecordsService = function($http, apiBase) {
         GetAllForCurrentUser: getAllForCurrentUser
     };
 };
-	
+
+hourRecordsService.$inject = ['$resource', '$http', 'apiBase'];	
 
 angular.module('app').factory('hourRecordsService', hourRecordsService);

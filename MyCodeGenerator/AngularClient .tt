@@ -84,7 +84,8 @@
     //login + user
     this.Gereratre_Login_Component();
     this.Generate_Login_ComponentTemplate();
-    //this.Generate_User_Routes();
+    this.Generate_User_Routes();
+    this.Generate_Base_Routes();
 
     //e2e Tests
     this.GenerateProtractorConfig();

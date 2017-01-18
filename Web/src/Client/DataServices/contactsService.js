@@ -1,5 +1,5 @@
 		
-var contactsService = function($http, apiBase) {
+var contactsService = function($resource, $http, apiBase) {
 	
     apiBase += "/contacts";
 
@@ -12,11 +12,11 @@ var contactsService = function($http, apiBase) {
 	};
     
     var getAllForCurrentUser = function() {
-        return $http.put(apiBase + '/readAllForCurrentUser');
+        return $http.get(apiBase + '/readAllForCurrentUser');
     };    
 
     var modify = function(contact) {
-		if(hourRecord._id){
+		if(contact._id){
 			return $http.put(apiBase + contact._id, contact);
 		}
 		return $http.post(apiBase, contact);        
@@ -35,6 +35,7 @@ var contactsService = function($http, apiBase) {
         GetAllForCurrentUser: getAllForCurrentUser
     };
 };
-	
+
+contactsService.$inject = ['$resource', '$http', 'apiBase'];	
 
 angular.module('app').factory('contactsService', contactsService);

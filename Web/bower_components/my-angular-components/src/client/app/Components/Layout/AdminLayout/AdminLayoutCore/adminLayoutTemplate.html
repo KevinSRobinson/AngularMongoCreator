@@ -1,11 +1,3 @@
-<style>
-.uiView.colapsed{
-    margin-left:10px;
-}
-.uiView{
-    margin-left:160px;
-}
-</style>
 <div id="page-wrapper" ng-cloak ng-class="vm.getState()">
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
@@ -16,11 +8,8 @@
             <!-- Header Bar -->
             <admin-header-bar title="Timebanking" alert-menu-items="vm.alertMenuItems" user-menu-items="vm.userMenuItems" user-name="{{vm.userName}}">
             </admin-header-bar>
-
-            <div ng-class="vm.getViewCssClass()">
-                <ng-transclude></ng-transclude>
-            </div>
-            
+            <!-- Main Content -->
+            <div ui-view></div>
         </div>
     </div>
 </div>

@@ -7,7 +7,7 @@
    
     app.constant("apiBase", "http://localhost:7000/")
 
-  var config = function (lockProvider, jwtOptionsProvider) {
+  var config = function (lockProvider, jwtOptionsProvider, $httpProvider) {
 
     // Configuration for angular-jwt
     jwtOptionsProvider.config({
@@ -21,10 +21,11 @@
       domain: 'volunteernow.auth0.com'
     });
 
+ $httpProvider.interceptors.push('jwtInterceptor');
   };
 
 
-  config.$inject = ['lockProvider', 'jwtOptionsProvider'];
+  config.$inject = ['lockProvider', 'jwtOptionsProvider', '$httpProvider'];
 
   app.config(config);
 })();

@@ -12,7 +12,8 @@ var contactsService = function($resource, $http, apiBase) {
 	};
     
     var getAllForCurrentUser = function() {
-        return $http.get(apiBase + '/readAllForCurrentUser');
+		console.log(apiBase + '/readAllForCurrentUser');
+        return $resource(apiBase + '/readAllForCurrentUser').query().$promise;
     };    
 
     var modify = function(contact) {

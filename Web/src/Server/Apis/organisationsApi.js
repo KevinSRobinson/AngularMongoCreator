@@ -110,11 +110,11 @@
          });
        };
 
-       app.post('/organisations', create);
-       app.get('/organisations', read);
-       app.get('/readAllForCurrentUser', readAllForCurrentUser);
-       app.put('/organisations/:id', update);
-       app.delete('/organisations/:id', del);
+       app.post('/api/organisations', create);
+       app.get('/api/organisations', read);
+       app.get('/api/readAllForCurrentUser', readAllForCurrentUser);
+       app.put('/api/organisations/:id', update);
+       app.delete('/api/organisations/:id', del);
 
      };
 

@@ -34,23 +34,23 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/contacts');
 
 
-var contacts = require('./Apis/contactsApi.js')(app);
-var awardss = require('./Apis/awardssApi.js')(app);
-var hourRecords = require('./Apis/hourRecordsApi.js')(app);
-var opportunitys = require('./Apis/opportunitysApi.js')(app);
-var organisations = require('./Apis/organisationsApi.js')(app);
-var organisationAddresss = require('./Apis/organisationAddresssApi.js')(app);
+var contacts = require('./Apis/contactsApi.js');
+// var awardss = require('./Apis/awardssApi.js')(app);
+// var hourRecords = require('./Apis/hourRecordsApi.js')(app);
+// var opportunitys = require('./Apis/opportunitysApi.js')(app);
+// var organisations = require('./Apis/organisationsApi.js')(app);
+// var organisationAddresss = require('./Apis/organisationAddresssApi.js')(app);
     
 
 console.log('About to crank up node');
 console.log('PORT=' + port);
 console.log('NODE_ENV=' + environment);
 
-     app.use(express.static('./src/client/'));
+app.use('/api/contacts', contacts);
+   app.use(express.static('./src/client/'));
          app.use(express.static('./'));
         app.use(express.static('./.tmp/'));
         app.use('/*', express.static('./src/client/index.html'));
-       
 
 
 app.listen(port, function() {

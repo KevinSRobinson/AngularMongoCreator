@@ -110,11 +110,11 @@
          });
        };
 
-       app.post('/opportunitys', create);
-       app.get('/opportunitys', read);
-       app.get('/readAllForCurrentUser', readAllForCurrentUser);
-       app.put('/opportunitys/:id', update);
-       app.delete('/opportunitys/:id', del);
+       app.post('/api/opportunitys', create);
+       app.get('/api/opportunitys', read);
+       app.get('/api/readAllForCurrentUser', readAllForCurrentUser);
+       app.put('/api/opportunitys/:id', update);
+       app.delete('/api/opportunitys/:id', del);
 
      };
 

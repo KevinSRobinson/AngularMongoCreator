@@ -110,11 +110,11 @@
          });
        };
 
-       app.post('/hourRecords', create);
-       app.get('/hourRecords', read);
-       app.get('/readAllForCurrentUser', readAllForCurrentUser);
-       app.put('/hourRecords/:id', update);
-       app.delete('/hourRecords/:id', del);
+       app.post('/api/hourRecords', create);
+       app.get('/api/hourRecords', read);
+       app.get('/api/readAllForCurrentUser', readAllForCurrentUser);
+       app.put('/api/hourRecords/:id', update);
+       app.delete('/api/hourRecords/:id', del);
 
      };
 

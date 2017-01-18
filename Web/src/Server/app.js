@@ -14,6 +14,7 @@
 'use strict';
 
 var express = require('express');
+var router = express.Router();
 var app = express();
 var cors = require('cors');
 var errorHandler = require('./routes/utils/errorHandler')();
@@ -33,25 +34,25 @@ app.use(errorHandler.init);
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/contacts');
 
-
-var contacts = require('./Apis/contactsApi.js');
-// var awardss = require('./Apis/awardssApi.js')(app);
-// var hourRecords = require('./Apis/hourRecordsApi.js')(app);
-// var opportunitys = require('./Apis/opportunitysApi.js')(app);
-// var organisations = require('./Apis/organisationsApi.js')(app);
-// var organisationAddresss = require('./Apis/organisationAddresssApi.js')(app);
-    
+   
 
 console.log('About to crank up node');
 console.log('PORT=' + port);
 console.log('NODE_ENV=' + environment);
 
-app.use('/api/contacts', contacts);
-   app.use(express.static('./src/client/'));
-         app.use(express.static('./'));
-        app.use(express.static('./.tmp/'));
-        app.use('/*', express.static('./src/client/index.html'));
 
+app.use('/api/contacts', require('./Apis/contactsApi'));
+app.use('/api/awardss', require('./Apis/awardssApi'));
+app.use('/api/hourRecords', require('./Apis/hourRecordsApi'));
+app.use('/api/opportunitys', require('./Apis/opportunitysApi'));
+app.use('/api/organisations', require('./Apis/organisationsApi'));
+app.use('/api/organisationAddresss', require('./Apis/organisationAddresssApi'));
+ 
+
+
+app.use(express.static('./'));
+app.use(express.static('./.tmp/'));
+app.use('/*', express.static('./src/client/index.html'));
 
 app.listen(port, function() {
     console.log('Express server listening on port ' + port);

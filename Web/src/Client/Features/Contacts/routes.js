@@ -3,7 +3,7 @@ var config = function ($stateProvider) {
 $stateProvider
     .state('contacts', {
         url: '/contacts',
-        templateUrl: 'Features/Contacts/Views/index.html'
+        templateUrl: 'src/Client/Features/Contacts/Views/index.html'
     }) 
 };
 

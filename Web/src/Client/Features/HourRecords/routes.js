@@ -3,7 +3,7 @@ var config = function ($stateProvider) {
 $stateProvider
     .state('hourRecords', {
         url: '/hourRecords',
-        templateUrl: 'Features/HourRecords/Views/index.html'
+        templateUrl: 'src/Client/Features/HourRecords/Views/index.html'
     }) 
 };
 

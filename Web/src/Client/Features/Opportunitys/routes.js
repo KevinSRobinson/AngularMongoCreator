@@ -3,7 +3,7 @@ var config = function ($stateProvider) {
 $stateProvider
     .state('opportunitys', {
         url: '/opportunitys',
-        templateUrl: 'Features/Opportunitys/Views/index.html'
+        templateUrl: 'src/Client/Features/Opportunitys/Views/index.html'
     }) 
 };
 

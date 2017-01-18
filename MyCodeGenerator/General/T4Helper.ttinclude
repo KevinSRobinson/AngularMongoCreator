@@ -87,7 +87,7 @@
             ListComponentName = string.Format("{0}List",_codeClassHelper.CamelCasePlural);
             ListComponentFileName = string.Format("{0}.js",ListComponentName);
             ListComponentTemplateFileName = string.Format("{0}.html", ListComponentName);
-            ListComponentTemplateUrl = string.Format("Features/{0}/Components/{1}", codeClassHelper.Plural, ListComponentTemplateFileName);
+            ListComponentTemplateUrl = string.Format("src/Client/{0}Components/{2}", FeaturePath, codeClassHelper.Plural, ListComponentTemplateFileName);
             ListComponentTag = GetComponentTag(ListComponentName);
 
            

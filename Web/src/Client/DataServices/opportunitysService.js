@@ -16,7 +16,7 @@ var opportunitysService = function($resource, $http, apiBase) {
     };    
 
     var modify = function(opportunity) {
-		if(hourRecord._id){
+		if(opportunity._id){
 			return $http.put(apiBase + opportunity._id, opportunity);
 		}
 		return $http.post(apiBase, opportunity);        

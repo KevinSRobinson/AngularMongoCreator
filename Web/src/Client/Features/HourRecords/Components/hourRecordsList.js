@@ -3,7 +3,7 @@ bindings: {
 	allowChanges: '@'
 },
 controllerAs: 'vm',
-templateUrl: 'Features/HourRecords/Components/hourRecordsList.html',
+templateUrl: 'src/Client/Features/HourRecords/Components/hourRecordsList.html',
 controller: function (hourRecordsService, hourRecordsModalService) {
     var vm = this;
     vm.error = {};

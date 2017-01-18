@@ -4,7 +4,7 @@ bindings: {
 	allowChanges: '@'
 },
 controllerAs: 'vm',
-templateUrl: 'Features/Navigation/mainLayoutTemplate.html',
+templateUrl: 'src/Client/Features/Navigation/mainLayoutTemplate.html',
 controller: function () {
 	var vm = this;
 

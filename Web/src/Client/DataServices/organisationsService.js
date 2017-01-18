@@ -16,7 +16,7 @@ var organisationsService = function($resource, $http, apiBase) {
     };    
 
     var modify = function(organisation) {
-		if(hourRecord._id){
+		if(organisation._id){
 			return $http.put(apiBase + organisation._id, organisation);
 		}
 		return $http.post(apiBase, organisation);        

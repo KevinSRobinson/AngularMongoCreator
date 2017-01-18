@@ -3,7 +3,7 @@ bindings: {
 	allowChanges: '@'
 },
 controllerAs: 'vm',
-templateUrl: 'Features/Awardss/Components/awardssList.html',
+templateUrl: 'src/Client/Features/Awardss/Components/awardssList.html',
 controller: function (awardssService, awardssModalService) {
     var vm = this;
     vm.error = {};

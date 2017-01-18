@@ -3,7 +3,7 @@ bindings: {
 	allowChanges: '@'
 },
 controllerAs: 'vm',
-templateUrl: 'Features/OrganisationAddresss/Components/organisationAddresssList.html',
+templateUrl: 'src/Client/Features/OrganisationAddresss/Components/organisationAddresssList.html',
 controller: function (organisationAddresssService, organisationAddresssModalService) {
     var vm = this;
     vm.error = {};

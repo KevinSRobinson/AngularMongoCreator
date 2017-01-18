@@ -1,7 +1,6 @@
 
-var config = function ($stateProvider,  $urlRouterProvider, $locationProvider) {
+var config = function ($stateProvider,  $urlRouterProvider) {
 
-    $locationProvider.html5Mode(true);
     var homeState = {
         name: 'home',
         url: '/',
@@ -22,10 +21,10 @@ var config = function ($stateProvider,  $urlRouterProvider, $locationProvider) {
     $stateProvider.state(homeState);
     $stateProvider.state(aboutState);   
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/home');
 };
 
-config.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
+config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 angular.module("app").config(config);
 

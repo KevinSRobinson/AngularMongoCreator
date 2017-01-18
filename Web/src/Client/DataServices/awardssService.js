@@ -16,7 +16,7 @@ var awardssService = function($resource, $http, apiBase) {
     };    
 
     var modify = function(awards) {
-		if(hourRecord._id){
+		if(awards._id){
 			return $http.put(apiBase + awards._id, awards);
 		}
 		return $http.post(apiBase, awards);        

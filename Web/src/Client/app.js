@@ -7,7 +7,9 @@
    
     app.constant("apiBase", "http://localhost:7000/api/")
 
-  var config = function (lockProvider, jwtOptionsProvider, $httpProvider) {
+  var config = function (lockProvider, jwtOptionsProvider, $httpProvider, $locationProvider) {
+
+     $locationProvider.html5Mode(true);
 
     // Configuration for angular-jwt
     jwtOptionsProvider.config({
@@ -25,7 +27,7 @@
   };
 
 
-  config.$inject = ['lockProvider', 'jwtOptionsProvider', '$httpProvider'];
+  config.$inject = ['lockProvider', 'jwtOptionsProvider', '$httpProvider', '$locationProvider'];
 
   app.config(config);
 })();

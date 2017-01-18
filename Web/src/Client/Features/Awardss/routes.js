@@ -3,7 +3,7 @@ var config = function ($stateProvider) {
 $stateProvider
     .state('awardss', {
         url: '/awardss',
-        templateUrl: 'Features/Awardss/Views/index.html'
+        templateUrl: 'src/Client/Features/Awardss/Views/index.html'
     }) 
 };
 

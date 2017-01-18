@@ -1,124 +1,122 @@
 ﻿
 <#+ void GenerateApis(CodeClassHelper helper){ #>     
 
-     var _ = require('lodash');
-     var <#=helper.Name#>= require('../models/<#=helper.CamelCasePlural#>Model.js');
-     var mongoose = require('mongoose');
+var _ = require('lodash');
+var <#=helper.Name#>= require('../models/<#=helper.CamelCasePlural#>Model.js');
+var mongoose = require('mongoose');
+var express = require('express');
+var router = express.Router();
+    
+var create = function (req, res) {
 
-     module.exports = function (app) {
+    function save(err) {
+    if (err) {
+        res.json({
+        info: 'error during <#=helper.CamelCase#> create',
+        error: err
+        });
+    }
+    res.json({
+        info: '<#=helper.CamelCase#> created successfully',
+        data: new<#=helper.CamelCase#>
+    });
+    };
 
-       var create = function (req, res) {
-
-         function save(err) {
-           if (err) {
-             res.json({
-               info: 'error during <#=helper.CamelCase#> create',
-               error: err
-             });
-           }
-           res.json({
-             info: '<#=helper.CamelCase#> created successfully',
-             data: new<#=helper.CamelCase#>
-           });
-         };
-
-         var new<#=helper.CamelCase#> = new <#=helper.Name#>(req.body);
-         newcontact.UserId = tokenHelper.getUserIdFromToken(req);
-         new<#=helper.CamelCase#>.save(save);
-       };
-
-
+    var new<#=helper.CamelCase#> = new <#=helper.Name#>(req.body);
+    newcontact.UserId = tokenHelper.getUserIdFromToken(req);
+    new<#=helper.CamelCase#>.save(save);
+};
 
 
-
-       var readAllForCurrentUser = function (req, res) {
-         function get(err, <#=helper.CamelCasePlural#>) {
-           if (err) {
-             res.json({
-               info: 'error during find contacts by user',
-               error: err
-             });
-           }
-           res.json({
-             info: '<#=helper.CamelCasePlural#> For User found successfully',
-             data: <#=helper.CamelCasePlural#>
-           });
-         };
-         var id = tokenHelper.getUserIdFromToken(req);
-         <#=helper.Name#>.find({UserId: id}, get);
-       };
-
-       var read = function (req, res) {
-         function get(err, <#=helper.CamelCasePlural#>) {
-           if (err) {
-             res.json({
-               info: 'error during find <#=helper.CamelCasePlural#>',
-               error: err
-             });
-           }
-           res.json({
-             info: '<#=helper.CamelCasePlural#> found successfully',
-             data: <#=helper.CamelCasePlural#>
-           });
-         };
-         <#=helper.Name#>.find({}, get);
-       };
+var readAllForCurrentUser = function (req, res) {
+    function get(err, <#=helper.CamelCasePlural#>) {
+    if (err) {
+        res.json({
+        info: 'error during find contacts by user',
+        error: err
+        });
+    }
+    res.json({
+        info: '<#=helper.CamelCasePlural#> For User found successfully',
+        data: <#=helper.CamelCasePlural#>
+    });
+    };
+    var id = tokenHelper.getUserIdFromToken(req);
+    <#=helper.Name#>.find({UserId: id}, get);
+};
 
 
 
-       var update = function (req, res) {
+var read = function (req, res) {
+    function get(err, <#=helper.CamelCasePlural#>) {
+    if (err) {
+        res.json({
+        info: 'error during find <#=helper.CamelCasePlural#>',
+        error: err
+        });
+    }
+    res.json({
+        info: '<#=helper.CamelCasePlural#> found successfully',
+        data: <#=helper.CamelCasePlural#>
+    });
+    };
+    <#=helper.Name#>.find({}, get);
+};
 
-         function find(err, <#=helper.CamelCase#>) {
-           if (err) {
-             res.json({
-               info: 'error during find <#=helper.CamelCase#>',
-               error: err
-             });
-           }
-           if (<#=helper.CamelCase#>) {
-             _.merge(<#=helper.CamelCase#>, req.body);
-             <#=helper.CamelCase#>.save(function (err) {
-               if (err) {
-                 res.json({
-                   info: 'error during update <#=helper.CamelCase#>',
-                   error: err
-                 });
-               }
-               res.json({
-                 info: '<#=helper.CamelCase#> updated successfully'
-               });
-             });
-           } else {
-             res.json({
-               info: '<#=helper.CamelCase#> not found'
-             });
-           }
-         };
 
-         <#=helper.Name#>.findById(req.params.id, find);
-       };
+var update = function (req, res) {
 
-       var del = function (req, res) {
-         <#=helper.Name#>.findByIdAndRemove(req.params.id, function (err) {
-           if (err) {
-             res.json({
-               info: 'error during remove <#=helper.CamelCase#>'
-             });
-           }
-           res.json({
-             info: '<#=helper.CamelCase#> removed successfully'
-           });
-         });
-       };
+    function find(err, <#=helper.CamelCase#>) {
+    if (err) {
+        res.json({
+        info: 'error during find <#=helper.CamelCase#>',
+        error: err
+        });
+    }
+    if (<#=helper.CamelCase#>) {
+        _.merge(<#=helper.CamelCase#>, req.body);
+        <#=helper.CamelCase#>.save(function (err) {
+        if (err) {
+            res.json({
+            info: 'error during update <#=helper.CamelCase#>',
+            error: err
+            });
+        }
+        res.json({
+            info: '<#=helper.CamelCase#> updated successfully'
+        });
+        });
+    } else {
+        res.json({
+        info: '<#=helper.CamelCase#> not found'
+        });
+    }
+    };
 
-       app.post('/api/<#=helper.CamelCase#>s', create);
-       app.get('/api/<#=helper.CamelCase#>s', read);
-       app.get('/api/readAllForCurrentUser', readAllForCurrentUser);
-       app.put('/api/<#=helper.CamelCase#>s/:id', update);
-       app.delete('/api/<#=helper.CamelCase#>s/:id', del);
+    <#=helper.Name#>.findById(req.params.id, find);
+};
 
-     };
+var del = function (req, res) {
+    <#=helper.Name#>.findByIdAndRemove(req.params.id, function (err) {
+    if (err) {
+        res.json({
+        info: 'error during remove <#=helper.CamelCase#>'
+        });
+    }
+    res.json({
+        info: '<#=helper.CamelCase#> removed successfully'
+    });
+    });
+};
 
+router.post('/', create);
+router.get('/', read);
+router.get('/readAllForCurrentUser', readAllForCurrentUser);
+router.put('/:id', update);
+router.delete('/:id', del);
+
+
+module.exports = router;
 
 
 

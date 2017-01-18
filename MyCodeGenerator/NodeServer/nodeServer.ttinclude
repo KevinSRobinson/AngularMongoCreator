@@ -5,6 +5,7 @@
 'use strict';
 
 var express = require('express');
+var router = express.Router();
 var app = express();
 var cors = require('cors');
 var errorHandler = require('./routes/utils/errorHandler')();
@@ -24,26 +25,27 @@ app.use(errorHandler.init);
 var mongoose = require('mongoose');
 mongoose.connect('<#=mongoLocalServer#>');
 
-
-<#+        
-foreach(CodeClass codeClass in codeClasses){
-            var helper = new CodeClassHelper(codeClass);
-          
-            var apiReference = String.Format("var {0} = require('./Apis/{0}Api.js')(app);", helper.CamelCasePlural);
-
-            WriteLine(apiReference);
-        }
-#>    
+   
 
 console.log('About to crank up node');
 console.log('PORT=' + port);
 console.log('NODE_ENV=' + environment);
 
-   app.use(express.static('./src/client/'));
-         app.use(express.static('./'));
-        app.use(express.static('./.tmp/'));
-        app.use('/*', express.static('./src/client/index.html'));
 
+<#+        
+foreach(CodeClass codeClass in codeClasses){
+            var helper = new CodeClassHelper(codeClass);
+          
+            var apiReference = String.Format("app.use('./api/{0}', require('./Apis/{0}Api'));", helper.CamelCasePlural);
+
+            WriteLine(apiReference);
+        }
+#> 
+
+
+app.use(express.static('./'));
+app.use(express.static('./.tmp/'));
+app.use('/*', express.static('./src/client/index.html'));
 
 app.listen(port, function() {
     console.log('Express server listening on port ' + port);

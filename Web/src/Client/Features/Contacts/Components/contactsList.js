@@ -3,7 +3,7 @@ bindings: {
 	allowChanges: '@'
 },
 controllerAs: 'vm',
-templateUrl: 'Features/Contacts/Components/contactsList.html',
+templateUrl: 'src/Client/Features/Contacts/Components/contactsList.html',
 controller: function (contactsService, contactsModalService) {
     var vm = this;
     vm.error = {};
@@ -16,7 +16,6 @@ controller: function (contactsService, contactsModalService) {
     vm.loadcontactss = function(){
         var contactsPromise= contactsService.GetAllForCurrentUser();
         contactsPromise.then(function(response){
-            console.log(response);
 	        vm.contacts = response.data.data;
         }).catch(function(error){
 	        vm.error = error;

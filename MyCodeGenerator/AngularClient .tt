@@ -63,26 +63,7 @@
     this.Generate_PackageJson();
     this.GenerateGulpFile();
     this.GenerateGulpConfigFile();
-
-    ////gulp
-    //this.Generate_Gulp_File();
-    //this.Generate_Gulp_Task_BrowserSync();
-    //this.Generate_Gulp_Task_Build();
-    //this.Generate_Gulp_Task_Inject();
-    //this.Generate_Gulp_Task_Karma();
-    //this.Generate_Gulp_Task_Misc();
-    //this.Generate_Gulp_Task_Partials();
-    //this.Generate_Gulp_Task_Scripts();
-    //this.Generate_Gulp_Task_Styles();
-    //this.Generate_Gulp_Conf_BrowserSync();
-    //this.Generate_Gulp_Conf_BrowserSync_Dist();
-    //this.Generate_Gulp_Conf();
-    //this.Generate_Gulp_Conf_Karma_Auto();
-    //this.Generate_Gulp_Conf_Karma();
-    //this.Generate_Gulp_Conf_KarmaFiles();
-    //node server
-    //this.GeneratePackageJson();
-    //this.GenerateNodeJsSeverAppFile(classes);
+  
         
     //index           
     this.GenerateMainIndexPage(classes);
@@ -103,7 +84,7 @@
     //login + user
     this.Gereratre_Login_Component();
     this.Generate_Login_ComponentTemplate();
-    this.Generate_User_Routes();
+    //this.Generate_User_Routes();
 
     //e2e Tests
     this.GenerateProtractorConfig();

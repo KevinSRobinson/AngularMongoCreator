@@ -6,7 +6,8 @@
     user-menu-items="vm.userMenuItems"
     alert-menu-items="vm.alertMenuItems",
     footer-links="vm.footerLinks"
-    user-name="{{vm.userName}}">  
+    user-name="{{vm.userName}}"> 
+        <div ui-view></div> 
 </admin-layout>
 <#+    
   	CreateDirectoryFullPath(clientAppPath + ClientCommon.MainLayoutComponentFilePath);

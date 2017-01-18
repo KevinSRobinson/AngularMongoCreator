@@ -7,7 +7,7 @@ var login = {
         vm.authService = authService;
 
     },
-    templateUrl: 'src/Client/Features/User/Login/loginTemplate.html'
+    templateUrl: '/Login/LoginTemplate.html'
 };
 
 login.$inject = ['authService'];

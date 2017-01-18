@@ -1,0 +1,10 @@
+﻿
+<#+ void GenerateAppFile(){ #>
+
+test
+
+<#+
+    CreateDirectoryFullPath(ionicSrcPath);
+    CreateFile(ionicSrcPath + "app.js");
+	}	
+#>

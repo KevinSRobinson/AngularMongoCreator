@@ -53,6 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IonicApp.cs">
+      <DependentUpon>IonicApp.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="AngularClient XML.cs">
       <DependentUpon>AngularClient XML.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -104,6 +109,11 @@
     <None Include="Client\Auth0\auth0Variables.ttinclude" />
     <None Include="Client\Auth0\auth0Config.ttinclude" />
     <None Include="General\JsonHelpers.ttinclude" />
+    <None Include="Ionic\configXML.ttinclude" />
+    <None Include="Ionic\app.ttinclude" />
+    <None Include="Ionic\PackageManagers\bower.ttinclude" />
+    <None Include="Ionic\PackageManagers\bowerc.ttinclude" />
+    <None Include="Ionic\PackageManagers\package.ttinclude" />
     <None Include="NodeServer\Apis\ApiHelpers.ttinclude" />
     <None Include="NodeServer\Apis\ServerApis.ttinclude" />
     <None Include="NodeServer\Controllers\DataControllers.ttinclude" />
@@ -145,6 +155,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="IonicApp.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IonicApp.cs</LastGenOutput>
+    </Content>
     <Content Include="AngularClient XML.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AngularClient XML.cs</LastGenOutput>

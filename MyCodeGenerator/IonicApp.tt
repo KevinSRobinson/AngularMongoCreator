@@ -1,0 +1,30 @@
+<#@ template language="C#" debug="false" hostspecific="true" #>
+<#@ assembly name="System" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.Entity" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="EnvDTE" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Reflection" #>
+<#@ include file="General/T4Helper.ttinclude" #>
+<#@ include file="Ionic/app.ttinclude" #>
+<#@ include file="Ionic/PackageManagers/bower.ttinclude" #>
+<#@ include file="Ionic/PackageManagers/bowerc.ttinclude" #>
+<#@ include file="Ionic/PackageManagers/package.ttinclude" #>
+<#@ include file="Ionic/configXML.ttinclude" #>
+
+<#  
+    //Get all classes from the model
+    var classes = GetClasses();    
+   
+
+    //packages
+    this.Generate_PackageJson();
+    this.GenerateBowerFile();
+    this.GenerateAppFile();
+    
+    this.GenerateConfigXML();
+#>

@@ -5,9 +5,9 @@
 
    var app = angular.module('app', ['ui.router', 'ui.bootstrap', 'my-angular-components', 'auth0.lock', 'angular-jwt']);
    
-    app.constant("apiBase", "http://localhost:7000/")
+    app.constant("apiBase", "http://localhost:7000/api/")
 
-  var config = function (lockProvider, jwtOptionsProvider, $httpProvider) {
+  var config = function (lockProvider, jwtOptionsProvider,$httpProvider) {
 
     // Configuration for angular-jwt
     jwtOptionsProvider.config({
@@ -21,7 +21,7 @@
       domain: 'volunteernow.auth0.com'
     });
 
- $httpProvider.interceptors.push('jwtInterceptor');
+    $httpProvider.interceptors.push('jwtInterceptor');
   };
 
 

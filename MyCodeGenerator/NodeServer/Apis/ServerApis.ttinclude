@@ -111,11 +111,11 @@
          });
        };
 
-       app.post('/<#=helper.CamelCase#>s', create);
-       app.get('/<#=helper.CamelCase#>s', read);
-       app.get('/readAllForCurrentUser', readAllForCurrentUser);
-       app.put('/<#=helper.CamelCase#>s/:id', update);
-       app.delete('/<#=helper.CamelCase#>s/:id', del);
+       app.post('/api/<#=helper.CamelCase#>s', create);
+       app.get('/api/<#=helper.CamelCase#>s', read);
+       app.get('/api/readAllForCurrentUser', readAllForCurrentUser);
+       app.put('/api/<#=helper.CamelCase#>s/:id', update);
+       app.delete('/api/<#=helper.CamelCase#>s/:id', del);
 
      };
 

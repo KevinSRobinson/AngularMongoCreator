@@ -39,6 +39,12 @@ console.log('About to crank up node');
 console.log('PORT=' + port);
 console.log('NODE_ENV=' + environment);
 
+   app.use(express.static('./src/client/'));
+         app.use(express.static('./'));
+        app.use(express.static('./.tmp/'));
+        app.use('/*', express.static('./src/client/index.html'));
+
+
 app.listen(port, function() {
     console.log('Express server listening on port ' + port);
     console.log('env = ' + app.get('env') +

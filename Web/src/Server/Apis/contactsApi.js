@@ -3,7 +3,7 @@
      var _ = require('lodash');
      var Contact= require('../models/contactsModel.js');
      var mongoose = require('mongoose');
-
+     var tokenHelper= require('./apiHelpers');
      module.exports = function (app) {
 
        var create = function (req, res) {
@@ -23,6 +23,7 @@
 
          var newcontact = new Contact(req.body);
          newcontact.UserId = tokenHelper.getUserIdFromToken(req);
+         console.log(newcontact.UserId);
          newcontact.save(save);
        };
 
@@ -44,6 +45,7 @@
            });
          };
          var id = tokenHelper.getUserIdFromToken(req);
+          console.log(newcontact.UserId);
          Contact.find({UserId: id}, get);
        };
 
@@ -110,11 +112,11 @@
          });
        };
 
-       app.post('/contacts', create);
-       app.get('/contacts', read);
-       app.get('/readAllForCurrentUser', readAllForCurrentUser);
-       app.put('/contacts/:id', update);
-       app.delete('/contacts/:id', del);
+       app.post('/api/contacts', create);
+       app.get('/api/contacts', read);
+       app.get('/api/readAllForCurrentUser', readAllForCurrentUser);
+       app.put('/api/contacts/:id', update);
+       app.delete('/api/contacts/:id', del);
 
      };
 

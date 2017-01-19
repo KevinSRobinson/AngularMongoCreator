@@ -1,0 +1,33 @@
+<#@ assembly name="System.Core" #>
+<#@ assembly name="EnvDTE"#>
+<#@ assembly name="EnvDTE80" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#+
+
+
+    //Creates a new File using the full path
+    public void CreateNewFile(string outputFilePath, string fileName)
+    {
+        CreateDirectoryFullPath(outputFilePath);
+        ProcessContent(outputFilePath + fileName, this.GenerationEnvironment.ToString());
+        this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
+    }
+
+    //Generates a new file from a string
+    public void Generate_File(string fileName, string frompath, string toPath){  
+        var fullpath = frompath + fileName;
+        string fileString = System.IO.File.ReadAllText(frompath + @"\" + fileName);
+        CreateNewFileWithString(toPath , fileName, fileString);
+    }	
+
+    public void CreateNewFileWithString(string outputFilePath, string fileName, string content)
+    {
+        CreateDirectoryFullPath(outputFilePath);
+        ProcessContent(outputFilePath + fileName, content);
+        this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
+    }
+#>

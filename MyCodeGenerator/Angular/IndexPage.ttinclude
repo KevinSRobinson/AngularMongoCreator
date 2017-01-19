@@ -1,0 +1,28 @@
+﻿<#+ void Generate_App_Index(){#>
+<!doctype html>
+<html lang="en" ng-app="<#=applicationName#>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><#=applicationTitle#></title>
+
+    <!-- bower:css -->
+    <!-- endbower -->
+
+    <!-- inject:css -->
+    <!--endinject-->
+
+    <base href="/">
+</head>
+<body style="margin-left:130px">
+    <main-layout></main-layout>
+
+    <!--bower:js -->
+    <!--endbower-->
+ 
+    <!-- inject:js -->
+    <!--endinject-->
+
+</body>
+</html>
+<#+ CreateNewFile(Angular_BasePath, "package.jsonIndex.html"); }  #>

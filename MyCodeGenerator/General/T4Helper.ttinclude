@@ -9,17 +9,6 @@
 
 
 
-    void Generate_File(string fileName, string frompath, string toPath){  
-        var fullpath = frompath + fileName;
-        string fileString = System.IO.File.ReadAllText(frompath + @"\" + fileName);
-        CreateNewFileWithString(toPath , fileName, fileString);
-    }	
-
-
-
-
-
-
 
 
     public static class ClientCommon
@@ -33,99 +22,8 @@
           public static string LoginComponentTemplateUrl = "/Login/LoginTemplate.html";
     }
 
-    public class AngularClient  {
 
 
-        private CodeClassHelper _codeClassHelper;
-
-        public string ServiceName  = "";  
-        public string ServiceFileName   = ""; 
-        public string FeaturePath = "";
-        public string StylesPath = "";
-        public string ViewsPath  = "";
-
-        //Modals
-        public string ModalsFilePath = "";
-        public string ModifyModalController = "";
-
-        public string ModalServiceName ="";
-        public string ModifyModalControllerFileName  = "";
-        public string ModalServiceNameFileName ="";
-        public string ModifyModalTemplateFileName = "";
-
-
-        //Components
-        public string ListComponentFilePath  ="";
-        public string ListComponentName ="";
-        public string ListComponentFileName  = "";
-        public string ListComponentTag = "";
-        public string ListComponentTemplateFileName  = "";
-        public string ListComponentTemplateUrl = "";
-
-
-        //login
-        public string LoginComponentFilePath = "";
-        public string LoginComponentTemplateUrl = "";
-
-        //Index View
-        public string IndexTemplateUrl = "";
-        
-
-        public AngularClient(CodeClassHelper codeClassHelper){
-
-
-            _codeClassHelper =codeClassHelper;
-
-
-            //Main features path
-            FeaturePath = "Features/" + _codeClassHelper.Plural + "/";
-            ViewsPath = FeaturePath + "/Views/";
-            
-
-            //DataServices
-            ServiceName  = _codeClassHelper.CamelCasePlural + "Service";  
-            ServiceFileName  = ServiceName + ".js"; 
-
-
-            //Modals
-            ModalsFilePath = string.Format("{0}{1}/", FeaturePath , "Modals"); 
-            ModalServiceName    =  string.Format("{0}ModalService", codeClassHelper.CamelCasePlural);
-            ModalServiceNameFileName    =  string.Format("{0}.js", ModalServiceName);
-            ModifyModalController =  string.Format("modify{0}ModalController", codeClassHelper.Name);
-            ModifyModalControllerFileName = string.Format("{0}.js", ModifyModalController);
-            ModifyModalTemplateFileName = string.Format("{0}Template.html", ModifyModalController);
-
-           
-
-            //Components
-            ListComponentFilePath = string.Format("{0}Components/",FeaturePath);
-            ListComponentName = string.Format("{0}List",_codeClassHelper.CamelCasePlural);
-            ListComponentFileName = string.Format("{0}.js",ListComponentName);
-            ListComponentTemplateFileName = string.Format("{0}.html", ListComponentName);
-            ListComponentTemplateUrl = string.Format("src/Client/{0}Components/{2}", FeaturePath, codeClassHelper.Plural, ListComponentTemplateFileName);
-            ListComponentTag = GetComponentTag(ListComponentName);
-
-           
-            //main index view
-            IndexTemplateUrl = string.Format("Features/{0}/Views/index.html", codeClassHelper.Plural);
-            
-
-        }
-
-     private string GetComponentTag(string componentName){
-            
-            var output = "";
-            foreach (char letter in componentName)
-            {
-               if (Char.IsUpper(letter) && output.Length > 0)
-                 output += "-" + letter;
-               else
-                 output += letter;
-            }
-            return string.Format("<{0}></{0}>", output.ToLower());
-        }  
-   
-    }
 
 
 
@@ -218,26 +116,16 @@
 
 
 
-    public string GetDtoClassName(CodeClass codeClass)    {
-       return codeClass.Name + "Dto";
-    }
+    //public string GetDtoClassName(CodeClass codeClass)    {
+       //return codeClass.Name + "Dto";
+    //}
+//
+    //public string GetDtoCamelcaseClassName(CodeClass codeClass)  {
+       //return GetCamelcaseClassName(codeClass.Name) + "Dto";
+    //}
 
-    public string GetDtoCamelcaseClassName(CodeClass codeClass)  {
-       return GetCamelcaseClassName(codeClass.Name) + "Dto";
-    }
 
-public void CreateNewFile(string outputFilePath, string fileName)
-    {
-        CreateDirectoryFullPath(outputFilePath);
-        ProcessContent(outputFilePath + fileName, this.GenerationEnvironment.ToString());
-        this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
-    }
-public void CreateNewFileWithString(string outputFilePath, string fileName, string content)
-    {
-        CreateDirectoryFullPath(outputFilePath);
-        ProcessContent(outputFilePath + fileName, content);
-        this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
-    }
+
     public void CreateDirectoryFullPath(string outputFilePath){
         var di = Directory.CreateDirectory(outputFilePath);                          
     }	
@@ -249,12 +137,12 @@ public void CreateNewFileWithString(string outputFilePath, string fileName, stri
     }
 
 
-    public void CreateDirectory(string outputFileName){
-			    string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
-				    string outputFilePath = Path.Combine(templateDirectory, outputFileName);
-				    var di = Directory.CreateDirectory(outputFilePath);                          
-            
-    }
+    //public void CreateDirectory(string outputFileName){
+			    //string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
+				    //string outputFilePath = Path.Combine(templateDirectory, outputFileName);
+				    //var di = Directory.CreateDirectory(outputFilePath);                          
+            //
+    //}
 
 	 //Generating Seperate Files
 public void ProcessContentFullPath(string path, string outputFileName, string content)
@@ -436,133 +324,7 @@ public void ProcessContent(string outputFileName, string content)
 
 
 
-    //////////////////////////////////////
-    ////JSON
-    string GenerateSampleJsonCollection(string name, CodeClass codeclass, int numberOfItems){
-        
-        var jsonCollection= "[";
-
-        //create 
-        for(int i=1; i<numberOfItems; i++){
-            jsonCollection += GeneratJsonObject(i, codeclass);
-        }
-
-        //remove last commma
-        jsonCollection = jsonCollection.Substring(0, jsonCollection.Length -1);
-
-        //close colleciton
-        jsonCollection += "]";
-
-        return jsonCollection;
-    }
-
     
-
-    bool IsProperty(string memberType){
-        return memberType == "vsCMElementProperty";
-    }   
-    
-    string GeneratJsonObject(int count, CodeClass codeClass){
-       
-        var jsonObject = "{";
-           
-        //write a property with test value for each
-        foreach (CodeElement meb in codeClass.Members) {
-            if (IsProperty(meb.Kind.ToString())) {			
-                jsonObject += GetJsonProperty(meb, GetTestValue(count, meb));
-            };
-        }
-        
-        jsonObject = jsonObject.Substring(0, jsonObject.Length -1);
-        jsonObject += "},";
-
-        return jsonObject;
-
-    }
-  
-
-    
-    string GetTestValue(int count, CodeElement member){
-        
-        var prop = member as CodeProperty;	
-
-        //Get the property Type
-	    var type = prop.Type.AsString;
-
-        switch(type){
-            case "string":
-                return WrapInDoubleQuotes("Test Value");  
-                break;      
-            case "int":
-                return count.ToString();
-                break;
-            case "System.Guid":
-                return WrapInDoubleQuotes(Guid.NewGuid().ToString());
-                break;
-		    default:
-                    return type;
-                break;
-		    }
-    }
-
-    string WrapInDoubleQuotes(string val){
-        return String.Format("{0}{1}{0}", Convert.ToChar(34), val);
-    }
-
-
-
-
-    string GetJsonProperty(CodeElement member, string val){
-        var prop = member as CodeProperty;		
-        return String.Format("{0}{1}{0}:{2},", Convert.ToChar(34), GetCamelcaseClassName(prop.Name), val);
-    }
-
-    //////////////////////////////////
-    //Mongo DB
-    string GetMongoDbSchema(CodeClassHelper helper){
-        var schema = "";
-        foreach (CodeElement meb in helper.CodeClass.Members) {
-            if (IsProperty(meb.Kind.ToString())) {	
-                schema += GetJsonSchemaProperty(meb);      
-            };           
-        }
-        return schema;
-    }
-    string GetJsonSchemaProperty(CodeElement member){
-        var prop = member as CodeProperty;	
-
-        //Get the property Type
-	    var type = prop.Type.AsString;
-
-        var mongooseSchemaType = "";
-
-        switch(type)
-            {   
-               case "string"  :
-                    mongooseSchemaType = "String";
-                    break;
-               case "int"  :
-                    mongooseSchemaType = "Number";
-                    break;
-               case "System.Guid"  :
-                    mongooseSchemaType = "String";
-                    break;
-               default:
-                    mongooseSchemaType = "String";
-                    break;
-            }
-
-
-        return String.Format("{0} : {1}, ", member.Name, mongooseSchemaType);
-    }
-
-    string GetDateSchemaProperty(string fieldName){
-        var property =  fieldName + ": {" ;
-        property += " type: Date," ;
-        property += " default: Date.now"  ;
-        property += " }} "  ;
-        return property;   
-    }
 
   
 #>

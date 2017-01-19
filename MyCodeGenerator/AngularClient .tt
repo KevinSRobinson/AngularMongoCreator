@@ -10,6 +10,9 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Reflection" #>
 <#@ include file="General/T4Helper.ttinclude" #>
+<#@ include file="General/AngularClient.ttinclude" #>
+<#@ include file="General/JsonHelpers.ttinclude" #>
+<#@ include file="General/FileHelpers.ttinclude" #>
 <#@ include file="Client/IndexPage.ttinclude" #>
 <#@ include file="Client/app.ttinclude" #>
 <#@ include file="Client/auth0Service.ttinclude" #>
@@ -69,7 +72,7 @@
     this.GenerateMainIndexPage(classes);
 
     //Core App
-    this.GenerateAppFile();
+    this.Generate_ApppFile();
     this.GenerateAppRunFile();
     this.GenerateAuthServiceFile(); 
 

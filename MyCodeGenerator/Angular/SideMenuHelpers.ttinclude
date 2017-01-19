@@ -1,0 +1,26 @@
+<#@ assembly name="System.Core" #>
+<#@ assembly name="EnvDTE"#>
+<#@ assembly name="EnvDTE80" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#+
+
+    
+    //Loop Classes and Write out Menu Items For each
+    void WriteSideMenuItems(List<CodeClass> codeClasses){
+        foreach(var codeClass in codeClasses)
+        {
+            WriteSideMenuItem(codeClass);
+        }
+    }
+
+    //Write out Side Menu Item
+    void WriteSideMenuItem(CodeClass codeClass){
+        var c = new CodeClassHelper(codeClass);
+        WriteLine("<li><a ui-sref='" +  c.CamelCasePlural + "'>" +  c.Plural  + "</a></li>");
+    }
+
+#>

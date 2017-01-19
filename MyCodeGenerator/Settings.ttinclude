@@ -3,14 +3,33 @@
     const string applicationName = "app";
     const string applicationTitle = "Sample Contacts";
     const string applicationAuthor = "Kevin Robinson";
-
-    const string nodeServerPort = "8989";
+    
 
     const string basePath= "C:/Repos/NodeMongoAngular/Web/";
    
     string efContext = "SampleDbContext"; 
     string dataContextNamespace = "Data";
 
+
+    //Common
+    const string Application_Name = "app";
+
+
+
+    //Ports
+    const string Node_ServerPort = "7204";
+    const string MainBasePath = "C:/Repos/NodeMongoAngular/Web/";
+
+    
+    //Auth0
+    const string Auth0_Domain = "volunteernow.auth0.com";
+    const string Auth0_ClientID = "UY5BHrujRwp7y1TZQl1Bif88aeeVRkrU";
+
+
+    //Angular
+    const string Angular_BasePath = MainBasePath + "src/Client1/";
+    const string Angular_DataServices_Path = Angular_BasePath + "DataServices/";
+    const string Angular_Features_Path = Angular_BasePath + "Features/";
 
 
     //Ionic
@@ -21,6 +40,31 @@
     const string ionicCssPath = ionicSrcPath + "css/";
     const string ionicTemplatesPath = ionicSrcPath + "templates/";
     const string ionicJsPath = ionicSrcPath + "js/";
+
+
+    //mongo
+    const string databaseName = "contacts";
+    const string mongoRemoteServer = "mongodb://user1:Eastwood44@ds013206.mlab.com:13206/" + databaseName;
+    const string mongoLocalServer = "mongodb://localhost:27017/" + databaseName;
+
+
+
+
+
+
+
+
+
+
+
+    //node server
+    const string NodeServerPath = serverSrcBasePath;
+    const string NodeApiDataControllersPath = NodeServerPath + "/Controllers/";
+    const string NodeApiSchemasPath = NodeServerPath + "/Models/";
+    const string NodeApisPath = NodeServerPath + "/Apis/";
+
+
+
 
 
     //client
@@ -44,20 +88,12 @@
  
 
 
-    //node server
-    const string NodeServerPath = serverSrcBasePath;
-    const string NodeApiDataControllersPath = NodeServerPath + "/Controllers/";
-    const string NodeApiSchemasPath = NodeServerPath + "/Models/";
-    const string NodeApisPath = NodeServerPath + "/Apis/";
-
+   
 
    
 
    
-        //mongo
-    const string databaseName = "contacts";
-    const string mongoRemoteServer = "mongodb://user1:Eastwood44@ds013206.mlab.com:13206/" + databaseName;
-    const string mongoLocalServer = "mongodb://localhost:27017/" + databaseName;
+    
     
     
 

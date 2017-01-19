@@ -1,0 +1,41 @@
+﻿<#+ void Generate_DataServices(Feature feature){ #>
+var <#=feature.DataService.ServiceName#> = function($resource, $http, apiBase) {
+	
+    apiBase += "/<#=feature._.Name#>";
+
+    var getAll = function(){
+		return $http.get(apiBase);
+	};
+
+    var getById = function(id) {
+		return $http.get(apiBase + id);
+	};
+    
+    var getAllForCurrentUser = function() {
+        return $http.get(apiBase + '/readAllForCurrentUser');
+    };    
+
+    var modify = function("/<#=feature._.CamelCase#>") {
+		if(<#=feature._.CamelCase#>._id){
+			return $http.put(apiBase + <#=feature._.CamelCase#>._id, <#=feature._.CamelCase#>);
+		}
+		return $http.post(apiBase, <#=feature._.CamelCase#>);        
+    };
+
+  
+    var del = function( <#=feature._.CamelCase#>) {
+		return $http.delete(apiBase, <#=feature._.CamelCase#>);
+	};
+
+    return {
+	    GetAll : getAll,
+	    GetById : getById,
+	    Modify : modify,
+	    Delete : del,
+        GetAllForCurrentUser: getAllForCurrentUser
+    };
+};
+
+
+<#+ CreateNewFile(Angular_DataServices_Path, feature.DataService.FileName); }  #>
+

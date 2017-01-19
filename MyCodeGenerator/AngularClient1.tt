@@ -1,0 +1,49 @@
+<#@ template language="C#" debug="false" hostspecific="true" #>
+<#@ assembly name="System" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.Entity" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="EnvDTE" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Reflection" #>
+<#@ include file="General/AngularClient.ttinclude" #>
+<#@ include file="General/JsonHelpers.ttinclude" #>
+<#@ include file="General/FileHelpers.ttinclude" #>
+<#@ include file="General/T4Helper.ttinclude" #>
+<#@ include file="Angular/app.ttinclude" #>
+<#@ include file="Angular/SideMenuHelpers.ttinclude" #>
+<#@ include file="Angular/appRun.ttinclude" #>
+<#@ include file="Angular/auth0Service.ttinclude" #>
+<#@ include file="Angular/package.ttinclude" #>
+<#@ include file="Angular/IndexPage.ttinclude" #>
+<#@ include file="Angular/DataServices/angularServices.ttinclude" #>
+<#@ include file="Angular/Features/Components/listComponent.ttinclude" #>
+
+<#  
+    //Get all classes from the model
+    var classes = GetClasses();    
+   
+    //app
+    this.Generate_App();
+    this.Generate_App_Run();
+    this.Generate_App_Auth0Service();
+    this.Generate_App_Index();
+    this.Generate_App_PackageJson();
+
+    
+    //Loop through each class
+    foreach(var codeClass in classes){
+      
+        var client = new Feature(codeClass);
+            
+        this.Generate_DataServices(client);
+
+        //components
+        this.Generate_Features_ListComponent(client);
+       
+    }
+
+#>

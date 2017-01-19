@@ -1,6 +1,195 @@
 ﻿<#+
+            
+    public class CodeHelper
+    {
+        protected static CodeClass _codeClass;
 
-    public class AngularClient  {
+        public CodeHelper(CodeClass codeClass){
+            _codeClass = codeClass;
+        }
+            
+        public string Plural {get{
+                return _codeClass.Name + "s";
+            }}
+
+        public string Name { get{
+                return _codeClass.Name;
+            }}
+        public string CamelCasePlural {
+            get{
+                return CamelCase + "s";
+            }}
+        public string CamelCase {
+            get{
+                return GetCamelcaseClassName(_codeClass);
+            }}
+
+
+        private static string GetCamelcaseClassName(CodeClass codeClass)
+        {
+            return GetCamelcaseClassName(codeClass.Name);
+        }
+        private static string GetCamelcaseClassName(string className)
+        {
+            string returnString = className.ToLower();
+            returnString = Char.ToLowerInvariant(className[0]) + className.Substring(1);
+            return returnString;
+        }
+    }
+
+
+
+        public class Component {
+            public CodeHelper _;
+
+            public Component(CodeHelper helper){
+                _ = helper;
+            }
+
+            public string FileName 
+                { get
+                {
+                     return ComponentName + ".js";
+                }
+            }
+            public string ComponentName 
+                { get
+                {
+                    return _.Name + "Component";
+                }
+            }
+            public string TemplateUrl 
+                { get
+                {
+                return string.Format("{0}/{1}/{2}", Angular_Features_Path, _.Name, ComponentName);
+                }
+            }
+
+            //public string Get_Feature_Component_Path(string componentName){
+                    //return string.Format("{0}/{1}/{2}/", Angular_Features_Path, Helper.Name, componentName);
+            //}
+        
+        }
+
+
+        public class DataService{
+
+            public CodeHelper _;
+
+            public DataService(CodeHelper helper){
+               _ = helper;
+            }
+
+            public string FileName 
+                { get
+                {
+                    return ServiceName + ".js";
+                }
+            }
+
+            public string ServiceName 
+                { get
+                {
+                    return _.Name + "DataService";
+                }
+            }
+
+
+
+        }
+
+
+         public class Modals{
+
+            public CodeHelper _;
+
+            public Modals(CodeHelper helper){
+                _ = helper;
+            }
+
+            public string FileName 
+                { get
+                {
+                    return ServiceName + ".js";
+                }
+            }
+
+            public string ServiceName 
+                { get
+                {
+                    return _.Name + "ModalService";
+                }
+            }
+
+
+
+        }
+
+
+        public class Feature  {
+            
+            public CodeHelper _;
+            public Component ListComponent;
+            public DataService DataService;
+            public Modals Modals;
+
+            public Feature(CodeClass codeClass){
+                 _ = new CodeHelper(codeClass);
+                 ListComponent = new Component(_);
+                 DataService = new DataService(_);
+                 Modals = new Modals(_);
+
+
+                  //Components
+                //ListComponentFilePath = string.Format("{0}Components/",FeaturePath);
+                //ListComponentName = string.Format("{0}List",_codeClassHelper.CamelCasePlural);
+                //ListComponentFileName = string.Format("{0}.js",ListComponentName);
+                //ListComponentTemplateFileName = string.Format("{0}.html", ListComponentName);
+                //ListComponentTemplateUrl = string.Format("src/Client/{0}Components/{2}", FeaturePath, codeClassHelper.Plural, ListComponentTemplateFileName);
+                //ListComponentTag = GetComponentTag(ListComponentName);
+            }
+
+
+
+            //Components
+            //public string Get_Feature_Component_Path(string componentName){
+                    //return string.Format("{0}/{1}/{2}/", Angular_Features_Path, Helper.Name, componentName);
+            //}
+//
+            //public string Get_Feature_Component_Name(string componentName){
+                //return string.Format("{0}{1}.js", Helper.Name, componentName);
+            //}
+//
+             //private string GetComponentTag(string componentName){
+                //var output = "";
+                //foreach (char letter in componentName)
+                //{
+                   //if (Char.IsUpper(letter) && output.Length > 0)
+                     //output += "-" + letter;
+                   //else
+                     //output += letter;
+                //}
+                //return string.Format("<{0}></{0}>", output.ToLower());
+                //}     
+            //}
+//
+//
+         
+
+
+            //Components
+            //public string ListComponentFilePath  ="";
+            //public string ListComponentName ="";
+            //public string ListComponentFileName  = "";
+            //public string ListComponentTag = "";
+            //public string ListComponentTemplateFileName  = "";
+            //public string ListComponentTemplateUrl = "";
+            
+
+        }
+  
+
+       public class AngularClient  {
 
 
         private CodeClassHelper _codeClassHelper;
@@ -36,7 +225,11 @@
 
         //Index View
         public string IndexTemplateUrl = "";
-        
+
+
+      
+
+
 
         public AngularClient(CodeClassHelper codeClassHelper){
 
@@ -69,7 +262,7 @@
             ListComponentName = string.Format("{0}List",_codeClassHelper.CamelCasePlural);
             ListComponentFileName = string.Format("{0}.js",ListComponentName);
             ListComponentTemplateFileName = string.Format("{0}.html", ListComponentName);
-            ListComponentTemplateUrl = string.Format("Features/{0}/Components/{1}", codeClassHelper.Plural, ListComponentTemplateFileName);
+            ListComponentTemplateUrl = string.Format("src/Client/{0}Components/{2}", FeaturePath, codeClassHelper.Plural, ListComponentTemplateFileName);
             ListComponentTag = GetComponentTag(ListComponentName);
 
            
@@ -79,8 +272,7 @@
 
         }
 
-
-         private string GetComponentTag(string componentName){
+     private string GetComponentTag(string componentName){
             
             var output = "";
             foreach (char letter in componentName)
@@ -94,23 +286,5 @@
         }  
    
     }
-
-    
-
-
-
-    public static class ClientCommon
-    {
-          //SideNavigation
-          public static string   MainLayoutComponentFilePath = "/Features/Navigation/";
-          public static string   MainLayout = "<main-layout></main-layout>";
-          
-            //login 
-          public static string LoginComponentFilePath = "/Login/";
-          public static string LoginComponentTemplateUrl = "/Login/LoginTemplate.html";
-    }
-
-  
-    
 
  #>

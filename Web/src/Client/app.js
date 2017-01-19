@@ -5,7 +5,7 @@
 
    var app = angular.module('app', ['ngResource','ui.router', 'ui.bootstrap', 'my-angular-components', 'auth0.lock', 'angular-jwt']);
    
-    app.constant("apiBase", "http://localhost:7000/api/")
+    app.constant("apiBase", "http://localhost:7204/api/")
 
   var config = function (lockProvider, jwtOptionsProvider, $httpProvider, $locationProvider) {
 

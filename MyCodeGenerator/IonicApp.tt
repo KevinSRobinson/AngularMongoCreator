@@ -10,21 +10,52 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Reflection" #>
 <#@ include file="General/T4Helper.ttinclude" #>
-<#@ include file="Ionic/app.ttinclude" #>
+
 <#@ include file="Ionic/PackageManagers/bower.ttinclude" #>
 <#@ include file="Ionic/PackageManagers/bowerc.ttinclude" #>
 <#@ include file="Ionic/PackageManagers/package.ttinclude" #>
 <#@ include file="Ionic/configXML.ttinclude" #>
-
+<#@ include file="Ionic/gulp.ttinclude" #>
+<#@ include file="Ionic/IonicJson.ttinclude" #>
+<#@ include file="Ionic/Scss/scss.ttinclude" #>
+<#@ include file="Ionic/Hooks/hooks.ttinclude" #>
+<#@ include file="Ionic/www/templates/browse.ttinclude" #>
+<#@ include file="Ionic/www/templates/login.ttinclude" #>
+<#@ include file="Ionic/www/templates/menu.ttinclude" #>
+<#@ include file="Ionic/www/templates/playlist.ttinclude" #>
+<#@ include file="Ionic/www/templates/playlists.ttinclude" #>
+<#@ include file="Ionic/www/templates/search.ttinclude" #>
+<#@ include file="Ionic/www/app.ttinclude" #>
 <#  
+    string basePath = @"C:\Repos\NodeMongoAngular\MyCodeGenerator\Ionic\";
+    
+    //copy over css files
+    Generate_File("ionic.css", basePath + @"www\css\", ionicCssPath);
+    Generate_File("ionic.app.min.css", basePath + @"www\css\", ionicCssPath);
+
     //Get all classes from the model
     var classes = GetClasses();    
    
+    //core
+    this.GenerateConfigXML();
+    this.Generate_Gulp();
+    this.Generate_IonicJson();
+    this.Generate_Scss();
+    this.Generate_Hooks();
 
     //packages
     this.Generate_PackageJson();
     this.GenerateBowerFile();
     this.GenerateAppFile();
-    
-    this.GenerateConfigXML();
+
+   
+      
+
+    //templates
+    this.Generate_Template_Browse();
+    this.Generate_Template_Login();
+    this.Generate_Template_Menu();
+    this.Generate_Template_Playlist();
+    this.Generate_Template_Playlists();
+    this.Generate_Template_Search();
 #>

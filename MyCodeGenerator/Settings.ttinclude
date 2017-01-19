@@ -11,8 +11,15 @@
     string efContext = "SampleDbContext"; 
     string dataContextNamespace = "Data";
 
- const string ionicBasePath = "C:/Repos/NodeMongoAngular/Ionic/";
-    const string ionicSrcPath = ionicBasePath + "src/";
+
+
+    //Ionic
+    const string ionicBasePath = "C:/Repos/NodeMongoAngular/Ionic/";
+    const string ionicSrcPath = ionicBasePath + "www/";
+    const string ionicScssPath = ionicBasePath + "scss/";
+    const string ionicHooksPath = ionicBasePath + "hooks/after_prepare/";
+    const string ionicCssPath = ionicSrcPath + "css/";
+    const string ionicTemplatesPath = ionicSrcPath + "templates/";
 
 
     //client

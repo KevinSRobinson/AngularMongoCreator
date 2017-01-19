@@ -7,6 +7,21 @@
 <#@ include file="Settings.ttinclude" #>
 <#+
 
+
+
+    void Generate_File(string fileName, string frompath, string toPath){  
+        var fullpath = frompath + fileName;
+        string fileString = System.IO.File.ReadAllText(frompath + @"\" + fileName);
+        CreateNewFileWithString(toPath , fileName, fileString);
+    }	
+
+
+
+
+
+
+
+
     public static class ClientCommon
     {
           //SideNavigation
@@ -211,6 +226,18 @@
        return GetCamelcaseClassName(codeClass.Name) + "Dto";
     }
 
+public void CreateNewFile(string outputFilePath, string fileName)
+    {
+        CreateDirectoryFullPath(outputFilePath);
+        ProcessContent(outputFilePath + fileName, this.GenerationEnvironment.ToString());
+        this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
+    }
+public void CreateNewFileWithString(string outputFilePath, string fileName, string content)
+    {
+        CreateDirectoryFullPath(outputFilePath);
+        ProcessContent(outputFilePath + fileName, content);
+        this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
+    }
     public void CreateDirectoryFullPath(string outputFilePath){
         var di = Directory.CreateDirectory(outputFilePath);                          
     }	

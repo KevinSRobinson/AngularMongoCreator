@@ -109,11 +109,21 @@
     <None Include="Client\Auth0\auth0Variables.ttinclude" />
     <None Include="Client\Auth0\auth0Config.ttinclude" />
     <None Include="General\JsonHelpers.ttinclude" />
+    <None Include="Ionic\ionicJson.ttinclude" />
+    <None Include="Ionic\gulp.ttinclude" />
     <None Include="Ionic\configXML.ttinclude" />
-    <None Include="Ionic\app.ttinclude" />
+    <None Include="Ionic\www\app.ttinclude" />
+    <None Include="Ionic\Hooks\hooks.ttinclude" />
+    <None Include="Ionic\Scss\scss.ttinclude" />
     <None Include="Ionic\PackageManagers\bower.ttinclude" />
     <None Include="Ionic\PackageManagers\bowerc.ttinclude" />
     <None Include="Ionic\PackageManagers\package.ttinclude" />
+    <None Include="Ionic\www\templates\playlist.ttinclude" />
+    <None Include="Ionic\www\templates\search.ttinclude" />
+    <None Include="Ionic\www\templates\playlists.ttinclude" />
+    <None Include="Ionic\www\templates\menu.ttinclude" />
+    <None Include="Ionic\www\templates\login.ttinclude" />
+    <None Include="Ionic\www\templates\browse.ttinclude" />
     <None Include="NodeServer\Apis\ApiHelpers.ttinclude" />
     <None Include="NodeServer\Apis\ServerApis.ttinclude" />
     <None Include="NodeServer\Controllers\DataControllers.ttinclude" />
@@ -168,6 +178,8 @@
       <LastGenOutput>AngularClient 1.cs</LastGenOutput>
     </Content>
     <Content Include="dataModel.xml" />
+    <Content Include="Ionic\www\css\ionic.app.min.css" />
+    <Content Include="Ionic\www\css\ionic.css" />
     <Content Include="NodeServer.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NodeServer.cs</LastGenOutput>

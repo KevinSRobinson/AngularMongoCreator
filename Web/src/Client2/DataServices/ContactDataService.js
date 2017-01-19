@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 var ContactDataService = function($resource, $http, apiBase) {
 	
     apiBase += "/Contact";
@@ -39,6 +32,4 @@ var ContactDataService = function($resource, $http, apiBase) {
 	    Delete : del,
         GetAllForCurrentUser: getAllForCurrentUser
     };
-    C:/Repos/NodeMongoAngular/Web/src/Client1/DataServices/
-    ContactDataService.js
 };

@@ -27,9 +27,10 @@
 
 
     //Angular
-    const string Angular_BasePath = MainBasePath + "src/Client1/";
+    const string Angular_BasePath = MainBasePath + "src/Client2/";
     const string Angular_DataServices_Path = Angular_BasePath + "DataServices/";
     const string Angular_Features_Path = Angular_BasePath + "Features/";
+    const string Angular_Components_Path = Angular_Features_Path + "Components/";
 
 
     //Ionic

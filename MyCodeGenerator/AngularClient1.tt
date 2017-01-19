@@ -20,7 +20,9 @@
 <#@ include file="Angular/package.ttinclude" #>
 <#@ include file="Angular/IndexPage.ttinclude" #>
 <#@ include file="Angular/DataServices/angularServices.ttinclude" #>
+<#@ include file="Angular/Features/Components/_listHelpers.ttinclude" #>
 <#@ include file="Angular/Features/Components/listComponent.ttinclude" #>
+
 
 <#  
     //Get all classes from the model
@@ -37,12 +39,12 @@
     //Loop through each class
     foreach(var codeClass in classes){
       
-        var client = new Feature(codeClass);
+        var feature = new Feature(codeClass);
             
-        this.Generate_DataServices(client);
+        this.Generate_DataServices(feature);
 
         //components
-        this.Generate_Features_ListComponent(client);
+        this.Generate_Features_ListComponent(feature);
        
     }
 

@@ -41,9 +41,11 @@
 
         public class Component {
             public CodeHelper _;
+            private string _name   ;
 
-            public Component(CodeHelper helper){
+            public Component(CodeHelper helper, string name){
                 _ = helper;
+                _name = name;
             }
 
             public string FileName 
@@ -55,7 +57,7 @@
             public string ComponentName 
                 { get
                 {
-                    return _.Name + "Component";
+                    return _.CamelCase + _name;
                 }
             }
             public string TemplateUrl 
@@ -135,7 +137,7 @@
 
             public Feature(CodeClass codeClass){
                  _ = new CodeHelper(codeClass);
-                 ListComponent = new Component(_);
+                 ListComponent = new Component(_, "List");
                  DataService = new DataService(_);
                  Modals = new Modals(_);
 

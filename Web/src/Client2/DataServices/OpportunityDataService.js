@@ -32,6 +32,4 @@ var OpportunityDataService = function($resource, $http, apiBase) {
 	    Delete : del,
         GetAllForCurrentUser: getAllForCurrentUser
     };
-    C:/Repos/NodeMongoAngular/Web/src/Client1/DataServices/
-    OpportunityDataService.js
 };

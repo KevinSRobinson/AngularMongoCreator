@@ -1,5 +1,5 @@
 ﻿<#+ void Generate_Features_ListComponent(Feature feature){	 #>
-var <#=feature._.CamelCasePlural#>List = {
+var <#=feature.ListComponent.ComponentName#> = {
 bindings: {
 	allowChanges: '@'
 },
@@ -23,7 +23,6 @@ controller: function (<#=feature.DataService.ServiceName#>, <#=feature.Modals.Se
         })
     };
 	
-
     //////////////////////
     //Modals
     vm.create = function(){
@@ -45,7 +44,8 @@ controller: function (<#=feature.DataService.ServiceName#>, <#=feature.Modals.Se
 
     }
 };
+
 angular.module('<#=applicationName#>')
-.component('<#=feature._.CamelCasePlural#>List', <#=feature._.CamelCasePlural#>List);
-<#+ CreateNewFile(Angular_DataServices_Path, feature.ListComponent.FileName); }  #>
+.component('<#=feature.ListComponent.ComponentName#>', <#=feature.ListComponent.ComponentName#>);
+<#+ CreateNewFile(Angular_Components_Path, feature.ListComponent.FileName); }  #>
 

@@ -20,7 +20,6 @@ var HourRecordDataService = function($resource, $http, apiBase) {
 		}
 		return $http.post(apiBase, hourRecord);        
     };
-
   
     var del = function( hourRecord) {
 		return $http.delete(apiBase, hourRecord);
@@ -33,6 +32,6 @@ var HourRecordDataService = function($resource, $http, apiBase) {
 	    Delete : del,
         GetAllForCurrentUser: getAllForCurrentUser
     };
+    C:/Repos/NodeMongoAngular/Web/src/Client1/DataServices/
+    HourRecordDataService.js
 };
-
-

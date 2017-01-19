@@ -21,7 +21,6 @@ var <#=feature.DataService.ServiceName#> = function($resource, $http, apiBase) {
 		}
 		return $http.post(apiBase, <#=feature._.CamelCase#>);        
     };
-
   
     var del = function( <#=feature._.CamelCase#>) {
 		return $http.delete(apiBase, <#=feature._.CamelCase#>);
@@ -35,7 +34,6 @@ var <#=feature.DataService.ServiceName#> = function($resource, $http, apiBase) {
         GetAllForCurrentUser: getAllForCurrentUser
     };
 };
-
-
 <#+ CreateNewFile(Angular_DataServices_Path, feature.DataService.FileName); }  #>
+
 

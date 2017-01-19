@@ -20,7 +20,6 @@ var AwardsDataService = function($resource, $http, apiBase) {
 		}
 		return $http.post(apiBase, awards);        
     };
-
   
     var del = function( awards) {
 		return $http.delete(apiBase, awards);
@@ -33,6 +32,6 @@ var AwardsDataService = function($resource, $http, apiBase) {
 	    Delete : del,
         GetAllForCurrentUser: getAllForCurrentUser
     };
+    C:/Repos/NodeMongoAngular/Web/src/Client1/DataServices/
+    AwardsDataService.js
 };
-
-

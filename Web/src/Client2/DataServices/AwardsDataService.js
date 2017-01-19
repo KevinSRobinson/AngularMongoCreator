@@ -1,13 +1,6 @@
-
-
-
-
-
-
-
-var ContactDataService = function($resource, $http, apiBase) {
+var AwardsDataService = function($resource, $http, apiBase) {
 	
-    apiBase += "/Contact";
+    apiBase += "/Awards";
 
     var getAll = function(){
 		return $http.get(apiBase);
@@ -21,15 +14,15 @@ var ContactDataService = function($resource, $http, apiBase) {
         return $http.get(apiBase + '/readAllForCurrentUser');
     };    
 
-    var modify = function("/contact") {
-		if(contact._id){
-			return $http.put(apiBase + contact._id, contact);
+    var modify = function("/awards") {
+		if(awards._id){
+			return $http.put(apiBase + awards._id, awards);
 		}
-		return $http.post(apiBase, contact);        
+		return $http.post(apiBase, awards);        
     };
   
-    var del = function( contact) {
-		return $http.delete(apiBase, contact);
+    var del = function( awards) {
+		return $http.delete(apiBase, awards);
 	};
 
     return {
@@ -39,6 +32,4 @@ var ContactDataService = function($resource, $http, apiBase) {
 	    Delete : del,
         GetAllForCurrentUser: getAllForCurrentUser
     };
-    C:/Repos/NodeMongoAngular/Web/src/Client1/DataServices/
-    ContactDataService.js
 };

@@ -20,7 +20,6 @@ var OrganisationDataService = function($resource, $http, apiBase) {
 		}
 		return $http.post(apiBase, organisation);        
     };
-
   
     var del = function( organisation) {
 		return $http.delete(apiBase, organisation);
@@ -33,6 +32,6 @@ var OrganisationDataService = function($resource, $http, apiBase) {
 	    Delete : del,
         GetAllForCurrentUser: getAllForCurrentUser
     };
+    C:/Repos/NodeMongoAngular/Web/src/Client1/DataServices/
+    OrganisationDataService.js
 };
-
-

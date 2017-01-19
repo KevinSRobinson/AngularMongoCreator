@@ -1,0 +1,14 @@
+﻿<#+ void Generate_www_Bower(){ #>
+{
+  "name": "HelloIonic",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.3.2"
+  },
+  "dependencies": {
+    "ionic": "^1.3.2"
+  }
+}
+<#+ CreateNewFile(ionicSrcPath, "bower.json"); }	#>
+    
+	

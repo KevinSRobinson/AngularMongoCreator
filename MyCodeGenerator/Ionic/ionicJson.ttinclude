@@ -1,11 +1,6 @@
-﻿
-<#+ void Generate_IonicJson(){ #>
+﻿<#+ void Generate_IonicJson(){ #>
 {
   "name": "myApp",
   "app_id": ""
 }
-<#+
-    CreateDirectoryFullPath(ionicSrcPath);
-    CreateFile(ionicSrcPath + "ionic.config.json");
-	}	
-#>
+<#+ CreateNewFile(ionicBasePath, "ionic.config.json"); }  #>

@@ -11,9 +11,9 @@
 <#@ import namespace="System.Reflection" #>
 <#@ include file="General/T4Helper.ttinclude" #>
 
-<#@ include file="Ionic/PackageManagers/bower.ttinclude" #>
-<#@ include file="Ionic/PackageManagers/bowerc.ttinclude" #>
-<#@ include file="Ionic/PackageManagers/package.ttinclude" #>
+<#@ include file="Ionic/bower.ttinclude" #>
+<#@ include file="Ionic/bowerc.ttinclude" #>
+<#@ include file="Ionic/package.ttinclude" #>
 <#@ include file="Ionic/configXML.ttinclude" #>
 <#@ include file="Ionic/gulp.ttinclude" #>
 <#@ include file="Ionic/IonicJson.ttinclude" #>
@@ -25,7 +25,10 @@
 <#@ include file="Ionic/www/templates/playlist.ttinclude" #>
 <#@ include file="Ionic/www/templates/playlists.ttinclude" #>
 <#@ include file="Ionic/www/templates/search.ttinclude" #>
-<#@ include file="Ionic/www/app.ttinclude" #>
+<#@ include file="Ionic/www/js/app.ttinclude" #>
+<#@ include file="Ionic/www/js/controller.ttinclude" #>
+<#@ include file="Ionic/www/index.ttinclude" #>
+
 <#  
     string basePath = @"C:\Repos\NodeMongoAngular\MyCodeGenerator\Ionic\";
     
@@ -37,7 +40,7 @@
     var classes = GetClasses();    
    
     //core
-    this.GenerateConfigXML();
+    this.Generate_ConfigXML();
     this.Generate_Gulp();
     this.Generate_IonicJson();
     this.Generate_Scss();
@@ -45,12 +48,8 @@
 
     //packages
     this.Generate_PackageJson();
-    this.GenerateBowerFile();
-    this.GenerateAppFile();
-
-   
-      
-
+    this.Generate_BowerRc();
+    
     //templates
     this.Generate_Template_Browse();
     this.Generate_Template_Login();
@@ -58,4 +57,11 @@
     this.Generate_Template_Playlist();
     this.Generate_Template_Playlists();
     this.Generate_Template_Search();
+
+    //scripts
+    this.Generate_Js_App();
+    this.Generate_Js_Controller();
+    
+    //index.html
+    this.Generate_www_Index();
 #>

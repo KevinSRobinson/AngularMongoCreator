@@ -1,6 +1,4 @@
-﻿
-<#+ void Generate_Gulp(){ #>
-
+﻿<#+ void Generate_Gulp(){ #>
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var bower = require('bower');
@@ -52,10 +50,4 @@ gulp.task('git-check', function(done) {
   }
   done();
 });
-
-
-<#+
-    CreateDirectoryFullPath(ionicSrcPath);
-    CreateFile(ionicSrcPath + "gulpfile.js");
-	}	
-#>
+<#+ CreateNewFile(ionicBasePath, "gulpfile.js"); }	#>

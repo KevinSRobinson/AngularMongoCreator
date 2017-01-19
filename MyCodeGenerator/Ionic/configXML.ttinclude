@@ -1,6 +1,4 @@
-﻿
-<#+ void GenerateConfigXML(){ #>
-
+﻿<#+ void Generate_ConfigXML(){ #>
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.myapp709215" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>myApp</name>
@@ -23,9 +21,4 @@
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
 </widget>
-
-<#+
-    CreateDirectoryFullPath(ionicSrcPath);
-    CreateFile(ionicSrcPath + "config.xml");
-	}	
-#>
+<#+ CreateNewFile(ionicBasePath, "config.xml"); }	#>

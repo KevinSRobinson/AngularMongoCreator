@@ -1,0 +1,6 @@
+﻿<#+  void Generate_BowerRc(){  #>
+{
+  "directory": "www/lib"
+}
+<#+	 CreateFile(ionicBasePath + ".bowercc.json"); } #>
+

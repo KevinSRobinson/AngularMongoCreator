@@ -1,9 +1,0 @@
-﻿
-<#+  void GenerateBowerCCFile(){  #>
-{
-  "directory": "www/lib"
-}
-<#+	  CreateFile(ionicSrcPath + ".bowercc.json");
-	}	
-#>
-

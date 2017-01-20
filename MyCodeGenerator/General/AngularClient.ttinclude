@@ -3,18 +3,16 @@
     public class CodeHelper
     {
         protected static CodeClass _codeClass;
+        public string Plural {get; set; }
+        public string Name {get; set; }
 
         public CodeHelper(CodeClass codeClass){
             _codeClass = codeClass;
-        }
-            
-        public string Plural {get{
-                return _codeClass.Name + "s";
-            }}
 
-        public string Name { get{
-                return _codeClass.Name;
-            }}
+            Plural =  _codeClass.Name + "s";
+            Name= _codeClass.Name;
+        }
+
         public string CamelCasePlural {
             get{
                 return CamelCase + "s";

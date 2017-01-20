@@ -1,0 +1,9 @@
+﻿<#+  void Generate_BowerRc(){  #>
+{
+    "directory": "bower_components",    
+    "scripts": {
+        "postinstall": "gulp wiredep"
+    }    
+}
+<#+ CreateNewFile(Angular_BasePath, ".bowerrc"); }  #>
+

@@ -10,7 +10,8 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Reflection" #>
 <#@ include file="General/T4Helper.ttinclude" #>
-
+<#@ include file="General/FileHelpers.ttinclude" #>
+<#@ include file="General/CodeHelper.ttinclude" #>
 <#@ include file="Ionic/bower.ttinclude" #>
 <#@ include file="Ionic/bowerc.ttinclude" #>
 <#@ include file="Ionic/package.ttinclude" #>
@@ -19,6 +20,7 @@
 <#@ include file="Ionic/IonicJson.ttinclude" #>
 <#@ include file="Ionic/Scss/scss.ttinclude" #>
 <#@ include file="Ionic/Hooks/hooks.ttinclude" #>
+<#@ include file="Ionic/www/templates/_ionicHelpers.ttinclude" #>
 <#@ include file="Ionic/www/templates/browse.ttinclude" #>
 <#@ include file="Ionic/www/templates/login.ttinclude" #>
 <#@ include file="Ionic/www/templates/menu.ttinclude" #>
@@ -53,7 +55,7 @@
     //templates
     this.Generate_Template_Browse();
     this.Generate_Template_Login();
-    this.Generate_Template_Menu();
+    this.Generate_Template_Menu(classes);
     this.Generate_Template_Playlist();
     this.Generate_Template_Playlists();
     this.Generate_Template_Search();

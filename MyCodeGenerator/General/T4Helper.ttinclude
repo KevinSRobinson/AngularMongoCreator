@@ -30,77 +30,77 @@
 
 
 
-    public class CodeClassHelper
-    {
-            private static CodeClass _codeClass;
-            private AngularClient _angularClient;
-
-
-            public CodeClassHelper(CodeClass codeClass){
-                _codeClass = codeClass;
-
-                _angularClient = new AngularClient(this);
-            }
-
-            public CodeClass CodeClass {get{
-                return _codeClass;
-            }}
-     
-            public AngularClient AngularClient {get{
-                return _angularClient;
-            }}
-
-            public string DtoCamelCase {get{
-                return GetDtoCamelcaseClassName(_codeClass);
-            }}
-
-            public string DtoName {get{
-                return GetDtoClassName(_codeClass);
-            }}
-
-
-
-            public string Plural {get{
-                return _codeClass.Name + "s";
-            }}
-
-            public string Name { get{
-                return _codeClass.Name;
-            }}
-            public string CamelCasePlural {
-                get{
-                  return CamelCase + "s";
-             }}
-            public string CamelCase {
-                get{
-                  return GetCamelcaseClassName(_codeClass);
-             }}
-
-
-       
-
- 
-        #region Private Methods
-            public string GetDtoClassName(CodeClass codeClass)    {
-               return codeClass.Name + "Dto";
-            }
-            private static string GetDtoCamelcaseClassName(CodeClass codeClass)  {
-                return GetCamelcaseClassName(codeClass.Name) + "Dto";
-            }
-            private static string GetCamelcaseClassName(CodeClass codeClass)
-            {
-                return GetCamelcaseClassName(codeClass.Name);
-            }
-            private static string GetCamelcaseClassName(string className)
-            {
-                string returnString = className.ToLower();
-                returnString = Char.ToLowerInvariant(className[0]) + className.Substring(1);
-                return returnString;
-            }
-        #endregion
-        
-    
-    }
+    //public class CodeClassHelper
+    //{
+            //private static CodeClass _codeClass;
+            ////private AngularClient _angularClient;
+//
+//
+            //public CodeClassHelper(CodeClass codeClass){
+                //_codeClass = codeClass;
+//
+                ////_angularClient = new AngularClient(this);
+            //}
+//
+            //public CodeClass CodeClass {get{
+                //return _codeClass;
+            //}}
+     //
+            ////public AngularClient AngularClient {get{
+                ////return _angularClient;
+            ////}}
+//
+            //public string DtoCamelCase {get{
+                //return GetDtoCamelcaseClassName(_codeClass);
+            //}}
+//
+            //public string DtoName {get{
+                //return GetDtoClassName(_codeClass);
+            //}}
+//
+//
+//
+            //public string Plural {get{
+                //return _codeClass.Name + "s";
+            //}}
+//
+            //public string Name { get{
+                //return _codeClass.Name;
+            //}}
+            //public string CamelCasePlural {
+                //get{
+                  //return CamelCase + "s";
+             //}}
+            //public string CamelCase {
+                //get{
+                  //return GetCamelcaseClassName(_codeClass);
+             //}}
+//
+//
+       //
+//
+ //
+        //#region Private Methods
+            //public string GetDtoClassName(CodeClass codeClass)    {
+               //return codeClass.Name + "Dto";
+            //}
+            //private static string GetDtoCamelcaseClassName(CodeClass codeClass)  {
+                //return GetCamelcaseClassName(codeClass.Name) + "Dto";
+            //}
+            //private static string GetCamelcaseClassName(CodeClass codeClass)
+            //{
+                //return GetCamelcaseClassName(codeClass.Name);
+            //}
+            //private static string GetCamelcaseClassName(string className)
+            //{
+                //string returnString = className.ToLower();
+                //returnString = Char.ToLowerInvariant(className[0]) + className.Substring(1);
+                //return returnString;
+            //}
+        //#endregion
+        //
+    //
+    //}
 
 
 

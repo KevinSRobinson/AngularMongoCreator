@@ -18,6 +18,8 @@
 <#@ include file="Angular/appRun.ttinclude" #>
 <#@ include file="Angular/auth0Service.ttinclude" #>
 <#@ include file="Angular/package.ttinclude" #>
+<#@ include file="Angular/bower.ttinclude" #>
+<#@ include file="Angular/bowerc.ttinclude" #>
 <#@ include file="Angular/IndexPage.ttinclude" #>
 <#@ include file="Angular/DataServices/angularServices.ttinclude" #>
 <#@ include file="Angular/Features/Components/_listHelpers.ttinclude" #>
@@ -27,6 +29,15 @@
 <#@ include file="Angular/Features/Modals/modalServices.ttinclude"#>
 <#@ include file="Angular/Features/Modals/modifyModal.ttinclude"#>
 <#@ include file="Angular/Features/Modals/modifyModalController.ttinclude"#>
+<#@ include file="Angular/gulpfile.ttinclude"#>
+<#@ include file="Angular/Gulp/browserSync.ttinclude"#>
+<#@ include file="Angular/Gulp/build.ttinclude"#>
+<#@ include file="Angular/Gulp/codeQuality.ttinclude"#>
+<#@ include file="Angular/Gulp/devBuild.ttinclude"#>
+<#@ include file="Angular/Gulp/fontsImages.ttinclude"#>
+<#@ include file="Angular/Gulp/utils.ttinclude"#>
+<#@ include file="Angular/Gulp/versioning.ttinclude"#>
+
 
 <#  
     //Get all classes from the model
@@ -44,6 +55,18 @@
     this.Generate_App_Auth0Service();
     this.Generate_App_Index();
     this.Generate_App_PackageJson();
+    this.Generate_BowerRc();
+    this.Generate_Bower();
+    
+    //gulp
+    this.Generate_Gulp();
+    this.Generate_Gulp_BrowserSync();
+    this.Generate_Gulp_Build();
+    this.Generate_Gulp_CodeQuality();
+    this.Generate_Gulp_DevBuild();
+    this.Generate_Gulp_FontsImages();
+    this.Generate_Gulp_Versioning();
+    this.Generate_Gulp_Utils();
     
     
     //Loop through each class

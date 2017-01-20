@@ -1,0 +1,6 @@
+﻿<#+ void Generate_Gulp_DevBuild(){	#>
+	
+Dev Build
+		
+		
+<#+ CreateNewFile(Angular_Gulp_Tasks, "gulp.devBuild.js"); }  #>

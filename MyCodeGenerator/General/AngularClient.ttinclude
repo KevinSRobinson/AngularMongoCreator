@@ -1,45 +1,6 @@
 ﻿<#+
             
-    public class CodeHelper
-    {
-        protected static CodeClass _codeClass;
-        public string Plural {get; set; }
-        public string Name {get; set; }
-        public string CamelCase {get; set; }
-        public string CamelCasePlural {get; set; }
-        public CodeElements Members  {get; set; }
-
-
-        public CodeHelper(CodeClass codeClass){
-            _codeClass = codeClass;
-
-            Plural =  GetPlural(_codeClass.Name);
-            Name= _codeClass.Name;
-            CamelCase  = GetCamelcaseClassName(_codeClass);
-            CamelCasePlural =  GetPlural(CamelCase);
-
-            Members =_codeClass.Members;
-        }
-    
-        private string GetPlural(string name) {
-            var lastLetter = name.Substring(name.Length-1, 1);
-            if(lastLetter !=  "s"){
-                return name += "s";
-            }
-            return name;
-        }    
-        private static string GetCamelcaseClassName(CodeClass codeClass)
-        {
-            return GetCamelcaseClassName(codeClass.Name);
-        }
-        private static string GetCamelcaseClassName(string className)
-        {
-            string returnString = className.ToLower();
-            returnString = Char.ToLowerInvariant(className[0]) + className.Substring(1);
-            return returnString;
-        }
-    }
-
+   
 
 
         public class Component {

@@ -1,0 +1,6 @@
+﻿<#+ void Generate_Gulp_CodeQuality(){	#>
+	
+Code Quality
+		
+		
+<#+ CreateNewFile(Angular_Gulp_Tasks, "gulp.codeQuality.js"); }  #>

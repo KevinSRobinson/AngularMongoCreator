@@ -34,9 +34,6 @@ Modify: modify
 };
 }
 
-<#=feature.Modals.FullPath#>
-<#=feature.Modals.ServiceFileName#>
-
 angular.module('<#=applicationName#>').factory('<#=feature.Modals.ServiceName#>', <#=feature.Modals.ServiceName#>);
 
 

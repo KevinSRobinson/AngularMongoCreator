@@ -1,0 +1,14 @@
+﻿<#+    
+
+       
+
+    string GetIonicMenuItem(CodeClass codeClass) {
+        var helper = new CodeHelper(codeClass); 
+        var menuItem  = "";
+        menuItem += string.Format("<ion-item href='#/app/{0}'>", helper.Name); 
+        menuItem += helper.Name;  
+        menuItem += "</ion-item>"; 
+        return menuItem;        
+    }
+
+#>

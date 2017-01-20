@@ -27,6 +27,7 @@
 <#@ include file="Ionic/www/templates/playlist.ttinclude" #>
 <#@ include file="Ionic/www/templates/playlists.ttinclude" #>
 <#@ include file="Ionic/www/templates/search.ttinclude" #>
+<#@ include file="Ionic/www/templates/listTemplate.ttinclude" #>
 <#@ include file="Ionic/www/js/app.ttinclude" #>
 <#@ include file="Ionic/www/js/controller.ttinclude" #>
 <#@ include file="Ionic/www/index.ttinclude" #>
@@ -53,6 +54,13 @@
     this.Generate_BowerRc();
     
     //templates
+    //Loop through each class
+    foreach(var codeClass in classes){
+        var helper = new CodeHelper(codeClass); 
+        this.Generate_Template_View(helper);
+    }
+
+  
     this.Generate_Template_Browse();
     this.Generate_Template_Login();
     this.Generate_Template_Menu(classes);

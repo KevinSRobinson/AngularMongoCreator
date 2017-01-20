@@ -88,6 +88,11 @@
     <None Include="Angular\Features\Components\listComponentTemplate.ttinclude" />
     <None Include="Angular\Features\Components\_listHelpers.ttinclude" />
     <None Include="Angular\DataServices\angularServices.ttinclude" />
+    <None Include="Angular\Features\Modals\modalServices.ttinclude" />
+    <None Include="Angular\Features\Modals\modifyModal.ttinclude" />
+    <None Include="Angular\Features\Modals\modifyModalController.ttinclude" />
+    <None Include="Angular\Features\Modals\viewModal.ttinclude" />
+    <None Include="Angular\Features\Modals\_modalHelpers.ttinclude" />
     <None Include="Angular\package.ttinclude" />
     <None Include="Angular\SideMenuHelpers.ttinclude" />
     <None Include="Angular\IndexPage.ttinclude" />
@@ -124,6 +129,7 @@
     <None Include="Client\Auth0\auth0Service.ttinclude" />
     <None Include="Client\Auth0\auth0Variables.ttinclude" />
     <None Include="Client\Auth0\auth0Config.ttinclude" />
+    <None Include="General\_oldAngularClient - Copy.ttinclude" />
     <None Include="General\AngularClient.ttinclude" />
     <None Include="General\CodeHelper.ttinclude" />
     <None Include="General\JsonHelpers.ttinclude" />

@@ -138,6 +138,7 @@
     <None Include="Client\Auth0\auth0Service.ttinclude" />
     <None Include="Client\Auth0\auth0Variables.ttinclude" />
     <None Include="Client\Auth0\auth0Config.ttinclude" />
+    <None Include="DataServices\clientDataServices.ttinclude" />
     <None Include="General\_oldAngularClient - Copy.ttinclude" />
     <None Include="General\AngularClient.ttinclude" />
     <None Include="General\CodeHelper.ttinclude" />

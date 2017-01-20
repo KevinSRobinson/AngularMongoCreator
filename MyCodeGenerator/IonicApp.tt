@@ -12,6 +12,8 @@
 <#@ include file="General/T4Helper.ttinclude" #>
 <#@ include file="General/FileHelpers.ttinclude" #>
 <#@ include file="General/CodeHelper.ttinclude" #>
+<#@ include file="General/AngularClient.ttinclude" #>
+<#@ include file="DataServices/clientDataServices.ttinclude" #>
 <#@ include file="Ionic/bower.ttinclude" #>
 <#@ include file="Ionic/bowerc.ttinclude" #>
 <#@ include file="Ionic/package.ttinclude" #>
@@ -35,7 +37,7 @@
 
 <#  
     string basePath = @"C:\Repos\NodeMongoAngular\MyCodeGenerator\Ionic\";
-    
+    string AppBasePath = @"C:\Repos\NodeMongoAngular\Ionic\";
     //copy over css files
     Generate_File("ionic.css", basePath + @"www\css\", ionicCssPath);
     Generate_File("ionic.app.min.css", basePath + @"www\css\", ionicCssPath);
@@ -59,6 +61,9 @@
     foreach(var codeClass in classes){
         var helper = new CodeHelper(codeClass); 
         this.Generate_Template_View(helper);
+
+        var feature = new Feature(codeClass, AppBasePath);
+        this.Generate_DataServices(feature, basePath);
     }
 
   

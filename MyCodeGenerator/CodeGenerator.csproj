@@ -155,6 +155,7 @@
     <None Include="Ionic\package.ttinclude" />
     <None Include="Ionic\www\js\controller.ttinclude" />
     <None Include="Ionic\www\js\app.ttinclude" />
+    <None Include="Ionic\www\js\_appHelpers.ttinclude" />
     <None Include="Ionic\www\templates\listTemplate.ttinclude" />
     <None Include="Ionic\www\templates\playlist.ttinclude" />
     <None Include="Ionic\www\templates\search.ttinclude" />

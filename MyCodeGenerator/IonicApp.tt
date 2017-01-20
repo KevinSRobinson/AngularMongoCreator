@@ -28,6 +28,7 @@
 <#@ include file="Ionic/www/templates/playlists.ttinclude" #>
 <#@ include file="Ionic/www/templates/search.ttinclude" #>
 <#@ include file="Ionic/www/templates/listTemplate.ttinclude" #>
+<#@ include file="Ionic/www/js/_appHelpers.ttinclude" #>
 <#@ include file="Ionic/www/js/app.ttinclude" #>
 <#@ include file="Ionic/www/js/controller.ttinclude" #>
 <#@ include file="Ionic/www/index.ttinclude" #>
@@ -69,7 +70,7 @@
     this.Generate_Template_Search();
 
     //scripts
-    this.Generate_Js_App();
+    this.Generate_Js_App(classes);
     this.Generate_Js_Controller();
     
     //index.html

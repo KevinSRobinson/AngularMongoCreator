@@ -1,0 +1,20 @@
+﻿<#+    
+
+       
+
+    string GetIonicState(CodeClass codeClass) {
+        var helper = new CodeHelper(codeClass); 
+        var state  = "";
+        state += string.Format(" .state('app.{0}', ", helper.Name); 
+        state += "{" ;
+        state += string.Format(" url: '/{0}',",helper.Name) ;
+        state += "views: {"; 
+        state += "  'menuContent': {"; 
+       state += string.Format(" templateUrl: 'templates/{0}list.html'", helper.Name ); 
+        state += "}";
+        state += "}";
+        state += "})";
+        return state;        
+    }
+
+#>

@@ -31,15 +31,13 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
+  .state('app.Contact', { url: '/Contact',views: {  'menuContent': { templateUrl: 'templates/Contactlist.html'}}})
+ .state('app.Awards', { url: '/Awards',views: {  'menuContent': { templateUrl: 'templates/Awardslist.html'}}})
+ .state('app.HourRecord', { url: '/HourRecord',views: {  'menuContent': { templateUrl: 'templates/HourRecordlist.html'}}})
+ .state('app.Opportunity', { url: '/Opportunity',views: {  'menuContent': { templateUrl: 'templates/Opportunitylist.html'}}})
+ .state('app.Organisation', { url: '/Organisation',views: {  'menuContent': { templateUrl: 'templates/Organisationlist.html'}}})
+ .state('app.OrganisationAddress', { url: '/OrganisationAddress',views: {  'menuContent': { templateUrl: 'templates/OrganisationAddresslist.html'}}})
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
 
   .state('app.browse', {
       url: '/browse',

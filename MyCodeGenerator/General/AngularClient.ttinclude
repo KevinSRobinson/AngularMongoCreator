@@ -7,6 +7,7 @@
         public string Name {get; set; }
         public string CamelCase {get; set; }
         public string CamelCasePlural {get; set; }
+        public CodeElements Members  {get; set; }
 
 
         public CodeHelper(CodeClass codeClass){
@@ -16,14 +17,9 @@
             Name= _codeClass.Name;
             CamelCase  = GetCamelcaseClassName(_codeClass);
             CamelCasePlural =  CamelCase + "s";
+
+            Members =_codeClass.Members;
         }
-
-    
-         public  CodeElements Members {
-            get{
-                return _codeClass.Members;
-            }}
-
 
         private static string GetCamelcaseClassName(CodeClass codeClass)
         {

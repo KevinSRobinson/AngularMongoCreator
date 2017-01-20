@@ -1,0 +1,302 @@
+﻿<#+
+            
+    public class CodeHelper
+    {
+        protected static CodeClass _;
+        public string Plural {get; set;}
+
+        public CodeHelper(CodeClass codeClass){
+            _ = codeClass;
+
+            Plural = GetPlural(Name);
+
+        }
+            
+       
+        public string Name { get{
+                return _.Name;
+            }}
+        public string CamelCasePlural {
+            get{
+                 return GetPlural(CamelCase);
+            }}
+        public string CamelCase {
+            get{
+                return GetCamelcaseClassName(_);
+            }}
+         public  CodeElements Members {
+            get{
+                return _.Members;
+            }}
+
+
+        private string GetPlural(string name){
+            var lastLetter = name.Substring(name.Length-1, 1);
+            if(lastLetter !=  "s"){
+                return _.Name += "s";
+            }
+            return name;
+        }
+
+        private static string GetCamelcaseClassName(CodeClass codeClass)
+        {
+            return GetCamelcaseClassName(codeClass.Name);
+        }
+        private static string GetCamelcaseClassName(string className)
+        {
+            string returnString = className.ToLower();
+            returnString = Char.ToLowerInvariant(className[0]) + className.Substring(1);
+            return returnString;
+        }
+    }
+
+
+
+        public class Component {
+            public CodeHelper _;
+            private string _name;
+            private string _basePath = "";
+            private string _path = "";  
+            private string _componentName = "";
+            private string _fileName = "";
+            private string _templateUrl = "";  
+            private string _templateFileName = "";  
+            private string _fullPath = "";  
+
+            public Component(CodeHelper helper, string name, string basePath){
+                _ = helper;
+                _name = name;
+                _basePath = basePath;
+                _componentName = _.CamelCase + _name;
+                _templateFileName = _componentName + ".html";
+                _fileName = _componentName + ".js";
+
+                //build the relative path to the Component
+                _path = string.Format("Features/{1}/Components/{2}/", basePath, _.Plural, _componentName);
+
+                //build the full path to the Component
+                _fullPath = string.Format("{0}/{1}/", basePath, _path);
+                
+                //build the Url for to the Tempalte              
+                _templateUrl = string.Format("{0}{1}", _path, TemplateFileName);               
+            }
+            public string FullPath { get { return _fullPath; }}
+
+            public string Path { get { return _path; }}
+ 
+            public string FileName { get { return _fileName; }}
+
+            public string ComponentName { get  { return _componentName;  }}
+
+            public string TemplateUrl { get { return _templateUrl; }}
+                    
+            public string TemplateFileName { get { return _templateFileName; }}            
+        
+        }
+
+
+        public class DataService{
+
+            public CodeHelper _;
+            public string BasePath = "";
+
+            public DataService(CodeHelper helper, string basePath){
+               _ = helper;
+
+            }
+            
+            public string Path 
+                { get
+                {
+                    return BasePath + "DataServices/";;
+                }
+            }
+
+            public string FileName 
+                { get
+                {
+                    return ServiceName + ".js";
+                }
+            }
+
+            public string ServiceName 
+                { get
+                {
+                    return _.Name + "DataService";
+                }
+            }
+            
+                        
+
+         }
+
+
+         public class Modals{
+
+            public CodeHelper _;
+            
+            public string Name {get; set;}
+            public string BasePath {get; set;}
+            public string FullPath {get; set;}
+            public string Path {get; set;}
+            public string ServiceName {get; set;}
+            public string ServiceFileName {get; set;}
+            public string ModifyTemplateFileName {get; set;}
+            public string ModifyController {get; set;}
+            public string ModifyTemplateUrl {get; set;}
+            public string ModifyControllerFileName {get; set;}
+            
+
+            public Modals(CodeHelper helper, string basePath){
+                _ = helper;
+
+                BasePath = basePath;
+
+                //build the relative path to the Component
+                Path = string.Format("Features/{0}/Modals/", _.Plural);
+
+                //build the full path to the Component
+                FullPath = string.Format("{0}/{1}/", basePath, Path);
+
+                ServiceName = string.Format("{0}ModalService", _.Name);
+                ServiceFileName = string.Format("{0}.js", ServiceName);
+            
+                ModifyTemplateFileName = string.Format("modify{0}ModalTemplate.html", _.Name);
+                ModifyTemplateUrl = string.Format("{0}{1}", Path, ModifyTemplateFileName);
+
+                ModifyController = string.Format("modify{0}ModalController", _.Name);
+                ModifyControllerFileName = string.Format("{0}.js", ModifyController);
+             
+            }
+
+
+
+        }
+
+
+        public class Feature  {
+            
+            public CodeHelper _;
+            public Component ListComponent;
+            public DataService DataService;
+            public Modals Modals;
+
+            public string BasePath = "";
+          
+
+            public Feature(CodeClass codeClass, string basePath){
+                 _ = new CodeHelper(codeClass);
+
+                 ListComponent = new Component(_, "List", basePath);
+                 Modals = new Modals(_, basePath);
+                
+                 DataService = new DataService(_, basePath);
+                 BasePath = basePath;
+                
+            }
+
+
+            
+
+        }
+  
+
+       public class AngularClient  {
+
+
+        private CodeClassHelper _codeClassHelper;
+
+        public string ServiceName  = "";  
+        public string ServiceFileName   = ""; 
+        public string FeaturePath = "";
+        public string StylesPath = "";
+        public string ViewsPath  = "";
+
+        //Modals
+        public string ModalsFilePath = "";
+        public string ModifyModalController = "";
+
+        public string ModalServiceName ="";
+        public string ModifyModalControllerFileName  = "";
+        public string ModalServiceNameFileName ="";
+        public string ModifyModalTemplateFileName = "";
+
+
+        //Components
+        public string ListComponentFilePath  ="";
+        public string ListComponentName ="";
+        public string ListComponentFileName  = "";
+        public string ListComponentTag = "";
+        public string ListComponentTemplateFileName  = "";
+        public string ListComponentTemplateUrl = "";
+
+
+        //login
+        public string LoginComponentFilePath = "";
+        public string LoginComponentTemplateUrl = "";
+
+        //Index View
+        public string IndexTemplateUrl = "";
+
+
+      
+
+
+
+        public AngularClient(CodeClassHelper codeClassHelper){
+
+
+            _codeClassHelper =codeClassHelper;
+
+
+            //Main features path
+            FeaturePath = "Features/" + _codeClassHelper.Plural + "/";
+            ViewsPath = FeaturePath + "/Views/";
+            
+
+            //DataServices
+            ServiceName  = _codeClassHelper.CamelCasePlural + "Service";  
+            ServiceFileName  = ServiceName + ".js"; 
+
+
+            //Modals
+            ModalsFilePath = string.Format("{0}{1}/", FeaturePath , "Modals"); 
+            ModalServiceName    =  string.Format("{0}ModalService", codeClassHelper.CamelCasePlural);
+            ModalServiceNameFileName    =  string.Format("{0}.js", ModalServiceName);
+            ModifyModalController =  string.Format("modify{0}ModalController", codeClassHelper.Name);
+            ModifyModalControllerFileName = string.Format("{0}.js", ModifyModalController);
+            ModifyModalTemplateFileName = string.Format("{0}Template.html", ModifyModalController);
+
+           
+
+            //Components
+            ListComponentFilePath = string.Format("{0}Components/",FeaturePath);
+            ListComponentName = string.Format("{0}List",_codeClassHelper.CamelCasePlural);
+            ListComponentFileName = string.Format("{0}.js",ListComponentName);
+            ListComponentTemplateFileName = string.Format("{0}.html", ListComponentName);
+            ListComponentTemplateUrl = string.Format("src/Client/{0}Components/{2}", FeaturePath, codeClassHelper.Plural, ListComponentTemplateFileName);
+            ListComponentTag = GetComponentTag(ListComponentName);
+
+           
+            //main index view
+            IndexTemplateUrl = string.Format("Features/{0}/Views/index.html", codeClassHelper.Plural);
+            
+
+        }
+
+     private string GetComponentTag(string componentName){
+            
+            var output = "";
+            foreach (char letter in componentName)
+            {
+               if (Char.IsUpper(letter) && output.Length > 0)
+                 output += "-" + letter;
+               else
+                 output += letter;
+            }
+            return string.Format("<{0}></{0}>", output.ToLower());
+        }  
+   
+    }
+
+ #>

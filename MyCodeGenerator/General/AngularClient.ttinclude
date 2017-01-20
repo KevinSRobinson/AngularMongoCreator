@@ -5,22 +5,20 @@
         protected static CodeClass _codeClass;
         public string Plural {get; set; }
         public string Name {get; set; }
+        public string CamelCase {get; set; }
+        public string CamelCasePlural {get; set; }
+
 
         public CodeHelper(CodeClass codeClass){
             _codeClass = codeClass;
 
             Plural =  _codeClass.Name + "s";
             Name= _codeClass.Name;
+            CamelCase  = GetCamelcaseClassName(_codeClass);
+            CamelCasePlural =  CamelCase + "s";
         }
 
-        public string CamelCasePlural {
-            get{
-                return CamelCase + "s";
-            }}
-        public string CamelCase {
-            get{
-                return GetCamelcaseClassName(_codeClass);
-            }}
+    
          public  CodeElements Members {
             get{
                 return _codeClass.Members;

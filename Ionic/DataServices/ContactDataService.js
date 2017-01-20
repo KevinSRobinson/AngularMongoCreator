@@ -14,7 +14,7 @@ var ContactDataService = function($resource, $http, apiBase) {
         return $http.get(apiBase + '/readAllForCurrentUser');
     };    
 
-    var modify = function("/contact") {
+    var modify = function(contact) {
 		if(contact._id){
 			return $http.put(apiBase + contact._id, contact);
 		}
@@ -33,3 +33,5 @@ var ContactDataService = function($resource, $http, apiBase) {
         GetAllForCurrentUser: getAllForCurrentUser
     };
 };
+
+angular.module("app").service("ContactDataService", ContactDataService);

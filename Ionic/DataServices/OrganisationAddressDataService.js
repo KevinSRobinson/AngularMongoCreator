@@ -14,7 +14,7 @@ var OrganisationAddressDataService = function($resource, $http, apiBase) {
         return $http.get(apiBase + '/readAllForCurrentUser');
     };    
 
-    var modify = function("/organisationAddress") {
+    var modify = function(organisationAddress) {
 		if(organisationAddress._id){
 			return $http.put(apiBase + organisationAddress._id, organisationAddress);
 		}
@@ -33,3 +33,5 @@ var OrganisationAddressDataService = function($resource, $http, apiBase) {
         GetAllForCurrentUser: getAllForCurrentUser
     };
 };
+
+angular.module("app").service("OrganisationAddressDataService", OrganisationAddressDataService);

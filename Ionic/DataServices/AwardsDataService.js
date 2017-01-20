@@ -14,7 +14,7 @@ var AwardsDataService = function($resource, $http, apiBase) {
         return $http.get(apiBase + '/readAllForCurrentUser');
     };    
 
-    var modify = function("/awards") {
+    var modify = function(awards) {
 		if(awards._id){
 			return $http.put(apiBase + awards._id, awards);
 		}
@@ -33,3 +33,5 @@ var AwardsDataService = function($resource, $http, apiBase) {
         GetAllForCurrentUser: getAllForCurrentUser
     };
 };
+
+angular.module("app").service("AwardsDataService", AwardsDataService);

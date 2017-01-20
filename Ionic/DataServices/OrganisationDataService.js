@@ -14,7 +14,7 @@ var OrganisationDataService = function($resource, $http, apiBase) {
         return $http.get(apiBase + '/readAllForCurrentUser');
     };    
 
-    var modify = function("/organisation") {
+    var modify = function(organisation) {
 		if(organisation._id){
 			return $http.put(apiBase + organisation._id, organisation);
 		}
@@ -33,3 +33,5 @@ var OrganisationDataService = function($resource, $http, apiBase) {
         GetAllForCurrentUser: getAllForCurrentUser
     };
 };
+
+angular.module("app").service("OrganisationDataService", OrganisationDataService);

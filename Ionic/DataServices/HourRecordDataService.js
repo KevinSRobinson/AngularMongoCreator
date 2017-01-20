@@ -14,7 +14,7 @@ var HourRecordDataService = function($resource, $http, apiBase) {
         return $http.get(apiBase + '/readAllForCurrentUser');
     };    
 
-    var modify = function("/hourRecord") {
+    var modify = function(hourRecord) {
 		if(hourRecord._id){
 			return $http.put(apiBase + hourRecord._id, hourRecord);
 		}
@@ -33,3 +33,5 @@ var HourRecordDataService = function($resource, $http, apiBase) {
         GetAllForCurrentUser: getAllForCurrentUser
     };
 };
+
+angular.module("app").service("HourRecordDataService", HourRecordDataService);

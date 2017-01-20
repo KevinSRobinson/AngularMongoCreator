@@ -14,7 +14,7 @@ var OpportunityDataService = function($resource, $http, apiBase) {
         return $http.get(apiBase + '/readAllForCurrentUser');
     };    
 
-    var modify = function("/opportunity") {
+    var modify = function(opportunity) {
 		if(opportunity._id){
 			return $http.put(apiBase + opportunity._id, opportunity);
 		}
@@ -33,3 +33,5 @@ var OpportunityDataService = function($resource, $http, apiBase) {
         GetAllForCurrentUser: getAllForCurrentUser
     };
 };
+
+angular.module("app").service("OpportunityDataService", OpportunityDataService);

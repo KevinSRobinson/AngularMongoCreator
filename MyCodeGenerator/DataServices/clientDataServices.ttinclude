@@ -15,7 +15,7 @@ var <#=feature.DataService.ServiceName#> = function($resource, $http, apiBase) {
         return $http.get(apiBase + '/readAllForCurrentUser');
     };    
 
-    var modify = function("/<#=feature._.CamelCase#>") {
+    var modify = function(<#=feature._.CamelCase#>) {
 		if(<#=feature._.CamelCase#>._id){
 			return $http.put(apiBase + <#=feature._.CamelCase#>._id, <#=feature._.CamelCase#>);
 		}
@@ -34,6 +34,8 @@ var <#=feature.DataService.ServiceName#> = function($resource, $http, apiBase) {
         GetAllForCurrentUser: getAllForCurrentUser
     };
 };
+
+angular.module("<#=applicationName#>").service("<#=feature.DataService.ServiceName#>", <#=feature.DataService.ServiceName#>);
 <#+ CreateNewFile(feature.DataService.Path, feature.DataService.FileName); }  #>
 
 

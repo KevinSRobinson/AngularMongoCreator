@@ -91,7 +91,6 @@
     <None Include="Angular\Features\Modals\modalServices.ttinclude" />
     <None Include="Angular\Features\Modals\modifyModal.ttinclude" />
     <None Include="Angular\Features\Modals\modifyModalController.ttinclude" />
-    <None Include="Angular\Features\Modals\viewModal.ttinclude" />
     <None Include="Angular\Features\Modals\_modalHelpers.ttinclude" />
     <None Include="Angular\package.ttinclude" />
     <None Include="Angular\SideMenuHelpers.ttinclude" />

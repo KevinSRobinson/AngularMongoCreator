@@ -1,14 +1,5 @@
-﻿
-<#+ 
-void GenerateModifyModalTemplate(CodeClassHelper helper){		
-		#>
-<my-modal-header title="Modify <#=helper.Name#>"></my-modal-header>
-<#+ 
-        WriteOutFormFields(helper);
-#>
+﻿<#+ void Generate_Features_Modals_ModifyTemplate(Feature feature){ #>
+<my-modal-header title="Modify <#=feature._.Name#>"></my-modal-header>
+<#+ WriteOutFormFields(feature._); #>
 <my-modal-buttons close="vm.close()" save="vm.save()"></my-modal-buttons>
-<#+
-     	CreateDirectoryFullPath(clientAppPath + helper.AngularClient.ModalsFilePath);
-	    CreateFile(clientAppPath + helper.AngularClient.ModalsFilePath +  helper.AngularClient.ModifyModalTemplateFileName);
-	}	
-#>
+<#+ CreateNewFile(feature.Modals.FullPath, feature.Modals.ModifyTemplateFileName); }  #>

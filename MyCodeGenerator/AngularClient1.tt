@@ -25,6 +25,7 @@
 <#@ include file="Angular/Features/Components/listComponentTemplate.ttinclude"#>
 <#@ include file="Angular/Features/Modals/_modalHelpers.ttinclude"#>
 <#@ include file="Angular/Features/Modals/modalServices.ttinclude"#>
+<#@ include file="Angular/Features/Modals/modifyModal.ttinclude"#>
 
 <#  
     //Get all classes from the model
@@ -56,6 +57,7 @@
         this.Generate_Features_ListComponentTemplate(feature);
 
         this.Generate_Features_Modals_Service(feature);
+        this.Generate_Features_Modals_ModifyTemplate(feature);
        
     }
 

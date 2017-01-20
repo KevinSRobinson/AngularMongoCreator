@@ -33,9 +33,9 @@
         private string GetPlural(string name){
             var lastLetter = name.Substring(name.Length-1, 1);
             if(lastLetter !=  "s"){
-                return _.Name += "s";
+                return name += "s";
             }
-            return name;
+            return  name;
         }
 
         private static string GetCamelcaseClassName(CodeClass codeClass)

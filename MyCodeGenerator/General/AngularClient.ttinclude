@@ -13,14 +13,21 @@
         public CodeHelper(CodeClass codeClass){
             _codeClass = codeClass;
 
-            Plural =  _codeClass.Name + "s";
+            Plural =  GetPlural(_codeClass.Name);
             Name= _codeClass.Name;
             CamelCase  = GetCamelcaseClassName(_codeClass);
-            CamelCasePlural =  CamelCase + "s";
+            CamelCasePlural =  GetPlural(CamelCase);
 
             Members =_codeClass.Members;
         }
-
+    
+        private string GetPlural(string name) {
+            var lastLetter = name.Substring(name.Length-1, 1);
+            if(lastLetter !=  "s"){
+                return name += "s";
+            }
+            return name;
+        }    
         private static string GetCamelcaseClassName(CodeClass codeClass)
         {
             return GetCamelcaseClassName(codeClass.Name);
@@ -55,7 +62,7 @@
                 _fileName = _componentName + ".js";
 
                 //build the relative path to the Component
-                _path = string.Format("Features/{1}/Components/{2}/", basePath, _.Name, _componentName);
+                _path = string.Format("Features/{1}/Components/{2}/", basePath, _.Plural, _componentName);
 
                 //build the full path to the Component
                 _fullPath = string.Format("{0}/{1}/", basePath, _path);

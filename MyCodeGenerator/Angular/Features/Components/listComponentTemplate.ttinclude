@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tr ng-repeat='<#= feature._.CamelCase.ToLower() #> in vm.<#= feature._.CamelCasePlural #> | filter:filter '>
-       
+        <#+WriteTableCells(feature._);#>
         <td><div class="btn btn-success" ng-click='vm.edit(<#= feature._.CamelCase #>)'>Edit</div></td>
     </tr>
 </table>

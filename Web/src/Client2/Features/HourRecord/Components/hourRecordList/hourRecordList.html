@@ -13,7 +13,11 @@
         </tr>
     </thead>
     <tr ng-repeat='hourrecord in vm.hourRecords | filter:filter '>
-       
+        <td>{{ hourrecord.OldId }}</td>
+<td>{{ hourrecord.DateWorkedFrom  |  date:'medium' }}</td>
+<td>{{ hourrecord.DateWorkedTo  |  date:'medium' }}</td>
+<td>float</td>
+<td>{{ hourrecord.UserId }}</td>
         <td><div class="btn btn-success" ng-click='vm.edit(hourRecord)'>Edit</div></td>
     </tr>
 </table>

@@ -12,7 +12,10 @@
         </tr>
     </thead>
     <tr ng-repeat='organisation in vm.organisations | filter:filter '>
-       
+        <td>{{ organisation._id }}</td>
+<td>{{ organisation.Name }}</td>
+<td>bool</td>
+<td>{{ organisation.Tel }}</td>
         <td><div class="btn btn-success" ng-click='vm.edit(organisation)'>Edit</div></td>
     </tr>
 </table>

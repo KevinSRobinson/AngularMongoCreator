@@ -14,7 +14,12 @@
         </tr>
     </thead>
     <tr ng-repeat='opportunity in vm.opportunitys | filter:filter '>
-       
+        <td>{{ opportunity.OldId }}</td>
+<td>{{ opportunity.CourseTitle }}</td>
+<td>{{ opportunity.SkillsLearned }}</td>
+<td>{{ opportunity.Comments }}</td>
+<td>{{ opportunity.Date  |  date:'medium' }}</td>
+<td>{{ opportunity.UserId }}</td>
         <td><div class="btn btn-success" ng-click='vm.edit(opportunity)'>Edit</div></td>
     </tr>
 </table>

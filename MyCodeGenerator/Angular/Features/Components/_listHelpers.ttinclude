@@ -36,7 +36,7 @@
         }
     }
 
-    void WriteTableCells(CodeClass helper){
+    void WriteTableCells(CodeHelper helper){
 
         //Loop Members
         foreach (CodeElement meb in helper.Members) {

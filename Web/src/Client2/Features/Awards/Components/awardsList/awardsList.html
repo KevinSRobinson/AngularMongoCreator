@@ -21,7 +21,19 @@
         </tr>
     </thead>
     <tr ng-repeat='awards in vm.awardss | filter:filter '>
-       
+        <td>float</td>
+<td>float</td>
+<td>float</td>
+<td>bool</td>
+<td>bool</td>
+<td>bool</td>
+<td>{{ awards.Award50HoursApprovedBy }}</td>
+<td>{{ awards.Award100HoursApprovedBy }}</td>
+<td>{{ awards.Award200HoursApprovedBy }}</td>
+<td>{{ awards.Award50HoursApprovedOn  |  date:'medium' }}</td>
+<td>{{ awards.Award100HoursApprovedOn  |  date:'medium' }}</td>
+<td>{{ awards.Award200HoursApprovedOn  |  date:'medium' }}</td>
+<td>{{ awards.UserId }}</td>
         <td><div class="btn btn-success" ng-click='vm.edit(awards)'>Edit</div></td>
     </tr>
 </table>

@@ -13,7 +13,11 @@
         </tr>
     </thead>
     <tr ng-repeat='organisationaddress in vm.organisationAddresss | filter:filter '>
-       
+        <td>{{ organisationaddress._id }}</td>
+<td>{{ organisationaddress.Address1 }}</td>
+<td>{{ organisationaddress.Address2 }}</td>
+<td>{{ organisationaddress.Postcode }}</td>
+<td>{{ organisationaddress.Town }}</td>
         <td><div class="btn btn-success" ng-click='vm.edit(organisationAddress)'>Edit</div></td>
     </tr>
 </table>

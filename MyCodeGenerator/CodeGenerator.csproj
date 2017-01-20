@@ -91,6 +91,7 @@
     <None Include="Angular\package.ttinclude" />
     <None Include="Angular\SideMenuHelpers.ttinclude" />
     <None Include="Angular\IndexPage.ttinclude" />
+    <None Include="Angular\Styles\Styles.less" />
     <None Include="Client\auth0Service.ttinclude" />
     <None Include="Client\Features\Components\_listHelpers.ttinclude" />
     <None Include="Client\Features\Modals\_modalHelpers.ttinclude" />

@@ -30,7 +30,10 @@
     var classes = GetClasses();    
    
     var basePath =  "C:/Repos/NodeMongoAngular/Web/src/Client2/";
-    
+    var templatesBasePath = @"C:\Repos\NodeMongoAngular\MyCodeGenerator\Angular\Styles\";
+                        
+    //copy over css files
+    Generate_File("Styles.less", templatesBasePath, basePath + @"Styles/");
 
     //app
     this.Generate_App();
@@ -38,7 +41,7 @@
     this.Generate_App_Auth0Service();
     this.Generate_App_Index();
     this.Generate_App_PackageJson();
-
+    
     
     //Loop through each class
     foreach(var codeClass in classes){

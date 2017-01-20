@@ -19,28 +19,27 @@
     }
 
 
-    void WriteTableHeaders(CodeClassHelper helper){
+    void WriteTableHeaders(CodeHelper helper){
      
         //Loop Members
-        //foreach (CodeElement meb in helper._.Members) {
-//
-            ////If is a Property
-            //if (meb.Kind == vsCMElement.vsCMElementProperty) {
-                //var prop = meb as CodeProperty;  
-                //var type = prop.Type.AsString;
-                //if(type !="System.Guid"){
-                     //WriteLine("<td>" +  meb.Name + "</td>");                 
-                //}
-                //
-             //};
-        //}
+        foreach (CodeElement meb in helper.Members) {
+
+            //If is a Property
+            if (meb.Kind == vsCMElement.vsCMElementProperty) {
+                var prop = meb as CodeProperty;  
+                var type = prop.Type.AsString;
+                if(type !="System.Guid"){
+                     WriteLine("<td>" +  meb.Name + "</td>");                 
+                }
+                
+             };
+        }
     }
 
-    void WriteTableCells(CodeClass c){
-        var helper = new CodeClassHelper(c);
+    void WriteTableCells(CodeClass helper){
 
         //Loop Members
-        foreach (CodeElement meb in c.Members) {
+        foreach (CodeElement meb in helper.Members) {
 
             //If is a Property
 			if (meb.Kind == vsCMElement.vsCMElementProperty) {

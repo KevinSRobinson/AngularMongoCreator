@@ -55,8 +55,8 @@
   <ItemGroup>
     <Compile Include="AngularClient1.cs">
       <DependentUpon>AngularClient1.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="IonicApp.cs">
       <DependentUpon>IonicApp.tt</DependentUpon>

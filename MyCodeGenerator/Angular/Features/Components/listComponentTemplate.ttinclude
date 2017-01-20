@@ -6,7 +6,7 @@
 <table class="table table-striped">
    <thead>
         <tr>
-             
+             <#+WriteTableHeaders(feature._);#>
         </tr>
     </thead>
     <tr ng-repeat='<#= feature._.CamelCase.ToLower() #> in vm.<#= feature._.CamelCasePlural #> | filter:filter '>

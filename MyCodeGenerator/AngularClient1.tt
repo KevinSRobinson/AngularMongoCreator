@@ -22,12 +22,16 @@
 <#@ include file="Angular/DataServices/angularServices.ttinclude" #>
 <#@ include file="Angular/Features/Components/_listHelpers.ttinclude" #>
 <#@ include file="Angular/Features/Components/listComponent.ttinclude" #>
+<#@ include file="Angular/Features/Components/listComponentTemplate.ttinclude" #>
 
 
 <#  
     //Get all classes from the model
     var classes = GetClasses();    
    
+    var basePath =  "C:/Repos/NodeMongoAngular/Web/src/Client2/";
+    
+
     //app
     this.Generate_App();
     this.Generate_App_Run();
@@ -39,12 +43,13 @@
     //Loop through each class
     foreach(var codeClass in classes){
       
-        var feature = new Feature(codeClass);
+        var feature = new Feature(codeClass, basePath);
             
         this.Generate_DataServices(feature);
 
         //components
         this.Generate_Features_ListComponent(feature);
+        this.Generate_Features_ListComponentTemplate(feature);
        
     }
 

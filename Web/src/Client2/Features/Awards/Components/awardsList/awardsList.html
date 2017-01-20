@@ -1,0 +1,15 @@
+<my-panel title="Tags" show-add-button="true" add="vm.create()" style="success" icon="tags" icon-size="2">
+
+<my-filter-textbox  ng-model="filter"></my-filter-textbox>
+
+<table class="table table-striped">
+   <thead>
+        <tr>
+             
+        </tr>
+    </thead>
+    <tr ng-repeat='awards in vm.awardss | filter:filter '>
+       
+        <td><div class="btn btn-success" ng-click='vm.edit(awards)'>Edit</div></td>
+    </tr>
+</table>

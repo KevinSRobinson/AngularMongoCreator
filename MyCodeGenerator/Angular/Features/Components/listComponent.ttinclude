@@ -43,9 +43,12 @@ controller: function (<#=feature.DataService.ServiceName#>, <#=feature.Modals.Se
     vm.init();
 
     }
+
 };
 
 angular.module('<#=applicationName#>')
 .component('<#=feature.ListComponent.ComponentName#>', <#=feature.ListComponent.ComponentName#>);
-<#+ CreateNewFile(Angular_Components_Path, feature.ListComponent.FileName); }  #>
+
+
+<#+ CreateNewFile(feature.ListComponent.FullPath, feature.ListComponent.TemplateFileName); }  #>
 

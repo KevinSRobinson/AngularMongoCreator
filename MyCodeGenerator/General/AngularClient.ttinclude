@@ -41,35 +41,43 @@
 
         public class Component {
             public CodeHelper _;
-            private string _name   ;
+            private string _name;
+            private string _basePath = "";
+            private string _path = "";  
+            private string _componentName = "";
+            private string _fileName = "";
+            private string _templateUrl = "";  
+            private string _templateFileName = "";  
+            private string _fullPath = "";  
 
-            public Component(CodeHelper helper, string name){
+            public Component(CodeHelper helper, string name, string basePath){
                 _ = helper;
                 _name = name;
-            }
+                _basePath = basePath;
+                _componentName = _.CamelCase + _name;
+                _templateFileName = _componentName + ".html";
+                _fileName = _componentName + ".js";
 
-            public string FileName 
-                { get
-                {
-                     return ComponentName + ".js";
-                }
-            }
-            public string ComponentName 
-                { get
-                {
-                    return _.CamelCase + _name;
-                }
-            }
-            public string TemplateUrl 
-                { get
-                {
-                return string.Format("{0}/{1}/{2}", Angular_Features_Path, _.Name, ComponentName);
-                }
-            }
+                //build the relative path to the Component
+                _path = string.Format("Features/{1}/Components/{2}/", basePath, _.Name, _componentName);
 
-            //public string Get_Feature_Component_Path(string componentName){
-                    //return string.Format("{0}/{1}/{2}/", Angular_Features_Path, Helper.Name, componentName);
-            //}
+                //build the full path to the Component
+                _fullPath = string.Format("{0}/{1}/", basePath, _path);
+                
+                //build the Url for to the Tempalte              
+                _templateUrl = string.Format("{0}{1}", _path, TemplateFileName);               
+            }
+            public string FullPath { get { return _fullPath; }}
+
+            public string Path { get { return _path; }}
+ 
+            public string FileName { get { return _fileName; }}
+
+            public string ComponentName { get  { return _componentName;  }}
+
+            public string TemplateUrl { get { return _templateUrl; }}
+                    
+            public string TemplateFileName { get { return _templateFileName; }}            
         
         }
 
@@ -77,9 +85,18 @@
         public class DataService{
 
             public CodeHelper _;
+            public string BasePath = "";
 
-            public DataService(CodeHelper helper){
+            public DataService(CodeHelper helper, string basePath){
                _ = helper;
+
+            }
+            
+            public string Path 
+                { get
+                {
+                    return BasePath + "DataServices/";;
+                }
             }
 
             public string FileName 
@@ -95,18 +112,28 @@
                     return _.Name + "DataService";
                 }
             }
+            
+                        
 
-
-
-        }
+         }
 
 
          public class Modals{
 
             public CodeHelper _;
+            public string BasePath = "";
 
-            public Modals(CodeHelper helper){
+            public Modals(CodeHelper helper, string basePath){
                 _ = helper;
+
+            }
+
+            
+            public string Path 
+                { get
+                {
+                    return BasePath + "Modals/";
+                }
             }
 
             public string FileName 
@@ -135,57 +162,21 @@
             public DataService DataService;
             public Modals Modals;
 
-            public Feature(CodeClass codeClass){
+            public string BasePath = "";
+          
+
+            public Feature(CodeClass codeClass, string basePath){
                  _ = new CodeHelper(codeClass);
-                 ListComponent = new Component(_, "List");
-                 DataService = new DataService(_);
-                 Modals = new Modals(_);
 
-
-                  //Components
-                //ListComponentFilePath = string.Format("{0}Components/",FeaturePath);
-                //ListComponentName = string.Format("{0}List",_codeClassHelper.CamelCasePlural);
-                //ListComponentFileName = string.Format("{0}.js",ListComponentName);
-                //ListComponentTemplateFileName = string.Format("{0}.html", ListComponentName);
-                //ListComponentTemplateUrl = string.Format("src/Client/{0}Components/{2}", FeaturePath, codeClassHelper.Plural, ListComponentTemplateFileName);
-                //ListComponentTag = GetComponentTag(ListComponentName);
+                 ListComponent = new Component(_, "List", basePath);
+                 Modals = new Modals(_,basePath + "Modals/");
+                
+                 DataService = new DataService(_, basePath);
+                 BasePath = basePath;
+                
             }
 
 
-
-            //Components
-            //public string Get_Feature_Component_Path(string componentName){
-                    //return string.Format("{0}/{1}/{2}/", Angular_Features_Path, Helper.Name, componentName);
-            //}
-//
-            //public string Get_Feature_Component_Name(string componentName){
-                //return string.Format("{0}{1}.js", Helper.Name, componentName);
-            //}
-//
-             //private string GetComponentTag(string componentName){
-                //var output = "";
-                //foreach (char letter in componentName)
-                //{
-                   //if (Char.IsUpper(letter) && output.Length > 0)
-                     //output += "-" + letter;
-                   //else
-                     //output += letter;
-                //}
-                //return string.Format("<{0}></{0}>", output.ToLower());
-                //}     
-            //}
-//
-//
-         
-
-
-            //Components
-            //public string ListComponentFilePath  ="";
-            //public string ListComponentName ="";
-            //public string ListComponentFileName  = "";
-            //public string ListComponentTag = "";
-            //public string ListComponentTemplateFileName  = "";
-            //public string ListComponentTemplateUrl = "";
             
 
         }

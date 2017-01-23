@@ -49,10 +49,11 @@
 
 
     var basePath =  "C:/Repos/NodeMongoAngular/Generated/Web/";
+
     var templatesBasePath = @"C:\Repos\NodeMongoAngular\MyCodeGenerator\Angular\src\client\Styles\";
                         
     //copy over css files
-    Generate_File("Styles.less", templatesBasePath, basePath + @"Styles/");
+    Generate_File("Styles.less", templatesBasePath, app.ClientSrcPath + @"Styles/");
 
     // .../src/Client/
     this.Generate_App(app);

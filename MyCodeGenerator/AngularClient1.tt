@@ -14,47 +14,53 @@
 <#@ include file="General/CodeHelper.ttinclude" #>
 <#@ include file="General/FileHelpers.ttinclude" #>
 <#@ include file="General/T4Helper.ttinclude" #>
-<#@ include file="Angular/app.ttinclude" #>
+<#@ include file="Angular/src/client/app.ttinclude" #>
 <#@ include file="Angular/SideMenuHelpers.ttinclude" #>
-<#@ include file="Angular/appRun.ttinclude" #>
-<#@ include file="Angular/auth0Service.ttinclude" #>
+<#@ include file="Angular/src/client/appRun.ttinclude" #>
+<#@ include file="Angular/src/client/auth0Service.ttinclude" #>
 <#@ include file="Angular/package.ttinclude" #>
 <#@ include file="Angular/bower.ttinclude" #>
 <#@ include file="Angular/bowerc.ttinclude" #>
-<#@ include file="Angular/IndexPage.ttinclude" #>
-<#@ include file="Angular/DataServices/angularServices.ttinclude" #>
-<#@ include file="Angular/Features/Components/_listHelpers.ttinclude" #>
-<#@ include file="Angular/Features/Components/listComponent.ttinclude" #>
-<#@ include file="Angular/Features/Components/listComponentTemplate.ttinclude"#>
-<#@ include file="Angular/Features/Modals/_modalHelpers.ttinclude"#>
-<#@ include file="Angular/Features/Modals/modalServices.ttinclude"#>
-<#@ include file="Angular/Features/Modals/modifyModal.ttinclude"#>
-<#@ include file="Angular/Features/Modals/modifyModalController.ttinclude"#>
+<#@ include file="Angular/src/client/IndexPage.ttinclude" #>
+<#@ include file="Angular/src/client/DataServices/angularServices.ttinclude" #>
+<#@ include file="Angular/src/client/Features/Components/_listHelpers.ttinclude" #>
+<#@ include file="Angular/src/client/Features/Components/listComponent.ttinclude" #>
+<#@ include file="Angular/src/client/Features/Components/listComponentTemplate.ttinclude"#>
+<#@ include file="Angular/src/client/Features/Modals/_modalHelpers.ttinclude"#>
+<#@ include file="Angular/src/client/Features/Modals/modalServices.ttinclude"#>
+<#@ include file="Angular/src/client/Features/Modals/modifyModal.ttinclude"#>
+<#@ include file="Angular/src/client/Features/Modals/modifyModalController.ttinclude"#>
+
 <#@ include file="Angular/gulpfile.ttinclude"#>
-<#@ include file="Angular/Gulp/browserSync.ttinclude"#>
-<#@ include file="Angular/Gulp/build.ttinclude"#>
-<#@ include file="Angular/Gulp/codeQuality.ttinclude"#>
-<#@ include file="Angular/Gulp/devBuild.ttinclude"#>
-<#@ include file="Angular/Gulp/fontsImages.ttinclude"#>
-<#@ include file="Angular/Gulp/utils.ttinclude"#>
-<#@ include file="Angular/Gulp/versioning.ttinclude"#>
+<#@ include file="Angular/GulpTasks/browserSync.ttinclude"#>
+<#@ include file="Angular/GulpTasks/build.ttinclude"#>
+<#@ include file="Angular/GulpTasks/codeQuality.ttinclude"#>
+<#@ include file="Angular/GulpTasks/devBuild.ttinclude"#>
+<#@ include file="Angular/GulpTasks/fontsImages.ttinclude"#>
+<#@ include file="Angular/GulpTasks/utils.ttinclude"#>
+<#@ include file="Angular/GulpTasks/versioning.ttinclude"#>
 
 
 <#  
     //Get all classes from the model
     var classes = GetClasses();    
    
+    var app = new GenApp("C:/Repos/NodeMongoAngular/Generated/Web/");
+
+
     var basePath =  "C:/Repos/NodeMongoAngular/Generated/Web/";
-    var templatesBasePath = @"C:\Repos\NodeMongoAngular\MyCodeGenerator\Angular\Styles\";
+    var templatesBasePath = @"C:\Repos\NodeMongoAngular\MyCodeGenerator\Angular\src\client\Styles\";
                         
     //copy over css files
     Generate_File("Styles.less", templatesBasePath, basePath + @"Styles/");
 
-    //app
-    this.Generate_App();
-    this.Generate_App_Run();
-    this.Generate_App_Auth0Service();
-    this.Generate_App_Index();
+    // .../src/Client/
+    this.Generate_App(app);
+    this.Generate_App_Run(app);
+    this.Generate_App_Auth0Service(app);
+    this.Generate_App_Index(app);
+
+    //packages
     this.Generate_App_PackageJson();
     this.Generate_BowerRc();
     this.Generate_Bower();

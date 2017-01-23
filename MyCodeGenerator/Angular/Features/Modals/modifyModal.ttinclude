@@ -1,5 +1,0 @@
-﻿<#+ void Generate_Features_Modals_ModifyTemplate(Feature feature){ #>
-<my-modal-header title="Modify <#=feature._.Name#>"></my-modal-header>
-<#+ WriteOutFormFields(feature._); #>
-<my-modal-buttons close="vm.close()" save="vm.save()"></my-modal-buttons>
-<#+ CreateNewFile(feature.Modals.FullPath, feature.Modals.ModifyTemplateFileName); }  #>

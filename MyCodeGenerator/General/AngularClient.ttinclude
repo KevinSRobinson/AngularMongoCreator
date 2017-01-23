@@ -1,5 +1,15 @@
 ﻿<#+
             
+            public class GenApp
+            {
+                public string BasePath {get; set; }
+                public string ClientSrcPath {get; set; }
+
+                public GenApp(string basePath){
+                    BasePath = basePath;
+                    ClientSrcPath = basePath + "src/client/";
+                }
+            }
 
           public class Feature  {
             

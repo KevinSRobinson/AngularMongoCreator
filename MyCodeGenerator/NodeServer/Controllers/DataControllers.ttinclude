@@ -1,7 +1,7 @@
 ﻿
 <#+ 
 
-    private string GetRequestToObjectMapping(CodeClassHelper helper){
+    private string GetRequestToObjectMapping(CodeHelper helper){
         var properties = "";
 		foreach (CodeElement meb in helper.CodeClass.Members) {
 		if (meb.Kind == vsCMElement.vsCMElementProperty) {
@@ -16,7 +16,7 @@
         return properties;        
     }
 
-    void GenerateApisDataControllers(CodeClassHelper helper){#>
+    void GenerateApisDataControllers(CodeHelper helper){#>
 
     
     var <#=helper.Name#> = require('../Models/<#=helper.CamelCasePlural#>Model.js');

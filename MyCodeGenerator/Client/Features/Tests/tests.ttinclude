@@ -1,5 +1,5 @@
 ﻿<#+ 
-void GenerateComponentTests(CodeClassHelper helper){			
+void GenerateComponentTests(CodeHelper helper){			
 #>
 
 

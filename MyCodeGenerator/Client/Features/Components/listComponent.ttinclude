@@ -1,4 +1,4 @@
-﻿<#+ void GenerateListComponent(CodeClassHelper helper){	 #>
+﻿<#+ void GenerateListComponent(CodeHelper helper){	 #>
 var <#=helper.CamelCasePlural#>List = {
 bindings: {
 	allowChanges: '@'

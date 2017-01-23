@@ -1,4 +1,4 @@
-﻿<#+ void GenerateMongoDbSchemaFile(CodeClassHelper helper){ 
+﻿<#+ void GenerateMongoDbSchemaFile(CodeHelper helper){ 
 
 #>
 var mongoose = require('mongoose');

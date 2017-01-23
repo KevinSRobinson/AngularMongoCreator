@@ -20,7 +20,7 @@
 
 
     void WriteTableHeaders(CodeClass c){
-        var helper = new CodeClassHelper(c);
+        var helper = new CodeHelper(c);
 
         //Loop Members
         foreach (CodeElement meb in c.Members) {
@@ -38,7 +38,7 @@
     }
 
     void WriteTableCells(CodeClass c){
-        var helper = new CodeClassHelper(c);
+        var helper = new CodeHelper(c);
 
         //Loop Members
         foreach (CodeElement meb in c.Members) {

@@ -11,6 +11,7 @@
 <#@ import namespace="System.Reflection" #>
 <#@ include file="General/AngularClient.ttinclude" #>
 <#@ include file="General/JsonHelpers.ttinclude" #>
+<#@ include file="General/CodeHelper.ttinclude" #>
 <#@ include file="General/FileHelpers.ttinclude" #>
 <#@ include file="General/T4Helper.ttinclude" #>
 <#@ include file="Angular/app.ttinclude" #>

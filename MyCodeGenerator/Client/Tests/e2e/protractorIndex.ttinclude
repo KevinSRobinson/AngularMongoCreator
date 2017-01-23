@@ -1,4 +1,4 @@
-﻿<#+ void GenerateProtractorTestIndex(CodeClassHelper helper) {#>
+﻿<#+ void GenerateProtractorTestIndex(CodeHelper helper) {#>
 
 require("protractor");
 var ph = require("../protractorHelpers.js");

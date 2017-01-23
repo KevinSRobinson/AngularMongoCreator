@@ -1,4 +1,4 @@
-﻿<#+ void GeneratModalService(CodeClassHelper helper){ #>
+﻿<#+ void GeneratModalService(CodeHelper helper){ #>
 		
 var <#=helper.AngularClient.ModalServiceName#>  = function($uibModal){
 	 

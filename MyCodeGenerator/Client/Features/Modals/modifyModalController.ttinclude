@@ -1,5 +1,5 @@
 ﻿<#+   void GeneratModifyModalController(CodeClass codeClass){			
-      var helper = new CodeClassHelper(codeClass);
+      var helper = new CodeHelper(codeClass);
 #>
 var <#=helper.AngularClient.ModifyModalController#> = function ($uibModalInstance,  <#=helper.AngularClient.ServiceName#>, <#=helper.CamelCase#>) {
   var vm = this;

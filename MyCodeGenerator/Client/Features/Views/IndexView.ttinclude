@@ -4,7 +4,7 @@
 void GenerateIndexView(CodeClass codeClass){			
 
 
-var helper = new CodeClassHelper(codeClass);
+var helper = new CodeHelper(codeClass);
 
 #>		
 

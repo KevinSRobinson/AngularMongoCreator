@@ -34,7 +34,7 @@
     this.GeneratePackageJson();
    
     foreach(var codeClass in classes){
-      var helper  = new CodeClassHelper(codeClass);
+      var helper  = new CodeHelper(codeClass);
 
       //Node Server Data Apis
       this.GenerateApis(helper);

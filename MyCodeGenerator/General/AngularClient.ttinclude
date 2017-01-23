@@ -155,7 +155,7 @@
        public class AngularClient  {
 
 
-        //private CodeClassHelper _codeClassHelper;
+        //private CodeHelper _CodeHelper;
 
         public string ServiceName  = "";  
         public string ServiceFileName   = ""; 

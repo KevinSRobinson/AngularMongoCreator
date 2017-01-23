@@ -34,7 +34,7 @@ console.log('NODE_ENV=' + environment);
 
 <#+        
 foreach(CodeClass codeClass in codeClasses){
-            var helper = new CodeClassHelper(codeClass);
+            var helper = new CodeHelper(codeClass);
           
             var apiReference = String.Format("app.use('./api/{0}', require('./Apis/{0}Api'));", helper.CamelCasePlural);
 

@@ -1,17 +1,17 @@
 ﻿
-<#+ void GeneratRoutes(CodeClassHelper helper){ #>
+<#+ void GeneratRoutes(Feature feature){ #>
 var config = function ($stateProvider) {
     
 $stateProvider
-    .state('<#=helper.CamelCasePlural#>', {
-        url: '/<#=helper.CamelCasePlural#>',
-        templateUrl: 'src/Client/<#=helper.AngularClient.IndexTemplateUrl#>'
+    .state('<#=feature.CamelCasePlural#>', {
+        url: '/<#=feature.CamelCasePlural#>',
+        templateUrl: 'src/Client/<#=feature.AngularClient.IndexTemplateUrl#>'
     }) 
 };
 
 angular.module('<#=applicationName#>').config(config);
 <#+
-	 CreateDirectoryFullPath(clientAppPath + helper.AngularClient.FeaturePath);
+	 CreateDirectoryFullPath(feature.FeaturePath);
 	 CreateFile(clientAppPath + helper.AngularClient.FeaturePath + "/routes.js");
 }
 #>

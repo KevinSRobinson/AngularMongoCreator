@@ -154,6 +154,7 @@
     <None Include="Ionic\bower.ttinclude" />
     <None Include="Ionic\bowerc.ttinclude" />
     <None Include="Ionic\package.ttinclude" />
+    <None Include="Ionic\www\js\listControllers.ttinclude" />
     <None Include="Ionic\www\js\controller.ttinclude" />
     <None Include="Ionic\www\js\app.ttinclude" />
     <None Include="Ionic\www\js\_appHelpers.ttinclude" />

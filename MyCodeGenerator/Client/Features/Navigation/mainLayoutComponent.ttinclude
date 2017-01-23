@@ -1,6 +1,6 @@
 ﻿<#+ 
     private string GetSateItem(CodeClass codeClass){
-          var helper  = new CodeClassHelper(codeClass);
+          var helper  = new CodeHelper(codeClass);
         return "{ state: '" + helper.CamelCasePlural + "', linkText:'" + helper.Plural  + "', icon: 'cogs'},";
     }
 

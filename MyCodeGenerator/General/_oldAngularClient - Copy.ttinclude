@@ -188,7 +188,7 @@
        public class AngularClient  {
 
 
-        private CodeClassHelper _codeClassHelper;
+        private CodeHelper _CodeHelper;
 
         public string ServiceName  = "";  
         public string ServiceFileName   = ""; 
@@ -227,27 +227,27 @@
 
 
 
-        public AngularClient(CodeClassHelper codeClassHelper){
+        public AngularClient(CodeHelper CodeHelper){
 
 
-            _codeClassHelper =codeClassHelper;
+            _CodeHelper =CodeHelper;
 
 
             //Main features path
-            FeaturePath = "Features/" + _codeClassHelper.Plural + "/";
+            FeaturePath = "Features/" + _CodeHelper.Plural + "/";
             ViewsPath = FeaturePath + "/Views/";
             
 
             //DataServices
-            ServiceName  = _codeClassHelper.CamelCasePlural + "Service";  
+            ServiceName  = _CodeHelper.CamelCasePlural + "Service";  
             ServiceFileName  = ServiceName + ".js"; 
 
 
             //Modals
             ModalsFilePath = string.Format("{0}{1}/", FeaturePath , "Modals"); 
-            ModalServiceName    =  string.Format("{0}ModalService", codeClassHelper.CamelCasePlural);
+            ModalServiceName    =  string.Format("{0}ModalService", CodeHelper.CamelCasePlural);
             ModalServiceNameFileName    =  string.Format("{0}.js", ModalServiceName);
-            ModifyModalController =  string.Format("modify{0}ModalController", codeClassHelper.Name);
+            ModifyModalController =  string.Format("modify{0}ModalController", CodeHelper.Name);
             ModifyModalControllerFileName = string.Format("{0}.js", ModifyModalController);
             ModifyModalTemplateFileName = string.Format("{0}Template.html", ModifyModalController);
 
@@ -255,15 +255,15 @@
 
             //Components
             ListComponentFilePath = string.Format("{0}Components/",FeaturePath);
-            ListComponentName = string.Format("{0}List",_codeClassHelper.CamelCasePlural);
+            ListComponentName = string.Format("{0}List",_CodeHelper.CamelCasePlural);
             ListComponentFileName = string.Format("{0}.js",ListComponentName);
             ListComponentTemplateFileName = string.Format("{0}.html", ListComponentName);
-            ListComponentTemplateUrl = string.Format("src/Client/{0}Components/{2}", FeaturePath, codeClassHelper.Plural, ListComponentTemplateFileName);
+            ListComponentTemplateUrl = string.Format("src/Client/{0}Components/{2}", FeaturePath, CodeHelper.Plural, ListComponentTemplateFileName);
             ListComponentTag = GetComponentTag(ListComponentName);
 
            
             //main index view
-            IndexTemplateUrl = string.Format("Features/{0}/Views/index.html", codeClassHelper.Plural);
+            IndexTemplateUrl = string.Format("Features/{0}/Views/index.html", CodeHelper.Plural);
             
 
         }

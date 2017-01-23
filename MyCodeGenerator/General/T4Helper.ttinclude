@@ -30,13 +30,13 @@
 
 
 
-    //public class CodeClassHelper
+    //public class CodeHelper
     //{
             //private static CodeClass _codeClass;
             ////private AngularClient _angularClient;
 //
 //
-            //public CodeClassHelper(CodeClass codeClass){
+            //public CodeHelper(CodeClass codeClass){
                 //_codeClass = codeClass;
 //
                 ////_angularClient = new AngularClient(this);

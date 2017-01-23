@@ -98,9 +98,9 @@
 
     //////////////////////////////////
     //Mongo DB
-    string GetMongoDbSchema(CodeClassHelper helper){
+    string GetMongoDbSchema(CodeHelper helper){
         var schema = "";
-        foreach (CodeElement meb in helper.CodeClass.Members) {
+        foreach (CodeElement meb in helper.Members) {
             if (IsProperty(meb.Kind.ToString())) {	
                 schema += GetJsonSchemaProperty(meb);      
             };           

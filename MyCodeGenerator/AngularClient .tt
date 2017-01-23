@@ -10,6 +10,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Reflection" #>
 <#@ include file="General/T4Helper.ttinclude" #>
+<#@ include file="General/CodeHelper.ttinclude" #>
 <#@ include file="General/AngularClient.ttinclude" #>
 <#@ include file="General/JsonHelpers.ttinclude" #>
 <#@ include file="General/FileHelpers.ttinclude" #>
@@ -96,7 +97,7 @@
     
 
     foreach(var codeClass in classes){
-      var helper  = new CodeClassHelper(codeClass);
+      var helper  = new CodeHelper(codeClass);
    
 
     //Angular Client  

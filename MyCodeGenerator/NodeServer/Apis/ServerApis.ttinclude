@@ -1,5 +1,5 @@
 ﻿
-<#+ void GenerateApis(CodeClassHelper helper){ #>     
+<#+ void GenerateApis(CodeHelper helper){ #>     
 
 var _ = require('lodash');
 var <#=helper.Name#>= require('../models/<#=helper.CamelCasePlural#>Model.js');

@@ -19,7 +19,7 @@
 
     //Write out Side Menu Item
     void WriteSideMenuItem(CodeClass codeClass){
-        var c = new CodeClassHelper(codeClass);
+        var c = new CodeHelper(codeClass);
         WriteLine("<li><a ui-sref='" +  c.CamelCasePlural + "'>" +  c.Plural  + "</a></li>");
     }
 

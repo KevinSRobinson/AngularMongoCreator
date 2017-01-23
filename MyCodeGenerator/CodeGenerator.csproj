@@ -63,12 +63,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="AngularClient XML.cs">
+    <Compile Include="_old\AngularClient XML.cs">
       <DependentUpon>AngularClient XML.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="AngularClient 1.cs">
+    <Compile Include="_old\AngularClient 1.cs">
       <DependentUpon>AngularClient .tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -215,15 +215,15 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IonicApp.cs</LastGenOutput>
     </Content>
-    <Content Include="AngularClient XML.tt">
+    <Content Include="_old\AngularClient XML.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AngularClient XML.cs</LastGenOutput>
     </Content>
-    <Content Include="AngularClient .tt">
+    <Content Include="_old\AngularClient .tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AngularClient 1.cs</LastGenOutput>
     </Content>
-    <Content Include="dataModel.xml" />
+    <Content Include="_old\dataModel.xml" />
     <Content Include="Ionic\www\css\ionic.app.min.css" />
     <Content Include="Ionic\www\css\ionic.css" />
     <Content Include="NodeServer.tt">

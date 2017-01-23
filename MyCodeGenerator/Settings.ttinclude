@@ -5,7 +5,7 @@
     const string applicationAuthor = "Kevin Robinson";
     
 
-    const string basePath= "C:/Repos/NodeMongoAngular/Web/";
+    const string basePath= "C:/Repos/NodeMongoAngular/Generated/Web/";
    
     string efContext = "SampleDbContext"; 
     string dataContextNamespace = "Data";
@@ -18,7 +18,7 @@
 
     //Ports
     const string Node_ServerPort = "7204";
-    const string MainBasePath = "C:/Repos/NodeMongoAngular/Web/";
+    const string MainBasePath = "C:/Repos/NodeMongoAngular/Generated/Web/";
 
     
     //Auth0
@@ -27,7 +27,7 @@
 
 
     //Angular
-    const string Angular_BasePath = MainBasePath + "src/Client2/";
+    const string Angular_BasePath = MainBasePath;
     const string Angular_Gulp_Tasks= Angular_BasePath + "GulpTasks/";
     const string Angular_Styles_Path = Angular_BasePath + "Styles/";
     const string Angular_DataServices_Path = Angular_BasePath + "DataServices/";

@@ -9,7 +9,9 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Reflection" #>
+<#@ include file="General/CodeHelper.ttinclude" #>
 <#@ include file="General/T4Helper.ttinclude" #>
+<#@ include file="General/JsonHelpers.ttinclude" #>
 <#@ include file="NodeServer/nodeServer.ttinclude" #>
 <#@ include file="NodeServer/Routes/Utils/JsonFileService.ttinclude" #>
 <#@ include file="NodeServer/Routes/Utils/ErrorHandler.ttinclude" #>
@@ -33,8 +35,8 @@
     this.GenerateJsonFileService();   
     this.GeneratePackageJson();
    
-    foreach(var codeClass in classes){
-      var helper  = new CodeHelper(codeClass);
+   foreach(var codeClass in classes){
+       var helper = new CodeHelper(codeClass); 
 
       //Node Server Data Apis
       this.GenerateApis(helper);

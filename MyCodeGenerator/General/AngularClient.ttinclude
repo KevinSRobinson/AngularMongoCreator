@@ -1,5 +1,39 @@
 ﻿<#+
             
+
+          public class Feature  {
+            
+            public CodeHelper _;
+            public Component ListComponent;
+            public DataService DataService;
+            public Modals Modals;
+
+            public string BasePath = "";
+            public string FeaturesBasePath = ""; 
+
+            public Feature(CodeClass codeClass, string basePath){
+                 _ = new CodeHelper(codeClass);
+
+                 //Construct the Features Base Base
+                 FeaturesBasePath = basePath + "/src/client/";
+                
+                 //Create a new Features Item
+                 ListComponent = new Component(_, "List", FeaturesBasePath);
+
+                 //Create a new Modals Item
+                 Modals = new Modals(_, FeaturesBasePath);
+                
+                 //Create a new DataServices Item
+                 DataService = new DataService(_, FeaturesBasePath);
+                 
+                 BasePath = basePath;            
+            }            
+
+
+
+
+        }
+  
    
 
 
@@ -125,78 +159,10 @@
         }
 
 
-        public class Feature  {
-            
-            public CodeHelper _;
-            public Component ListComponent;
-            public DataService DataService;
-            public Modals Modals;
-
-            public string BasePath = "";
-          
-
-            public Feature(CodeClass codeClass, string basePath){
-                 _ = new CodeHelper(codeClass);
-
-                 ListComponent = new Component(_, "List", basePath);
-                 Modals = new Modals(_, basePath);
-                
-                 DataService = new DataService(_, basePath);
-                 BasePath = basePath;
-                
-            }
-
-
-            
-
-        }
-  
-
-       public class AngularClient  {
-
-
-        //private CodeHelper _CodeHelper;
-
-        public string ServiceName  = "";  
-        public string ServiceFileName   = ""; 
-        public string FeaturePath = "";
-        public string StylesPath = "";
-        public string ViewsPath  = "";
-
-        //Modals
-        public string ModalsFilePath = "";
-        public string ModifyModalController = "";
-
-        public string ModalServiceName ="";
-        public string ModifyModalControllerFileName  = "";
-        public string ModalServiceNameFileName ="";
-        public string ModifyModalTemplateFileName = "";
-
-
-        //Components
-        public string ListComponentFilePath  ="";
-        public string ListComponentName ="";
-        public string ListComponentFileName  = "";
-        public string ListComponentTag = "";
-        public string ListComponentTemplateFileName  = "";
-        public string ListComponentTemplateUrl = "";
-
-
-        //login
-        public string LoginComponentFilePath = "";
-        public string LoginComponentTemplateUrl = "";
-
-        //Index View
-        public string IndexTemplateUrl = "";
-
-
       
 
 
-
-       
-
-     private string GetComponentTag(string componentName){
+ private string GetComponentTag(string componentName){
             
             var output = "";
             foreach (char letter in componentName)
@@ -209,6 +175,8 @@
             return string.Format("<{0}></{0}>", output.ToLower());
         }  
    
-    }
+
+       
+
 
  #>

@@ -1,3 +1,0 @@
-var AUTH0_CLIENT_ID='MLpDhIY0DiuyoTWZASWiRLYUraTueTG3'; 
-var AUTH0_DOMAIN='volunteernow.auth0.com'; 
-var AUTH0_CALLBACK_URL='YOUR_CALLBACK_URL';

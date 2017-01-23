@@ -44,7 +44,7 @@
     //Get all classes from the model
     var classes = GetClasses();    
    
-    var basePath =  "C:/Repos/NodeMongoAngular/Web/src/Client2/";
+    var basePath =  "C:/Repos/NodeMongoAngular/Generated/Web/";
     var templatesBasePath = @"C:\Repos\NodeMongoAngular\MyCodeGenerator\Angular\Styles\";
                         
     //copy over css files

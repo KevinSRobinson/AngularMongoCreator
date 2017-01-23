@@ -1,4 +1,4 @@
-var AwardsDataService = function($resource, $http, apiBase) {
+var AwardsDataService = function($http, apiBase) {
 	
     apiBase += "/Awards";
 
@@ -34,4 +34,4 @@ var AwardsDataService = function($resource, $http, apiBase) {
     };
 };
 
-angular.module("app").service("AwardsDataService", AwardsDataService);
+angular.module("starter").service("AwardsDataService", AwardsDataService);

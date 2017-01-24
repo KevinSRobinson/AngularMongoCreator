@@ -81,6 +81,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Angular\gulpConfig.ttinclude" />
     <None Include="Angular\src\Client\app.ttinclude" />
     <None Include="Angular\src\Client\appRun.ttinclude" />
     <None Include="Angular\src\Client\auth0Service.ttinclude" />

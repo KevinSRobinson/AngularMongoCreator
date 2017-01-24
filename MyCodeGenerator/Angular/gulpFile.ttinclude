@@ -1,5 +1,4 @@
-﻿<#+ void Generate_Gulp(){	#>
-	
+﻿<#+ void Generate_Gulp(GenApp app){	#>	
 var gulp = require('gulp');
 var args = require('yargs').argv;
 var config = require('./gulp.config')();
@@ -471,13 +470,5 @@ function log(msg){
     else{
         $.util.log($.util.colors.red(msg));
     }
-}
-		
-			
-
-		
-		
-			
-		
-		
-<#+ CreateNewFile(Angular_BasePath, "gulpfile.js"); }  #>
+}	
+<#+ CreateNewFile(app.BasePath, "gulpfile.js"); }  #>

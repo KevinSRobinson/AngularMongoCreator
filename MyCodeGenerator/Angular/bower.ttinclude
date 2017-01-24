@@ -1,4 +1,4 @@
-﻿<#+  void Generate_Bower(){  #>
+﻿<#+  void Generate_Bower(GenApp app){  #>
 {
   "name": "Pluralsight-Gulp",
   "version": "0.1.0",
@@ -34,4 +34,4 @@
     "angular-resource": "^1.6.1"
   }
 }
-<#+ CreateNewFile(Angular_BasePath, "bower.json"); }  #>
+<#+ CreateNewFile(app.BasePath, "bower.json"); }  #>

@@ -32,6 +32,7 @@
 <#@ include file="Angular/src/client/Features/Modals/modifyModalController.ttinclude"#>
 
 <#@ include file="Angular/gulpfile.ttinclude"#>
+<#@ include file="Angular/gulpConfig.ttinclude"#>
 <#@ include file="Angular/GulpTasks/browserSync.ttinclude"#>
 <#@ include file="Angular/GulpTasks/build.ttinclude"#>
 <#@ include file="Angular/GulpTasks/codeQuality.ttinclude"#>
@@ -62,12 +63,14 @@
     this.Generate_App_Index(app);
 
     //packages
-    this.Generate_App_PackageJson();
-    this.Generate_BowerRc();
-    this.Generate_Bower();
+    this.Generate_App_PackageJson(app);
+    this.Generate_BowerRc(app);
+    this.Generate_Bower(app);
     
     //gulp
-    this.Generate_Gulp();
+    this.Generate_Gulp(app);
+    this.Generate_Gulp_Config(app);
+    this.Generate_Gulp(app);
     this.Generate_Gulp_BrowserSync();
     this.Generate_Gulp_Build();
     this.Generate_Gulp_CodeQuality();

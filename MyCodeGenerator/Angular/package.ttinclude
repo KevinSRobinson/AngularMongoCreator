@@ -1,4 +1,4 @@
-﻿<#+  void Generate_App_PackageJson(){	#>
+﻿<#+  void Generate_App_PackageJson(GenApp app){	#>
 {
   "name": "<#=Application_Name#>",
   "version": "0.0.2",
@@ -12,6 +12,8 @@
     "cors": "^2.8.1",
     "css-loader": "^0.26.0",
     "express": "^4.14.0",
+    "gulp-useref": "^3.1.2",
+    "lazypipe": "^1.0.1",
     "lodash": "^4.17.4",
     "mongoose": "^4.7.6",
     "morgan": "^1.7.0",
@@ -30,4 +32,5 @@
     "nodemon": "^1.11.0",
     "yargs": "^6.6.0"
   }
-<#+ CreateNewFile(Angular_BasePath, "package.json"); }  #>
+}
+<#+ CreateNewFile(app.BasePath, "package.json"); }  #>

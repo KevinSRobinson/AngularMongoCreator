@@ -22,10 +22,10 @@
 <#@ include file="Angular/bower.ttinclude" #>
 <#@ include file="Angular/bowerc.ttinclude" #>
 <#@ include file="Angular/src/client/IndexPage.ttinclude" #>
-
 <#@ include file="Angular/src/client/Navigation/mainLayoutComponent.ttinclude" #>
 <#@ include file="Angular/src/client/Navigation/mainLayoutComponentTemplate.ttinclude" #>
 <#@ include file="Angular/src/client/DataServices/angularServices.ttinclude" #>
+<#@ include file="Angular/src/client/Features/routes.ttinclude"#>
 <#@ include file="Angular/src/client/Features/Components/_listHelpers.ttinclude" #>
 <#@ include file="Angular/src/client/Features/Components/listComponent.ttinclude" #>
 <#@ include file="Angular/src/client/Features/Components/listComponentTemplate.ttinclude"#>
@@ -33,7 +33,6 @@
 <#@ include file="Angular/src/client/Features/Modals/modalServices.ttinclude"#>
 <#@ include file="Angular/src/client/Features/Modals/modifyModal.ttinclude"#>
 <#@ include file="Angular/src/client/Features/Modals/modifyModalController.ttinclude"#>
-
 <#@ include file="Angular/gulpfile.ttinclude"#>
 <#@ include file="Angular/gulpConfig.ttinclude"#>
 <#@ include file="Angular/GulpTasks/browserSync.ttinclude"#>
@@ -52,7 +51,8 @@
     var app = new GenApp("C:/Repos/NodeMongoAngular/Generated/Web/", classes);
 
 
-    var basePath =  "C:/Repos/NodeMongoAngular/Generated/Web/";
+    
+var basePath =  "C:/Repos/NodeMongoAngular/Generated/Web/";
 
     var templatesBasePath = @"C:\Repos\NodeMongoAngular\MyCodeGenerator\Angular\src\client\Styles\";
                         
@@ -88,10 +88,10 @@
 
 
     //Loop through each class
-    foreach(var codeClass in classes){
-      
-        var feature = new Feature(codeClass, basePath);
-            
+    foreach(var feature in app.Features){
+         
+        this.Generate_Routes(feature);
+
         this.Generate_DataServices(feature);
 
         //components

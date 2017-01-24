@@ -108,6 +108,7 @@
     <None Include="Angular\src\Client\IndexPage.ttinclude" />
     <None Include="Angular\src\Client\Navigation\mainLayoutComponent.ttinclude" />
     <None Include="Angular\src\Client\Navigation\mainLayoutComponentTemplate.ttinclude" />
+    <None Include="Angular\src\Client\Features\routes.ttinclude" />
     <None Include="Angular\src\Client\Styles\Styles.less" />
     <None Include="Angular\src\Client\User\Components\loginComponent.ttinclude" />
     <None Include="Angular\src\Client\User\Components\loginComponentTemplate.ttinclude" />

@@ -22,6 +22,9 @@
 <#@ include file="Angular/bower.ttinclude" #>
 <#@ include file="Angular/bowerc.ttinclude" #>
 <#@ include file="Angular/src/client/IndexPage.ttinclude" #>
+
+<#@ include file="Angular/src/client/Navigation/mainLayoutComponent.ttinclude" #>
+<#@ include file="Angular/src/client/Navigation/mainLayoutComponentTemplate.ttinclude" #>
 <#@ include file="Angular/src/client/DataServices/angularServices.ttinclude" #>
 <#@ include file="Angular/src/client/Features/Components/_listHelpers.ttinclude" #>
 <#@ include file="Angular/src/client/Features/Components/listComponent.ttinclude" #>
@@ -46,7 +49,7 @@
     //Get all classes from the model
     var classes = GetClasses();    
    
-    var app = new GenApp("C:/Repos/NodeMongoAngular/Generated/Web/");
+    var app = new GenApp("C:/Repos/NodeMongoAngular/Generated/Web/", classes);
 
 
     var basePath =  "C:/Repos/NodeMongoAngular/Generated/Web/";
@@ -79,7 +82,11 @@
     this.Generate_Gulp_Versioning();
     this.Generate_Gulp_Utils();
     
-    
+
+    this.Generate_MainLayoutComponent(app);
+    this.Generate_MainLayoutComponentTemplate(app);
+
+
     //Loop through each class
     foreach(var codeClass in classes){
       

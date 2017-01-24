@@ -106,7 +106,12 @@
     <None Include="Angular\package.ttinclude" />
     <None Include="Angular\SideMenuHelpers.ttinclude" />
     <None Include="Angular\src\Client\IndexPage.ttinclude" />
+    <None Include="Angular\src\Client\Navigation\mainLayoutComponent.ttinclude" />
+    <None Include="Angular\src\Client\Navigation\mainLayoutComponentTemplate.ttinclude" />
     <None Include="Angular\src\Client\Styles\Styles.less" />
+    <None Include="Angular\src\Client\User\Components\loginComponent.ttinclude" />
+    <None Include="Angular\src\Client\User\Components\loginComponentTemplate.ttinclude" />
+    <None Include="Angular\src\Client\User\routes.ttinclude" />
     <None Include="_old\Client\auth0Service.ttinclude" />
     <None Include="_old\Client\Features\Components\_listHelpers.ttinclude" />
     <None Include="_old\Client\Features\Modals\_modalHelpers.ttinclude" />
@@ -236,6 +241,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Angular\src\Client\User\Views\" />
     <Folder Include="_old\Client\Features\User\Views\" />
   </ItemGroup>
   <ItemGroup>

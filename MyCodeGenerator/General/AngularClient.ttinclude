@@ -4,10 +4,17 @@
             {
                 public string BasePath {get; set; }
                 public string ClientSrcPath {get; set; }
+                public string FeaturesBasePath {get; set; }
+                public string NavigationBasePath {get; set; }
+                public List<CodeClass> Classes {get; set; }
 
-                public GenApp(string basePath){
+
+                public GenApp(string basePath, List<CodeClass> classes){
                     BasePath = basePath;
                     ClientSrcPath = basePath + "src/client/";
+                    FeaturesBasePath = ClientSrcPath + "Features/";
+                    NavigationBasePath = ClientSrcPath + "Navigation/";
+                    Classes = classes;
                 }
             }
 

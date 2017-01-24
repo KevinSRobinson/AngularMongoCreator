@@ -16,6 +16,7 @@
 <#@ include file="General/T4Helper.ttinclude" #>
 <#@ include file="Angular/src/client/app.ttinclude" #>
 <#@ include file="Angular/SideMenuHelpers.ttinclude" #>
+<#@ include file="Angular/src/client/routes.ttinclude" #>
 <#@ include file="Angular/src/client/appRun.ttinclude" #>
 <#@ include file="Angular/src/client/auth0Service.ttinclude" #>
 <#@ include file="Angular/package.ttinclude" #>
@@ -42,8 +43,6 @@
 <#@ include file="Angular/GulpTasks/fontsImages.ttinclude"#>
 <#@ include file="Angular/GulpTasks/utils.ttinclude"#>
 <#@ include file="Angular/GulpTasks/versioning.ttinclude"#>
-
-
 <#  
     //Get all classes from the model
     var classes = GetClasses();    
@@ -61,6 +60,7 @@ var basePath =  "C:/Repos/NodeMongoAngular/Generated/Web/";
 
     // .../src/Client/
     this.Generate_App(app);
+    this.Generate_Core_Routes(app);
     this.Generate_App_Run(app);
     this.Generate_App_Auth0Service(app);
     this.Generate_App_Index(app);

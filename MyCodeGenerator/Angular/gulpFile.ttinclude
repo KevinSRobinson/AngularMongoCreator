@@ -13,9 +13,6 @@ var concat = require('gulp-concat');
 var angularTemplateCache = require('gulp-angular-templatecache');
 var embedTemplates = require('gulp-angular-embed-templates');
 
-
-var port = 7204;
-
 gulp.task('default', ['test']);
 
 gulp.task('test', ['templatecache'], function(done){
@@ -83,7 +80,7 @@ function serve(isDev){
         script: config.nodeServer,
         delayTime: 1,
         env: {
-            'PORT': port,
+            'PORT': config.port,
             'NODE_ENV': isDev ? 'dev' : 'build'
         },
         watch: [config.server]
@@ -414,8 +411,8 @@ function  startBrowserSync(isDev){
     }
 
     var options = {
-            proxy: 'localhost:' + port,
-            port: 7000,
+            proxy: 'localhost:' + config.port,
+            //port: config.port,
             files:isDev ? [
                     config.client + '**/*.*',
                     '!' + config.less,

@@ -5,12 +5,14 @@
                 public string BasePath {get; set; }
                 public string ClientSrcPath {get; set; }
                 public string FeaturesBasePath {get; set; }
+                public string SubPathToSource {get; set; }
                 public string NavigationBasePath {get; set; }
                 public List<CodeClass> Classes {get; set; }
                 public List<Feature> Features {get; set; }
 
                 public GenApp(string basePath, List<CodeClass> classes){
                     BasePath = basePath;
+                    SubPathToSource = "src/client/";
                     ClientSrcPath = basePath + "src/client/";
                     FeaturesBasePath = ClientSrcPath + "Features/";
                     NavigationBasePath = ClientSrcPath + "Navigation/";
@@ -25,7 +27,7 @@
                 private void LoadFeatures(){
                     Features = new List<Feature>();
                     foreach(var c in Classes){
-                        var feature =  new Feature(c, FeaturesBasePath);
+                        var feature =  new Feature(c, FeaturesBasePath, SubPathToSource);
                         Features.Add(feature);
                     }
                 }
@@ -44,7 +46,7 @@
             public string FullPath = "";  
 
             
-            public Feature(CodeClass codeClass, string basePath){
+            public Feature(CodeClass codeClass, string basePath, string subPathToSource){
                  _ = new CodeHelper(codeClass);
 
                  //Base path for the features              
@@ -57,7 +59,7 @@
                  FullPath = string.Format("{0}{1}/", BasePath, Path);    
 
                  //Create a new Features Item
-                 ListComponent = new Component(_, "List", BasePath);
+                 ListComponent = new Component(_, "List", BasePath, subPathToSource);
 
                  //Create a new Modals Item
                  Modals = new Modals(_, FullPath);
@@ -82,7 +84,7 @@
             
             private string _templateFileName = "";  
 
-            public Component(CodeHelper helper, string name, string basePath){
+            public Component(CodeHelper helper, string name, string basePath, string subPathToSource){
                 _ = helper;
                 _name = name;
                 BasePath = basePath;
@@ -97,7 +99,7 @@
                 FullPath = string.Format("{0}/{1}/", basePath, Path);
                 
                 //build the Url for to the Tempalte              
-                TemplateUrl = string.Format("{0}{1}", Path, TemplateFileName); 
+                TemplateUrl = string.Format("{0}{1}{2}", subPathToSource, Path, TemplateFileName); 
             
   
                 ComponentTag = GetComponentTag(this._componentName);

@@ -44,9 +44,10 @@ foreach(CodeClass codeClass in codeClasses){
 #> 
 
 
-app.use(express.static('./'));
-app.use(express.static('./.tmp/'));
-app.use('/*', express.static('./src/client/index.html'));
+ app.use(express.static('./src/client/'));
+        app.use(express.static('./'));
+        app.use(express.static('./tmp'));
+        app.use('/*', express.static('./src/client/index.html'));
 
 app.listen(port, function() {
     console.log('Express server listening on port ' + port);

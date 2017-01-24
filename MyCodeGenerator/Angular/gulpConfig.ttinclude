@@ -2,7 +2,7 @@
 module.exports = function () {
 
     var client = './src/client/';
-  
+    var port = 7204;
     var temp = './.tmp/';
     var server = './src/server/';
     var report = './report/';
@@ -51,7 +51,7 @@ module.exports = function () {
             directory: './bower_components/',
             ignorePath: '../..'
         },
-        defaultPort: 7303,
+        defaultPort: port,
         nodeServer: server + 'app.js',
 
         //optimized files

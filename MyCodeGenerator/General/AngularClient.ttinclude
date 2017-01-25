@@ -4,7 +4,7 @@
             {
                 public string BasePath {get; set; }
                 public string ClientSrcPath {get; set; }
-                public string FeaturesBasePath {get; set; }
+                public string FeaturesSubPath {get; set; }
                 public string SubPathToSource {get; set; }
                 public string NavigationBasePath {get; set; }
                 public string DataServicesPath {get; set; }
@@ -18,7 +18,7 @@
                     ClientSrcPath = basePath + SubPathToSource;
                     DataServicesPath = ClientSrcPath + "DataServices/";
 
-                    FeaturesBasePath = ClientSrcPath + "Features/";
+                    FeaturesSubPath = "Features/";
                     NavigationBasePath = ClientSrcPath + "Navigation/";
                     
                     Classes = classes;
@@ -32,7 +32,7 @@
                 private void LoadFeatures(){
                     Features = new List<Feature>();
                     foreach(var c in Classes){
-                        var feature =  new Feature(c, FeaturesBasePath, DataServicesPath, SubPathToSource);
+                        var feature =  new Feature(c, BasePath, FeaturesSubPath, DataServicesPath, SubPathToSource);
                         Features.Add(feature);
                     }
                 }
@@ -51,11 +51,11 @@
             public string FullPath = "";  
 
             
-            public Feature(CodeClass codeClass, string basePath, string dataServicesPath, string subPathToSource){
+            public Feature(CodeClass codeClass, string BasePath,  string FeaturesSubPath, string dataServicesPath, string subPathToSource){
                  _ = new CodeHelper(codeClass);
 
                  //Base path for the features              
-                 BasePath = basePath;
+                 BasePath = BasePath;
 
                  //Full Path to this features
                  Path = string.Format("{0}/", _.Plural);    
@@ -64,7 +64,7 @@
                  FullPath = string.Format("{0}{1}/", BasePath, Path);    
 
                  //Create a new Features Item
-                 ListComponent = new Component(_, "List", BasePath, subPathToSource);
+                 ListComponent = new Component(_, "List", BasePath, subPathToSource, FeaturesSubPath);
 
                  //Create a new Modals Item
                  Modals = new Modals(_, FullPath);
@@ -84,30 +84,30 @@
 
         public class Component {
             public CodeHelper _;
-            private string _name;
-            private string _componentName = "";
-            
-            private string _templateFileName = "";  
+            private string _name; 
 
-            public Component(CodeHelper helper, string name, string basePath, string subPathToSource){
+            public Component(CodeHelper helper, string name, string basePath, string subPathToSource, string FeaturesSubPath){
                 _ = helper;
                 _name = name;
                 BasePath = basePath;
-                _componentName = _.CamelCase + _name;
-                _templateFileName = _componentName + ".html";
-                FileName = _componentName + ".js";
+                ComponentName = _.CamelCase + _name;
+                TemplateFileName = ComponentName + ".html";
+                FileName = ComponentName + ".js";
 
                 //build the relative path to the Component
-                Path = string.Format("{0}/Components/{1}/", _.Plural, _componentName);
+               var comPath = string.Format("{0}/Components/{1}/", _.Plural, ComponentName);
 
-                //build the full path to the Component
-                FullPath = string.Format("{0}/{1}/", basePath, Path);
+                
                 
                 //build the Url for to the Tempalte              
-                TemplateUrl = string.Format("{0}{1}{2}", subPathToSource, Path, TemplateFileName); 
+                Path = string.Format("{0}{1}{2}", subPathToSource, FeaturesSubPath, comPath); 
+                TemplateUrl = string.Format("{0}{1}", Path, TemplateFileName); 
+
             
+            //build the full path to the Component
+                FullPath = string.Format("{0}/{1}", basePath, Path);
   
-                ComponentTag = GetComponentTag(this._componentName);
+                ComponentTag = GetComponentTag(this.ComponentName);
             }
 
             public string BasePath { get ; set; }
@@ -118,13 +118,13 @@
  
             public string FileName { get ; set; }
 
-            public string ComponentName { get  { return _componentName;  }}
+            public string ComponentName { get ; set; }
 
             public string ComponentTag { get; set;  }
 
             public string TemplateUrl { get; set;}
                     
-            public string TemplateFileName { get { return _templateFileName; }}  
+            public string TemplateFileName { get ; set; }
           
             private string GetComponentTag(string componentName){
                  var output = "";

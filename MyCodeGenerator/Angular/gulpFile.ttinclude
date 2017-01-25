@@ -412,7 +412,7 @@ function  startBrowserSync(isDev){
 
     var options = {
             proxy: 'localhost:' + config.port,
-            //port: config.port,
+            port: 8000,
             files:isDev ? [
                     config.client + '**/*.*',
                     '!' + config.less,

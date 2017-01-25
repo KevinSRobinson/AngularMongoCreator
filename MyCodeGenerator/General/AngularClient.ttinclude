@@ -65,7 +65,7 @@
                  Modals = new Modals(_, FullPath);
                 
                  //Create a new DataServices Item
-                 DataService = new DataService(_, BasePath);
+                 DataService = new DataService(_.CamelCase, BasePath);
        
             }            
 
@@ -138,34 +138,17 @@
 
         public class DataService{
 
-            public CodeHelper _;
-            public string BasePath = "";
-
-            public DataService(CodeHelper helper, string basePath){
-               _ = helper;
-            BasePath = basePath;
+            public DataService(string name, string basePath){
+                Path =  basePath + "DataServices/";
+                FileName =ServiceName + ".js";
+                ServiceName = name + "DataService";
             }
             
-            public string Path 
-                { get
-                {
-                    return BasePath + "DataServices/";;
-                }
-            }
-
-            public string FileName 
-                { get
-                {
-                    return ServiceName + ".js";
-                }
-            }
-
-            public string ServiceName 
-                { get
-                {
-                    return _.Name + "DataService";
-                }
-            }
+           
+            public string Path {get; set; }
+            public string FileName {get; set; }
+            public string ServiceName {get; set; }
+               
             
                         
 
@@ -200,7 +183,7 @@
                 //build the full path to the Component
                 FullPath = string.Format("{0}/{1}/", basePath, Path);
 
-                ServiceName = string.Format("{0}ModalService", _.Name);
+                ServiceName = string.Format("{0}ModalService", _.CamelCase);
                 ServiceFileName = string.Format("{0}.js", ServiceName);
             
                 ModifyTemplateFileName = string.Format("modify{0}ModalTemplate.html", _.Name);

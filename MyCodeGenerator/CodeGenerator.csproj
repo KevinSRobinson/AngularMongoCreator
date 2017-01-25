@@ -81,6 +81,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Angular\componentSpec.ttinclude" />
     <None Include="Angular\gulpConfig.ttinclude" />
     <None Include="Angular\karmaConf.ttinclude" />
     <None Include="Angular\src\Client\app.ttinclude" />
@@ -115,6 +116,12 @@
     <None Include="Angular\src\Client\User\Components\loginComponent.ttinclude" />
     <None Include="Angular\src\Client\User\Components\loginComponentTemplate.ttinclude" />
     <None Include="Angular\src\Client\User\routes.ttinclude" />
+    <None Include="Angular\src\Client\Features\Tests\e2e\protractorConfig.ttinclude" />
+    <None Include="Angular\src\Client\Features\Tests\e2e\protractorHelpers.ttinclude" />
+    <None Include="Angular\src\Client\Features\Tests\e2e\protractorIndex.ttinclude" />
+    <None Include="Angular\src\Client\Features\Tests\mockService.ttinclude" />
+    <None Include="Angular\src\Client\Features\Tests\tests.ttinclude" />
+    <None Include="Angular\src\Client\Features\Tests\unit\Components\componentSpec.ttinclude" />
     <None Include="_old\Client\auth0Service.ttinclude" />
     <None Include="_old\Client\Features\Components\_listHelpers.ttinclude" />
     <None Include="_old\Client\Features\Modals\_modalHelpers.ttinclude" />

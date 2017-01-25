@@ -45,14 +45,19 @@
             public Component ListComponent;
             public DataService DataService;
             public Modals Modals;
-
+              public string Name = "";
             public string BasePath = "";
             public string Path = "";
             public string FullPath = "";  
 
+               //tests
+            public string ComponentTestFullPath {get; set;}
+            public string ComponentTestFileName {get; set;}
             
             public Feature(CodeClass codeClass, string BasePath,  string FeaturesSubPath, string dataServicesPath, string subPathToSource){
                  _ = new CodeHelper(codeClass);
+
+            Name = _.Name;
 
                  //Base path for the features              
                  BasePath = BasePath;
@@ -72,6 +77,8 @@
                  //Create a new DataServices Item
                  DataService = new DataService(_.CamelCase, dataServicesPath);
        
+                  ComponentTestFullPath = string.Format("{0}/Tests/",FullPath);
+              ComponentTestFileName = string.Format("{0}Spec",_.CamelCase);
             }            
 
 
@@ -174,7 +181,8 @@
             public string ModifyController {get; set;}
             public string ModifyTemplateUrl {get; set;}
             public string ModifyControllerFileName {get; set;}
-            
+
+         
 
             public Modals(CodeHelper helper, string basePath, string subPathToSource, string FeaturesSubPath) {
                 _ = helper;
@@ -196,6 +204,9 @@
                 ModifyController = string.Format("modify{0}ModalController", _.Name);
                 ModifyControllerFileName = string.Format("{0}.js", ModifyController);
              
+
+
+              
             }
 
 

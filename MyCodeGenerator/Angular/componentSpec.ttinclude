@@ -1,0 +1,3 @@
+﻿<#+  void Generate_Features_Test(Feature feature){  #>
+ssss
+<#+ CreateNewFile(feature.ComponentTestFullPath, feature.ComponentTestFileName); }  #>

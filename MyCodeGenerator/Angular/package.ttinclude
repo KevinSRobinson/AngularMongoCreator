@@ -18,7 +18,7 @@
   "scripts": {
     "init": "npm install",
     "install": "bower install",
-    "start": "node src/server/app.js"
+    "start": "gulp serve-dev"
   },
   "dependencies": {
     "add-stream": "^1.0.0",

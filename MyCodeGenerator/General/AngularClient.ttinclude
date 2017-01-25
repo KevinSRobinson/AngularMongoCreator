@@ -61,13 +61,13 @@
                  Path = string.Format("{0}/", _.Plural);    
 
                  //Full Path to this features
-                 FullPath = string.Format("{0}{1}/", BasePath, Path);    
+            FullPath = string.Format("{0}{1}{2}{3}", BasePath, subPathToSource,FeaturesSubPath, Path);    
 
                  //Create a new Features Item
                  ListComponent = new Component(_, "List", BasePath, subPathToSource, FeaturesSubPath);
 
                  //Create a new Modals Item
-                 Modals = new Modals(_, FullPath);
+                 Modals = new Modals(_, BasePath, subPathToSource, FeaturesSubPath);
                 
                  //Create a new DataServices Item
                  DataService = new DataService(_.CamelCase, dataServicesPath);
@@ -176,7 +176,7 @@
             public string ModifyControllerFileName {get; set;}
             
 
-            public Modals(CodeHelper helper, string basePath){
+            public Modals(CodeHelper helper, string basePath, string subPathToSource, string FeaturesSubPath) {
                 _ = helper;
 
                 //C:/Repos/NodeMongoAngular/Generated/Web/src/client/Features/Contacts/
@@ -186,7 +186,7 @@
                 Path = "Modals/";
 
                 //build the full path to the Component
-                FullPath = string.Format("{0}/{1}/", basePath, Path);
+            FullPath = string.Format("{0}/{1}/{2}/{3}/{4}/", basePath, subPathToSource, FeaturesSubPath, _.Plural, Path);
 
                 ServiceName = string.Format("{0}ModalService", _.CamelCase);
                 ServiceFileName = string.Format("{0}.js", ServiceName);

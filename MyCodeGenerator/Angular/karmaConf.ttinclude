@@ -1,0 +1,115 @@
+﻿<#+ void Generate_KarmaConf(GenApp app){	#>	
+module.exports = function (config) {
+
+
+
+    var options = {
+        files: [].concat(
+            // bower:js         
+            // endbower
+
+            // inject:js
+            // endinject
+
+            // spec:js           
+            // endinject
+
+
+        ),
+        exclude: [],
+        // coverage: {
+
+        //     //dir: report + 'coverage',
+        //     reporters: [{
+        //         type: 'html',
+        //         subdir: 'report-html'
+        //     }, {
+        //         type: 'lcov',
+        //         subdir: 'report-lcov'
+        //     }, {
+        //         type: 'text-summary'
+        //     }]
+        // },
+        preprocessors: {
+            ngHtml2JsPreprocessor: {
+                cacheIdFromPath: function (filepath) {
+                    //The suggested filepath.strip would through an error
+                    console.llog(filepath);
+                    var cacheId = filepath.replace('main/resources/static/', '');
+                    return cacheId;
+                }
+            }
+        }
+    };
+
+
+
+    config.set({
+        // base path that will be used to resolve all patterns (eg. files, exclude)
+        basePath: './',
+
+        // frameworks to use
+        // some available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+        frameworks: ['wiredep', 'jasmine', 'chai'],
+
+        // list of files / patterns to load in the browser
+        files: options.files,
+
+        // list of files to exclude
+        exclude: options.exclude,
+
+        // proxies: {
+        //     '/': 'http://localhost:8888/'
+        // },
+
+        // preprocess matching files before serving them to the browser
+        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+        preprocessors: options.preprocessors,
+
+        // test results reporter to use
+        // possible values: 'dots', 'progress', 'coverage'
+        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+        reporters: ['progress'],
+
+        // coverageReporter: {
+        //     dir: options.coverage.dir,
+        //     reporters: options.coverage.reporters
+        // },
+
+        // web server port
+        port: 9876,
+
+        plugins: [
+            'karma-wiredep',
+            'karma-jasmine',
+            'karma-chai',
+            'karma-chrome-launcher',
+            'karma-phantomjs-launcher'
+        ],
+
+        // enable / disable colors in the output (reporters and logs)
+        colors: true,
+
+        // level of logging
+        // possible values: config.LOG_DISABLE || config.LOG_ERROR ||
+        // config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+        logLevel: config.LOG_INFO,
+
+        wiredep: {
+            dependencies: true, // default: true  
+            devDependencies: true, // default: false  
+        },
+        // enable / disable watching file and executing tests whenever any file changes
+        autoWatch: true,
+
+        // start these browsers
+        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+        //        browsers: ['Chrome', 'ChromeCanary', 'FirefoxAurora', 'Safari', 'PhantomJS'],
+        browsers: ['PhantomJS'],
+
+        // Continuous Integration mode
+        // if true, Karma captures browsers, runs the tests and exits
+        singleRun: false
+    });
+};
+<#+ CreateNewFile(app.BasePath, "KarmaConf.js"); }  #>

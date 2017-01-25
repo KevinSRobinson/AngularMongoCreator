@@ -15,7 +15,7 @@ var embedTemplates = require('gulp-angular-embed-templates');
 
 gulp.task('default', ['test']);
 
-gulp.task('test', ['templatecache'], function(done){
+gulp.task('test',  function(done){
     startTests(true, done);
 });
 
@@ -27,7 +27,7 @@ function startTests(singleRun, done){
     excludeFiles = serverSpecs;
 
     karma.start({
-        configFile: __dirname + '/karma.conf.js',
+        configFile:  __dirname + "\\karmaConf.js",
         exclude: excludeFiles,
         singleRun: singleRun
     }, function(){  done();});

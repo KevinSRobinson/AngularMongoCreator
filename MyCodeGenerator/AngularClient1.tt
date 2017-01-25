@@ -20,6 +20,7 @@
 <#@ include file="Angular/src/client/appRun.ttinclude" #>
 <#@ include file="Angular/src/client/auth0Service.ttinclude" #>
 <#@ include file="Angular/package.ttinclude" #>
+<#@ include file="Angular/karmaConf.ttinclude" #>
 <#@ include file="Angular/bower.ttinclude" #>
 <#@ include file="Angular/bowerc.ttinclude" #>
 <#@ include file="Angular/src/client/IndexPage.ttinclude" #>
@@ -64,6 +65,10 @@ var basePath =  "C:/Repos/NodeMongoAngular/Generated/Web/";
     this.Generate_App_Run(app);
     this.Generate_App_Auth0Service(app);
     this.Generate_App_Index(app);
+
+
+    //tests
+    this.Generate_KarmaConf(app);
 
     //packages
     this.Generate_App_PackageJson(app);

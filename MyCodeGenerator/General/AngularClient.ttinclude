@@ -182,11 +182,10 @@
                 //C:/Repos/NodeMongoAngular/Generated/Web/src/client/Features/Contacts/
                 BasePath = basePath;
 
-                //build the relative path to the Component
-                Path = "Modals/";
-
                 //build the full path to the Component
-            FullPath = string.Format("{0}/{1}/{2}/{3}/{4}/", basePath, subPathToSource, FeaturesSubPath, _.Plural, Path);
+                Path = string.Format("{0}{1}{2}/Modals/", subPathToSource, FeaturesSubPath, _.Plural);
+                
+                FullPath = string.Format("{0}{1}", basePath,  Path);
 
                 ServiceName = string.Format("{0}ModalService", _.CamelCase);
                 ServiceFileName = string.Format("{0}.js", ServiceName);

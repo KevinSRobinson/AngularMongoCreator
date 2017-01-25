@@ -7,15 +7,20 @@
                 public string FeaturesBasePath {get; set; }
                 public string SubPathToSource {get; set; }
                 public string NavigationBasePath {get; set; }
+                public string DataServicesPath {get; set; }
                 public List<CodeClass> Classes {get; set; }
                 public List<Feature> Features {get; set; }
 
                 public GenApp(string basePath, List<CodeClass> classes){
                     BasePath = basePath;
+                    DataServicesPath = BasePath + "DataServices/";
                     SubPathToSource = "src/client/";
-                    ClientSrcPath = basePath + "src/client/";
+                    ClientSrcPath = basePath + SubPathToSource;
+                    DataServicesPath = ClientSrcPath + "DataServices/";
+
                     FeaturesBasePath = ClientSrcPath + "Features/";
                     NavigationBasePath = ClientSrcPath + "Navigation/";
+                    
                     Classes = classes;
 
                     //populate features
@@ -27,7 +32,7 @@
                 private void LoadFeatures(){
                     Features = new List<Feature>();
                     foreach(var c in Classes){
-                        var feature =  new Feature(c, FeaturesBasePath, SubPathToSource);
+                        var feature =  new Feature(c, FeaturesBasePath, DataServicesPath, SubPathToSource);
                         Features.Add(feature);
                     }
                 }
@@ -46,7 +51,7 @@
             public string FullPath = "";  
 
             
-            public Feature(CodeClass codeClass, string basePath, string subPathToSource){
+            public Feature(CodeClass codeClass, string basePath, string dataServicesPath, string subPathToSource){
                  _ = new CodeHelper(codeClass);
 
                  //Base path for the features              
@@ -65,7 +70,7 @@
                  Modals = new Modals(_, FullPath);
                 
                  //Create a new DataServices Item
-                 DataService = new DataService(_.CamelCase, BasePath);
+                 DataService = new DataService(_.CamelCase, dataServicesPath);
        
             }            
 
@@ -139,9 +144,9 @@
         public class DataService{
 
             public DataService(string name, string basePath){
-                Path =  basePath + "DataServices/";
-                FileName =ServiceName + ".js";
+                Path =  basePath;
                 ServiceName = name + "DataService";
+             FileName = ServiceName + ".js";
             }
             
            

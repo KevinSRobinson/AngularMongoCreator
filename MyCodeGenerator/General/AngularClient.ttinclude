@@ -78,7 +78,7 @@
                  DataService = new DataService(_.CamelCase, dataServicesPath);
        
                   ComponentTestFullPath = string.Format("{0}/Tests/",FullPath);
-              ComponentTestFileName = string.Format("{0}Spec",_.CamelCase);
+              ComponentTestFileName = string.Format("{0}.spec.js",_.CamelCase);
             }            
 
 

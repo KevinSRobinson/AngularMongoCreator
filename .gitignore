@@ -5,5 +5,9 @@ Client/bower_components/
 Web/bower_components/
 Web/node_modules/
 node_modules/
-web/
-src/
+
+Generated/Web/bower_components/
+Generated/Web/src/client/Features/
+Generated/Web/Features/
+Generated/Web/src/
+Web/src/

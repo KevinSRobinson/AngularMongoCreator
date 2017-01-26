@@ -1,0 +1,41 @@
+﻿<#+ void Generate_Features_Modals_Service(Feature feature){ #>
+
+var <#=feature.Modals.ServiceName#>  = function($uibModal){
+	 
+var add = function() {
+return $uibModal.open({
+	templateUrl: '<#=feature.Modals.ModifyTemplateUrl#>',
+	controller: '<#=feature.Modals.ModifyController#>',
+	controllerAs: 'vm',
+	resolve: {
+	<#=feature._.CamelCase#>: function () {
+		return null;
+	}
+	}
+});
+};
+	
+
+var modify = function(<#=feature._.CamelCase#>) {
+return  $uibModal.open({
+	templateUrl: '<#=feature.Modals.ModifyTemplateUrl#>',
+	controller: '<#=feature.Modals.ModifyController#>',
+	controllerAs: 'vm',
+	resolve: {
+	<#=feature._.CamelCase#>: function () {
+		return <#=feature._.CamelCase#>;
+	}
+	}
+});
+};
+return {
+Add: add,
+Modify: modify
+};
+}
+
+angular.module('<#=applicationName#>').factory('<#=feature.Modals.ServiceName#>', <#=feature.Modals.ServiceName#>);
+
+
+
+<#+ CreateNewFile(feature.Modals.FullPath, feature.Modals.ServiceFileName); }  #>

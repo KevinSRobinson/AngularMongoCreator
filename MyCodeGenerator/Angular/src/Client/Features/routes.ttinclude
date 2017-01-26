@@ -1,0 +1,12 @@
+﻿<#+ void Generate_Routes(Feature feature){ #>
+var config = function ($stateProvider) {
+    
+$stateProvider
+    .state('<#=feature._.CamelCasePlural#>', {
+        url: '/<#=feature._.CamelCasePlural#>',
+        template: '<#=feature.ListComponent.ComponentTag#>'
+    }) 
+};
+
+angular.module('<#=applicationName#>').config(config);
+<#+ CreateNewFile(feature.FullPath, "routes.js"); }  #>

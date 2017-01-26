@@ -7,7 +7,6 @@ Web/node_modules/
 node_modules/
 
 Generated/Web/bower_components/
-Generated/Web/src/client/Features/
 Generated/Web/Features/
-Generated/Web/src/
-Web/src/
+Generated/Web/src/Client
+

@@ -1,0 +1,23 @@
+<my-panel title="Tags" show-add-button="true" add="vm.create()" style="success" icon="tags" icon-size="2">
+
+<my-filter-textbox  ng-model="filter"></my-filter-textbox>
+
+<table class="table table-striped">
+   <thead>
+        <tr>
+             <td>Id</td>
+<td>FirstName</td>
+<td>LastName</td>
+<td>Telephone</td>
+<td>Email</td>
+        </tr>
+    </thead>
+    <tr ng-repeat='contact in vm.contacts | filter:filter '>
+        <td>{{ contact._id }}</td>
+<td>{{ contact.FirstName }}</td>
+<td>{{ contact.LastName }}</td>
+<td>{{ contact.Telephone }}</td>
+<td>{{ contact.Email }}</td>
+        <td><div class="btn btn-success" ng-click='vm.edit(contact)'>Edit</div></td>
+    </tr>
+</table>

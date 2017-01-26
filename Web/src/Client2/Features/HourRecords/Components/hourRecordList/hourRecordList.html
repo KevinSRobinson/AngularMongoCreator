@@ -1,0 +1,23 @@
+<my-panel title="Tags" show-add-button="true" add="vm.create()" style="success" icon="tags" icon-size="2">
+
+<my-filter-textbox  ng-model="filter"></my-filter-textbox>
+
+<table class="table table-striped">
+   <thead>
+        <tr>
+             <td>OldId</td>
+<td>DateWorkedFrom</td>
+<td>DateWorkedTo</td>
+<td>Hours</td>
+<td>UserId</td>
+        </tr>
+    </thead>
+    <tr ng-repeat='hourrecord in vm.hourRecords | filter:filter '>
+        <td>{{ hourrecord.OldId }}</td>
+<td>{{ hourrecord.DateWorkedFrom  |  date:'medium' }}</td>
+<td>{{ hourrecord.DateWorkedTo  |  date:'medium' }}</td>
+<td>float</td>
+<td>{{ hourrecord.UserId }}</td>
+        <td><div class="btn btn-success" ng-click='vm.edit(hourRecord)'>Edit</div></td>
+    </tr>
+</table>
